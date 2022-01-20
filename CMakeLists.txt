@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20)
 project(STCPredeTransportes)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -9,7 +9,6 @@ add_executable(
 
         develop/graph/disjointSets.h develop/graph/minHeap.h
         develop/graph/graph.cpp develop/graph/graph.h
-        develop/graph/position.h
 
         develop/Menu.cpp develop/Menu.h
         develop/STCP.cpp develop/STCP.h

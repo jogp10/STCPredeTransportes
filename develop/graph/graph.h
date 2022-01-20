@@ -28,7 +28,8 @@ class Graph {
         string name;
         string code;
         string zone;
-        //Position position;
+        double latitude;
+        double longitude;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -36,6 +37,8 @@ class Graph {
     vector<Node> nodes; // The list of nodes being represented
 
     void dijkstra(int s);
+    double getDistance(Node n1, Node n2);
+
 
 public:
     // Constructor: nr nodes and direction (default: undirected)

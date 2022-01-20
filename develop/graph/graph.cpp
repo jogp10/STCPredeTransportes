@@ -82,3 +82,23 @@ list<int> Graph::dijkstra_path(int a, int b) {
     path.insert(path.begin(), a);
     return path;
 }
+
+double Graph::getDistance(Graph::Node n1, Graph::Node n2) {
+    const double PI = 3.141592653589793238463;
+
+    auto lat1 = n1.latitude, lat2 = n2.latitude;
+    auto long1 = n1.longitude, long2 = n2.longitude;
+
+    auto earthRadiusKM = 6371;
+
+    auto dLat = (lat1-lat2) * PI /180;
+    auto dLon = (long1-long2) * PI /180;
+
+    lat1 = lat1 * PI / 180;
+    lat2 = lat2 * PI / 180;
+
+    auto a = sin(dLat/2) * sin(dLat/2) +
+             sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
+    auto c = 2 * atan2(sqrt(a), sqrt(1-a));
+    return earthRadiusKM * c;
+}

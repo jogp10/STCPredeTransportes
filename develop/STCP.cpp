@@ -27,5 +27,4 @@ STCP::STCP() {
     Graph g(nodes, true);
     this->graph = g;
 
-
 }

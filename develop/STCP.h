@@ -12,6 +12,7 @@ class STCP {
     Graph graph = Graph(0);
 
     int numberOfLines(string myfile);
+
 public:
     STCP();
 

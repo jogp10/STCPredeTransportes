@@ -45,6 +45,8 @@ public:
     // Add edge from source to destination with a certain weight
     void addEdge(int src, int dest, double weight = 1.00, string line = "");
 
+    void setNode(string name, string code, string zone, double latitude, double longitude, int index);
+
     map<int, pair<double, double>> getNodes();
 
     // ----- Functions to implement in this class -----

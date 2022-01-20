@@ -128,11 +128,19 @@ void Graph::createWalkEdges() {
                     if(e.dest==j) flag = true; // if x already has connection to y by transport
                 }
                 if(flag) continue; // continue if condition true
-                
+
                 addEdge(i, j, distance12*2, "walk");
             }
         }
     }
+}
+
+void Graph::setNode(string name, string code, string zone, double latitude, double longitude, int index) {
+    nodes[index].name = name;
+    nodes[index].code = code;
+    nodes[index].zone = zone;
+    nodes[index].latitude = latitude;
+    nodes[index].longitude = longitude;
 }
 
 

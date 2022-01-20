@@ -6,7 +6,7 @@
 
 #include "STCP.h"
 
-int numberOfLines(string myfile){
+int STCP::numberOfLines(string myfile){
     int number_of_lines = 0;
 
     string line;
@@ -24,8 +24,8 @@ int numberOfLines(string myfile){
 
 STCP::STCP() {
     int nodes = numberOfLines("../dataset/stops.csv");
-
-    this->graph = new Graph(nodes, true);
+    Graph g(nodes, true);
+    this->graph = g;
 
 
 }

@@ -5,7 +5,6 @@
 #define _GRAPH_H_
 
 #include "minHeap.h"
-#include "position.h"
 #include <vector>
 #include <list>
 #include <iostream>
@@ -27,9 +26,6 @@ class Graph {
         int pred;
         bool visited;
         string name;
-        string code;
-        string zone;
-        Position position;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)

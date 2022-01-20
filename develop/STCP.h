@@ -9,8 +9,9 @@
 #include "graph/graph.h"
 
 class STCP {
-    Graph *graph;
+    Graph graph = Graph(0);
 
+    int numberOfLines(string myfile);
 public:
     STCP();
 

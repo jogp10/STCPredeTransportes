@@ -7,7 +7,6 @@
 #include <unordered_map>
 
 
-
 template <class T>
 class DisjointSets {
     struct Node {

@@ -51,5 +51,4 @@ STCP::STCP() {
     this->graph = g;
 
     readLines("../dataset/lines.csv");
-
 }

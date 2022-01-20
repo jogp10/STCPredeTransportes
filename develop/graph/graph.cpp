@@ -15,6 +15,14 @@ void Graph::addEdge(int src, int dest, int weight, string line) {
     nodes[src].adj.push_back({dest, weight, line});
 }
 
+map<int, pair<double, double>> Graph::getNodes(){
+    map<int, pair<double, double>> localizations;
+    for(int i=0; i<nodes.size(); i++){
+        localizations.insert(make_pair(i, make_pair(nodes[i].longitude, nodes[i].latitude)));
+    }
+    return localizations;
+}
+
 
 // ----------------------------------------------------------
 // 1) Algoritmo de Dijkstra e caminhos mais curtos

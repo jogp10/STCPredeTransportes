@@ -2,15 +2,18 @@
 #include <climits>
 #include <cmath>
 
+
 // Constructor: nr nodes and direction (default: undirected)
 Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
+
 
 // Add edge from source to destination with a certain weight
 void Graph::addEdge(int src, int dest, double weight, string line) {
     if (src<1 || src>n || dest<1 || dest>n) return;
     nodes[src].adj.push_back({dest, weight, line});
 }
+
 
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
@@ -21,9 +24,6 @@ map<int, pair<double, double>> Graph::getNodes(){
 }
 
 
-// ----------------------------------------------------------
-// 1) Algoritmo de Dijkstra e caminhos mais curtos
-// ----------------------------------------------------------
 void Graph::dijkstra(int s) {
     createWalkEdges();
 
@@ -66,18 +66,14 @@ void Graph::dijkstra(int s) {
     }
 }
 
-// ..............................
-// a) Distância entre dois nós
-// TODO
+
 double Graph::dijkstra_distance(int a, int b) {
     dijkstra(a);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
 
-// ..............................
-// b) Caminho mais curto entre dois nós
-// TODO
+
 list<int> Graph::dijkstra_path(int a, int b) {
     dijkstra_distance(a, b);
     list<int> path;
@@ -113,11 +109,7 @@ double Graph::getDistance(const Graph::Node& n1, Graph::Node n2) {
     return earthRadiusKM * c;
 }
 
-/**
- * Create edges to wich you can walk, without need to take transport
- * This type of edge has in maximum weight 2, because the distance beetween 2 points is 1 km.
- * We duplicated the default weight to this type of edge
- */
+
 void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
@@ -134,6 +126,7 @@ void Graph::createWalkEdges() {
         }
     }
 }
+
 
 void Graph::setNode(string name, string code, string zone, double latitude, double longitude, int index) {
     nodes[index].name = name;

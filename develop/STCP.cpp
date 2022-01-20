@@ -24,10 +24,6 @@ int STCP::numberOfLines(const string& myfile){
     return number_of_lines-2;
 }
 
-/**
- * Goes to file and gets code and name of lines
- * @param myFile
- */
 void STCP::readLines(string myFile) {
     int pos;
     string line, code, name;
@@ -81,16 +77,6 @@ void STCP::readEdges(string code) {
     }
 }
 
-STCP::STCP() {
-    int nodes = numberOfLines("../dataset/stops.csv");
-    Graph g(nodes, true);
-    this->graph = g;
-
-    readStops();
-
-    map<string, int> stops;
-}
-
 void STCP::readStops() {
     string line;
     string delimiter = ",";
@@ -122,4 +108,15 @@ void STCP::readStops() {
         }
         file.close();
     }
+}
+
+STCP::STCP() {
+    int nodes = numberOfLines("../dataset/stops.csv");
+    Graph g(nodes, true);
+    this->graph = g;
+
+    readStops();
+    readLines("../dataset/lines.csv");
+
+    map<string, int> stops;
 }

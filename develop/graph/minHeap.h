@@ -1,6 +1,3 @@
-// AED 2021/2022 - Aula Pratica 11
-// Pedro Ribeiro (DCC/FCUP) [17/01/2022]
-
 #ifndef _MINHEAP_H_
 #define _MINHEAP_H_
 

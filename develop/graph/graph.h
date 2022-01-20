@@ -69,7 +69,7 @@ public:
     map<int, pair<double, double>> getNodes();
 
     /**
-     * 
+     *
      * @param a
      * @param b
      * @return

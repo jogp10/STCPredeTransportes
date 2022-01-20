@@ -11,7 +11,9 @@
 class STCP {
     Graph graph = Graph(0);
 
-    int numberOfLines(string myfile);
+    map<string, int> stops; //key: codigo da paragem, value: index no vetor de nodes do grafo
+    int numberOfLines(const string& myfile);
+    void readStops();
 public:
     STCP();
 

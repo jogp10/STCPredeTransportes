@@ -65,11 +65,13 @@ void STCP::readEdges(string code) {
             while(!file.eof()) {
                 getline(file, dest); // destination node code
 
-                auto node1 = nodes[origin];
+                int originIndex = stops[code];
+                int destIndex = stops[dest];
 
-                weight = Graph::getDistance(nodes.find(origin));
-                graph.addEdge(origin, dest, weight, code);
-                auto it = stops.find(code);
+                weight = Graph::getDistance(nodes[originIndex].first, nodes[originIndex].second,
+                                            nodes[destIndex].first, nodes[destIndex].second);
+
+                graph.addEdge(originIndex, destIndex, weight, code);
 
                 origin = dest;
             }

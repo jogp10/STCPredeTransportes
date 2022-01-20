@@ -19,21 +19,16 @@ void Graph::addEdge(int src, int dest, int weight, string line) {
 // ----------------------------------------------------------
 // 1) Algoritmo de Dijkstra e caminhos mais curtos
 // ----------------------------------------------------------
-
-// ..............................
-// a) Distância entre dois nós
-// TODO
-int Graph::dijkstra_distance(int a, int b) {
-
+void Graph::dijkstra(int s) {
     for(Node &n: nodes){
         n.dist=INT16_MAX;
         n.visited=false;
     }
 
     nodes[0].visited=true;
-    nodes[a].dist=0;
-    nodes[a].pred = a;
-    int u = a;
+    nodes[s].dist=0;
+    nodes[s].pred = s;
+    int u = s;
 
     bool allVis = false;
     while(!allVis){
@@ -63,6 +58,13 @@ int Graph::dijkstra_distance(int a, int b) {
             }
         }
     }
+}
+
+// ..............................
+// a) Distância entre dois nós
+// TODO
+int Graph::dijkstra_distance(int a, int b) {
+    dijkstra(a);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
@@ -103,3 +105,5 @@ double Graph::getDistance(Graph::Node n1, Graph::Node n2) {
     auto c = 2 * atan2(sqrt(a), sqrt(1-a));
     return earthRadiusKM * c;
 }
+
+

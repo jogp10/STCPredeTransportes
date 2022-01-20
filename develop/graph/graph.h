@@ -17,7 +17,7 @@ class Graph {
     struct Edge {
         int dest;   // Destination node
         int weight; // An integer weight
-        string line; //
+        string line;
     };
 
     struct Node {
@@ -26,6 +26,10 @@ class Graph {
         int pred;
         bool visited;
         string name;
+        string code;
+        string zone;
+        double latitude;
+        double longitude;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -33,13 +37,15 @@ class Graph {
     vector<Node> nodes; // The list of nodes being represented
 
     void dijkstra(int s);
+    double getDistance(Node n1, Node n2);
+
 
 public:
     // Constructor: nr nodes and direction (default: undirected)
     explicit Graph(int nodes, bool dir = false);
 
     // Add edge from source to destination with a certain weight
-    void addEdge(int src, int dest, int weight = 1);
+    void addEdge(int src, int dest, int weight = 1, string line = "");
 
     // ----- Functions to implement in this class -----
     int dijkstra_distance(int a, int b);

@@ -14,7 +14,6 @@ int main(int argc, char* argv[]) {
     //return RUN_ALL_TESTS();
 
     STCP stcp;
-
     Menu menu = Menu(stcp);
 
     return 0;

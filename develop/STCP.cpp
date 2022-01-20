@@ -21,7 +21,7 @@ int STCP::numberOfLines(const string& myfile){
         }
         file.close();
     }
-    return number_of_lines-2;
+    return number_of_lines-1;
 }
 
 void STCP::readLines(string myFile) {
@@ -68,25 +68,25 @@ void STCP::readStops() {
     vector<string> extra;
     ifstream file("../dataset/stops.csv");
     int count = 0;
-    pair<string, int> help1;
 
     if(file.is_open()){
         getline(file, line);
         while(!file.eof()){
+
             token = "";
             extra.clear();
             getline(file, line);
             pos = 0;
+
             while ((pos = line.find(delimiter)) != std::string::npos) {
                 token = line.substr(0, pos);
                 extra.push_back(token);
                 line.erase(0, pos + delimiter.length());
             }
             extra.push_back(token);
-            //graph.setNode(extra[0],extra[1],extra[2],extra[3],extra[4],count);
-            help1.first = extra[0];
-            help1.second = count;
-            stops.insert(help1);
+
+            graph.setNode(extra[0],extra[1],extra[2], stod(extra[3]), stod(extra[4]), count);
+            stops.insert(make_pair(extra[0], count));
             count++;
         }
         file.close();

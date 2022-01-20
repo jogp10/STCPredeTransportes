@@ -128,9 +128,9 @@ void Graph::createWalkEdges() {
 }
 
 
-void Graph::setNode(string name, string code, string zone, double latitude, double longitude, int index) {
-    nodes[index].name = name;
+void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
     nodes[index].code = code;
+    nodes[index].name = name;
     nodes[index].zone = zone;
     nodes[index].latitude = latitude;
     nodes[index].longitude = longitude;

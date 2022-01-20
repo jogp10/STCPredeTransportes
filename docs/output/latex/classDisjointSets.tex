@@ -1,0 +1,68 @@
+\hypertarget{classDisjointSets}{}\doxysection{Disjoint\+Sets$<$ T $>$ Class Template Reference}
+\label{classDisjointSets}\index{DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}}
+
+
+{\ttfamily \#include $<$disjoint\+Sets.\+h$>$}
+
+
+
+Collaboration diagram for Disjoint\+Sets$<$ T $>$\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDisjointSets_1_1Node}{Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classDisjointSets_a0b28260c39a444326dd81d442795d831}{make\+Set}} (const T \&x)
+\item 
+T \mbox{\hyperlink{classDisjointSets_a9bf1e295744ad2fa90ea8108156f53ff}{find}} (const T \&x)
+\item 
+void \mbox{\hyperlink{classDisjointSets_a9fe8116806e617cf120082e7ba99f0c8}{unite}} (const T \&x, const T \&y)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ T, \mbox{\hyperlink{structDisjointSets_1_1Node}{Node}} $>$ \mbox{\hyperlink{classDisjointSets_a02d506c368a846a4dca1f3a97bfa110b}{a}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDisjointSets_a9bf1e295744ad2fa90ea8108156f53ff}\label{classDisjointSets_a9bf1e295744ad2fa90ea8108156f53ff}} 
+\index{DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}!find@{find}}
+\index{find@{find}!DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{classDisjointSets}{Disjoint\+Sets}}$<$ T $>$\+::find (\begin{DoxyParamCaption}\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDisjointSets_a0b28260c39a444326dd81d442795d831}\label{classDisjointSets_a0b28260c39a444326dd81d442795d831}} 
+\index{DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}!makeSet@{makeSet}}
+\index{makeSet@{makeSet}!DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{makeSet()}{makeSet()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classDisjointSets}{Disjoint\+Sets}}$<$ T $>$\+::make\+Set (\begin{DoxyParamCaption}\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDisjointSets_a9fe8116806e617cf120082e7ba99f0c8}\label{classDisjointSets_a9fe8116806e617cf120082e7ba99f0c8}} 
+\index{DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}!unite@{unite}}
+\index{unite@{unite}!DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{unite()}{unite()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classDisjointSets}{Disjoint\+Sets}}$<$ T $>$\+::unite (\begin{DoxyParamCaption}\item[{const T \&}]{x,  }\item[{const T \&}]{y }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDisjointSets_a02d506c368a846a4dca1f3a97bfa110b}\label{classDisjointSets_a02d506c368a846a4dca1f3a97bfa110b}} 
+\index{DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}!a@{a}}
+\index{a@{a}!DisjointSets$<$ T $>$@{DisjointSets$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{a}{a}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::unordered\+\_\+map$<$T, \mbox{\hyperlink{structDisjointSets_1_1Node}{Node}}$>$ \mbox{\hyperlink{classDisjointSets}{Disjoint\+Sets}}$<$ T $>$\+::a\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+develop/graph/\mbox{\hyperlink{disjointSets_8h}{disjoint\+Sets.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,12 @@
+\hypertarget{disjointSets_8h}{}\doxysection{develop/graph/disjoint\+Sets.h File Reference}
+\label{disjointSets_8h}\index{develop/graph/disjointSets.h@{develop/graph/disjointSets.h}}
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+Include dependency graph for disjoint\+Sets.\+h\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classDisjointSets}{Disjoint\+Sets$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structDisjointSets_1_1Node}{Disjoint\+Sets$<$ T $>$\+::\+Node}}
+\end{DoxyCompactItemize}

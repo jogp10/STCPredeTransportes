@@ -57,9 +57,26 @@ void STCP::readLines(string myFile) {
 void STCP::readEdges(string code) {
     for (int i = 0; i <= 1; i++) {
         ifstream file("../dataset/line_" + code + "_" + to_string(i) + ".cvs");
+        string line, origin, dest;
+        double weight;
 
         if (file.is_open()) {
+            map<int, pair<double, double>> nodes = graph.getNodes();
 
+            getline(file, line); // trash
+            getline(file, origin); // origin node code
+
+            while(!file.eof()) {
+                getline(file, dest); // destination node code
+
+                auto node1 = nodes[origin];
+
+                weight = Graph::getDistance(nodes.find(origin));
+                graph.addEdge(origin, dest, weight, code);
+                auto it = stops.find(code);
+
+                origin = dest;
+            }
         }
     }
 }

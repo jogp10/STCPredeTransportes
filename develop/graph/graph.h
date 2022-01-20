@@ -49,6 +49,8 @@ public:
 
     map<int, pair<double, double>> getNodes();
 
+    double static getDistance(Node n1, Node n2);
+
     // ----- Functions to implement in this class -----
     double dijkstra_distance(int a, int b);
     list<int> dijkstra_path(int a, int b);

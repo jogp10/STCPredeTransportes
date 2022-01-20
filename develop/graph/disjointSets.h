@@ -1,6 +1,3 @@
-// AED 2021/2022 - Aula Pratica 10
-// Pedro Ribeiro (DCC/FCUP) [09/01/2022]
-
 #ifndef _DISJOINTSETS_H_
 #define _DISJOINTSETS_H_
 

@@ -1,6 +1,3 @@
-// AED 2021/2022 - Aula Pratica 11
-// Pedro Ribeiro (DCC/FCUP) [17/01/2022]
-
 #include "graph.h"
 #include <climits>
 #include <cmath>
@@ -93,6 +90,7 @@ list<int> Graph::dijkstra_path(int a, int b) {
     path.insert(path.begin(), a);
     return path;
 }
+
 
 double Graph::getDistance(Graph::Node n1, Graph::Node n2) {
     const double PI = 3.141592653589793238463;

@@ -1,6 +1,3 @@
-// AED 2021/2022 - Aula Pratica 11
-// Pedro Ribeiro (DCC/FCUP) [17/01/2022]
-
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 

@@ -5,13 +5,16 @@
 #define _GRAPH_H_
 
 #include "minHeap.h"
+#include "position.h"
 #include <vector>
 #include <list>
 #include <iostream>
 
 using namespace std;
 
+
 class Graph {
+
     struct Edge {
         int dest;   // Destination node
         int weight; // An integer weight
@@ -24,6 +27,9 @@ class Graph {
         int pred;
         bool visited;
         string name;
+        string code;
+        string zone;
+        Position position;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -34,7 +40,7 @@ class Graph {
 
 public:
     // Constructor: nr nodes and direction (default: undirected)
-    Graph(int nodes, bool dir = false);
+    explicit Graph(int nodes, bool dir = false);
 
     // Add edge from source to destination with a certain weight
     void addEdge(int src, int dest, int weight = 1);

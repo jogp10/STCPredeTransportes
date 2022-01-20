@@ -67,6 +67,15 @@ public:
      * @return map where key: code of stop, value: latitude, longitude
      */
     map<int, pair<double, double>> getNodes();
+
+    /**
+     * 
+     * @param lat1
+     * @param long1
+     * @param lat2
+     * @param long2
+     * @return
+     */
     double static getDistance(double lat1, double long1, double lat2, double long2);
 
     // ----- Functions to implement in this class -----

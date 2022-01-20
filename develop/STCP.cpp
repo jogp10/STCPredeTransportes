@@ -68,8 +68,8 @@ void STCP::readEdges(string code) {
                 int originIndex = stops[code];
                 int destIndex = stops[dest];
 
-                weight = Graph::getDistance(nodes[originIndex].first, nodes[originIndex].second,
-                                            nodes[destIndex].first, nodes[destIndex].second);
+                weight = graph.getDistance(nodes[originIndex].first, nodes[originIndex].second,
+                                   nodes[destIndex].first, nodes[destIndex].second);
 
                 graph.addEdge(originIndex, destIndex, weight, code);
 

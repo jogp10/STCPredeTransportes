@@ -136,4 +136,8 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     nodes[index].longitude = longitude;
 }
 
+double  Graph::getDistance(double lat1, double long1, double lat2, double long2) {
+    return 0;
+}
+
 

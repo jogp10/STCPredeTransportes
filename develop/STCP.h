@@ -15,17 +15,34 @@ class STCP {
     Graph graph = Graph(0);
 
 
+    /**
+     * Number lines in file
+     * @param myfile file path
+     * @return number of lines
+     */
     int numberOfLines(const string& myfile);
+
+    /**
+     * Goes to file and gets stops
+     */
     void readStops();
 
     /**
- * Goes to file and gets code and name of lines
- * @param myFile
- */
+     * Goes to file and gets code and name of lines
+     * @param myFile file path
+     */
     void readLines(string file);
+
+    /**
+     * Goes to file and connects stops and lines
+     * @param code Line Code
+     */
     void readEdges(string code);
     
 public:
+    /**
+     * STCP Constructor
+     */
     STCP();
 
 };

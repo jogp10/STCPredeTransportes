@@ -6,11 +6,12 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <utility>
 
 using namespace std;
 
 Menu::Menu(STCP stcp) {
-    this->stcp=stcp;
+    this->stcp=std::move(stcp);
 
     int choice = 0;
 

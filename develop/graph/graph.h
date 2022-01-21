@@ -34,12 +34,19 @@ class Graph {
     bool hasDir;        // false: undirect; true: directed
     vector<Node> nodes; // The list of nodes being represented
 
+    /**
+     * Dijkstra Algorithm
+     * @param s Node to start algorithm
+     */
     void dijkstra(int s);
-    double static getDistance(const Node& n1, Node n2);
 
 
 public:
-    // Constructor: nr nodes and direction (default: undirected)
+    /**
+     *  Constructor
+     * @param nodes nr nodes
+     * @param dir direction ( default: undirected)
+     */
     explicit Graph(int nodes, bool dir = false);
 
     /**
@@ -53,23 +60,23 @@ public:
 
     /**
      * Set Node's updated with Stop's info
-     * @param Name of Stop
-     * @param Code of Stop
-     * @param Zone of Stop
-     * @param Latitude of Stop
-     * @param Longitude of Stop
-     * @param index in Graph
+     * @param Name Name of Stop
+     * @param Code Code of Stop
+     * @param Zone Zone of Stop
+     * @param Latitude Latitude of Stop
+     * @param Longitude Longitude of Stop
+     * @param index Index in vector<Node> of Graph
      */
     void setNode(string name, string code, string zone, double latitude, double longitude, int index);
 
     /**
-     *
+     * Get Map of nodes which belong to graph
      * @return map where key: code of stop, value: latitude, longitude
      */
     map<int, pair<double, double>> getNodes();
 
     /**
-     * 
+     * Get Distance between two points
      * @param lat1
      * @param long1
      * @param lat2
@@ -78,28 +85,27 @@ public:
      */
     double static getDistance(double lat1, double long1, double lat2, double long2);
 
-    // ----- Functions to implement in this class -----
     /**
-     *
-     * @param a
-     * @param b
-     * @return
+     * Get Minimum path using Dijkstra
+     * @param a Local a
+     * @param b Local b
+     * @return distance between a and b
      */
     double dijkstra_distance(int a, int b);
 
     /**
-     *
-     * @param Departure local
-     * @param Destination local
-     * @return path;
+     * Dijkstra Path
+     * @param Departure Departure local
+     * @param Destination Destination local
+     * @return list of code's stop which belong to path
      */
     list<int> dijkstra_path(int a, int b);
 
     /**
- * Create edges to wich you can walk, without need to take transport
- * This type of edge has in maximum weight 2, because the distance beetween 2 points is 1 km.
- * We duplicated the default weight to this type of edge
- */
+     * Create edges to wich you can walk, without need to take transport
+     * This type of edge has in maximum weight 2, because the distance beetween 2 points is 1 km.
+     * We duplicated the default weight to this type of edge
+     */
     void createWalkEdges();
 };
 

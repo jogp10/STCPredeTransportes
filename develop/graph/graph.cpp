@@ -17,7 +17,7 @@ void Graph::addEdge(int src, int dest, double weight, string line) {
 
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
-    for(int i=0; i<nodes.size(); i++){
+    for(int i=1; i<=nodes.size(); i++){
         localizations.insert(make_pair(i, make_pair(nodes[i].longitude, nodes[i].latitude)));
     }
     return localizations;
@@ -32,6 +32,7 @@ void Graph::dijkstra(int s) {
         n.visited=false;
     }
 
+    nodes[0].visited=true;
     nodes[s].dist=0;
     nodes[s].pred =s;
     int u = s;
@@ -89,31 +90,10 @@ list<int> Graph::dijkstra_path(int a, int b) {
 }
 
 
-double Graph::getDistance(const Graph::Node& n1, Graph::Node n2) {
-    const double PI = 3.141592653589793238463;
-
-    auto lat1 = n1.latitude, lat2 = n2.latitude;
-    auto long1 = n1.longitude, long2 = n2.longitude;
-
-    auto earthRadiusKM = 6371;
-
-    auto dLat = (lat1-lat2) * PI /180;
-    auto dLon = (long1-long2) * PI /180;
-
-    lat1 = lat1 * PI / 180;
-    lat2 = lat2 * PI / 180;
-
-    auto a = sin(dLat/2) * sin(dLat/2) +
-             sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
-    auto c = 2 * atan2(sqrt(a), sqrt(1-a));
-    return earthRadiusKM * c;
-}
-
-
 void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
-            double distance12 = getDistance(nodes[i], nodes[j]); // Distance between x - y
+            double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
             if(distance12 < 1){
                 bool flag = false;
                 for(Edge e: nodes[i].adj){
@@ -136,8 +116,22 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     nodes[index].longitude = longitude;
 }
 
+
 double  Graph::getDistance(double lat1, double long1, double lat2, double long2) {
-    return 0;
+    const double PI = 3.141592653589793238463;
+
+    auto earthRadiusKM = 6371;
+
+    auto dLat = (lat1-lat2) * PI /180;
+    auto dLon = (long1-long2) * PI /180;
+
+    lat1 = lat1 * PI / 180;
+    lat2 = lat2 * PI / 180;
+
+    auto a = sin(dLat/2) * sin(dLat/2) +
+             sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
+    auto c = 2 * atan2(sqrt(a), sqrt(1-a));
+    return earthRadiusKM * c;
 }
 
 

@@ -70,8 +70,8 @@ void STCP::readEdges(string code) {
             while(!file.eof()) {
                 getline(file, dest); // destination node code
 
-                int originIndex = stops[origin];
-                int destIndex = stops[dest];
+                int originIndex = convertCodeToIndex(origin);
+                int destIndex = convertCodeToIndex(dest);
 
                 weight = graph.getDistance(nodes[originIndex].first, nodes[originIndex].second,
                                    nodes[destIndex].first, nodes[destIndex].second);
@@ -127,10 +127,20 @@ STCP::STCP() {
     readStops();
     readLines("../dataset/lines.csv");
 
+
 /*
     cout << lines.size() << " number of lines stored " << endl;
     cout << endl <<  stops.size() << " number of stops stored " << endl;
     cout << graph.getNodes().size() << " number of stops stored in getNodes " << endl;
     */
+}
 
+int STCP::convertCodeToIndex(string a){
+    return stops.find(a)->second;
+}
+
+double STCP::fromTo(string a, string b){
+    int origin = convertCodeToIndex(a);
+    int destino = convertCodeToIndex(b);
+    return graph.dijkstra_distance(origin, destino);
 }

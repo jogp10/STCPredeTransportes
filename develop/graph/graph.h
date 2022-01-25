@@ -38,7 +38,7 @@ class Graph {
      * Dijkstra Algorithm
      * @param s Node to start algorithm
      */
-    void dijkstra(int s);
+    void dijkstra(int s, int finish=0);
 
 
 public:
@@ -74,6 +74,7 @@ public:
      * @return map where key: code of stop, value: latitude, longitude
      */
     map<int, pair<double, double>> getNodes();
+    Node getNode(int at);
 
     /**
      * Get Distance between two points

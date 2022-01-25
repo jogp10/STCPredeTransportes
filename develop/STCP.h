@@ -38,13 +38,6 @@ class STCP {
      * @param code Line Code
      */
     void readEdges(string code);
-
-    /**
-     *
-     * @param code
-     * @return
-     */
-    int convertCodeToIndex(string code);
     
 public:
     /**
@@ -52,7 +45,14 @@ public:
      */
     STCP();
 
-    double fromTo(string a, string b);
+    /**
+     *
+     * @param code
+     * @return
+     */
+    int convertCodeToIndex(string code);
+
+    list<int> fromTo(string a, string b);
 
 };
 

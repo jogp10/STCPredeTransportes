@@ -23,9 +23,13 @@ map<int, pair<double, double>> Graph::getNodes(){
     return localizations;
 }
 
+Graph::Node Graph::getNode(int at){
+    return nodes[at];
+}
 
-void Graph::dijkstra(int s) {
-    createWalkEdges();
+
+void Graph::dijkstra(int s, int finish) {
+    if(nodes[s].dist==0) return;
 
     for(Node &n: nodes){
         n.dist=INT16_MAX;
@@ -48,6 +52,7 @@ void Graph::dijkstra(int s) {
         }
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
+        if(nodes[finish].visited && finish!=0) break;
 
         for(Edge &e: nodes[u].adj){
             if(!nodes[e.dest].visited){
@@ -69,7 +74,7 @@ void Graph::dijkstra(int s) {
 
 
 double Graph::dijkstra_distance(int a, int b) {
-    dijkstra(a);
+    dijkstra(a, b);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
@@ -94,14 +99,8 @@ void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
-            if(distance12 < 1){
-                bool flag = false;
-                for(Edge e: nodes[i].adj){
-                    if(e.dest==j) flag = true; // if x already has connection to y by transport
-                }
-                if(flag) continue; // continue if condition true
-
-                addEdge(i, j, distance12*2, "walk");
+            if(distance12 < 0.5){
+                addEdge(i, j, distance12, "walk");
             }
         }
     }
@@ -109,11 +108,15 @@ void Graph::createWalkEdges() {
 
 
 void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
-    nodes[index].code = code;
-    nodes[index].name = name;
-    nodes[index].zone = zone;
-    nodes[index].latitude = latitude;
-    nodes[index].longitude = longitude;
+    Node n;
+    n.code = code;
+    n.name = name;
+    n.zone = zone;
+    n.latitude = latitude;
+    n.longitude = longitude;
+    n.dist = INT16_MAX;
+    nodes[index] = n;
+    //nodes.insert(nodes.begin()+index, n);
 }
 
 

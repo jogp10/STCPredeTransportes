@@ -126,7 +126,7 @@ STCP::STCP() {
 
     readStops();
     readLines("../dataset/lines.csv");
-
+    graph.createWalkEdges();
 
 /*
     cout << lines.size() << " number of lines stored " << endl;
@@ -139,8 +139,14 @@ int STCP::convertCodeToIndex(string a){
     return stops.find(a)->second;
 }
 
-double STCP::fromTo(string a, string b){
+list<int> STCP::fromTo(string a, string b){
     int origin = convertCodeToIndex(a);
     int destino = convertCodeToIndex(b);
-    return graph.dijkstra_distance(origin, destino);
+    list<int> path = graph.dijkstra_path(origin, destino);
+    for(int i: path){
+        cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
+        cout << endl;
+    }
+    cout << graph.getNode(*--path.end()).dist << "\n";
+    return path;
 }

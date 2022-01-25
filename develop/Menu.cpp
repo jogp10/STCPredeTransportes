@@ -50,7 +50,7 @@ void Menu::travel(){
     cout << "Choose your arrival local:" << endl;
     cin >> arrival;
 
-    cout << stcp.fromTo(departure, arrival) << " km" << endl;
+    stcp.fromTo(departure, arrival);
 
 
 }

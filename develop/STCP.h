@@ -38,7 +38,7 @@ class STCP {
      * @param code Line Code
      */
     void readEdges(string code);
-    
+
 public:
     /**
      * STCP Constructor

@@ -53,7 +53,7 @@ public:
      */
     int convertCodeToIndex(string code);
 
-    list<int> fromTo(string a, string b);
+    list<int> fromTo(string a, string b, string choice);
 
 };
 

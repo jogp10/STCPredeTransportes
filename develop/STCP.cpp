@@ -155,8 +155,9 @@ list<int> STCP::fromTo(string a, string b, string choice){
         cout << endl;
         tmp = i; // for testing
     }
-
-    cout << graph.getNode(*--path.end()).dist - zone*1000 << "\n";
+    double totalDist = graph.getNode(*--path.end()).dist;
+    if(choice == "lessZones") totalDist -= zone*10000;
+    cout << totalDist<< "\n";
     cout << path.size() << endl;
     return path;
 }

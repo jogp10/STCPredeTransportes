@@ -24,7 +24,6 @@ Graph::Node Graph::getNode(int at){
 }
 
 void Graph::dijkstra(int s, int finish, string type) {
-    float multiplier;
 
     if(nodes[s].dist==0) return;
 
@@ -61,12 +60,11 @@ void Graph::dijkstra(int s, int finish, string type) {
         for(Edge &e: nodes[u].adj){
             if(!nodes[e.dest].visited){
                 if(nodes[u].dist + e.weight < nodes[e.dest].dist) {
-                    multiplier = 1;
 
                     //Less Zones
                     double addweight = e.weight;
                     if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones"){
-                            addweight += 1000;
+                            addweight += 10000;
                     }
                     nodes[e.dest].dist = nodes[u].dist + addweight;
                     nodes[e.dest].pred = u;
@@ -109,6 +107,7 @@ void Graph::createWalkEdges() {
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
             if(distance12 < 0.5){
                 addEdge(i, j, distance12, "walk");
+                addEdge(j, i, distance12, "walk");
             }
         }
     }

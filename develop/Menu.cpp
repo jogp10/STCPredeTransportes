@@ -42,6 +42,7 @@ void Menu::travel(){
 
     string departure = "";
     string arrival = "";
+    int choice = 1;
 
     cout << "Choose your departure local:" << endl;
     cin >> departure;
@@ -49,7 +50,13 @@ void Menu::travel(){
     cout << "Choose your arrival local:" << endl;
     cin >> arrival;
 
+    cout << "How do you want to travel?" << endl;
+    cout << "1) Shortest distance" << endl;
+    cout << "2) Less line changes" << endl;
+    cout << "3) Less stops" << endl;
+    cout << "4) Cheapest way (less zones)" << endl;
+
+    cout << "Option: "; cin >> choice;
+
     stcp.fromTo(departure, arrival);
-
-
 }

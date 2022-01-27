@@ -16,13 +16,22 @@ Menu::Menu(STCP stcp) {
 
     int choice = 0;
 
-    cout << "1) Travel" << endl;
+    cout << "1) Travel by stops keys" << endl;
+    cout << "2) Travel by coordinates" << endl;
+
     cin >> choice;
 
     switch(choice) {
         case 1:
-            travel();
+            travelStops();
             break;
+
+        case 2:
+            travelCoordinates();
+            break;
+
+        default:
+            travelStops();
     }
 }
 
@@ -37,12 +46,11 @@ void Menu::flush() {
 }
 
 
-void Menu::travel(){
+void Menu::travelStops(){
     flush();
 
     string departure = "";
     string arrival = "";
-    int choice = 1;
 
     cout << "Choose your departure local:" << endl;
     cin >> departure;
@@ -54,6 +62,24 @@ void Menu::travel(){
 
     stcp.fromTo(departure, arrival, choiceString);
 }
+
+
+void Menu::travelCoordinates() {
+    double departureLatitude = 0;
+    double departureLongitude = 0;
+    double arrivalLatitude = 0;
+    double arrivalLongitude = 0;
+
+    cout << "Departure latitude: "; cin >> departureLatitude; cout << endl;
+    cout << "Departure longitude: "; cin >> departureLongitude; cout << endl;
+    cout << "Arrival latitude: "; cin >> arrivalLatitude; cout << endl;
+    cout << "Arrival longitude: "; cin >> arrivalLongitude; cout << endl;
+
+    string choiceString = travelMode();
+
+    stcp.fromTo(departureLatitude, departureLongitude, arrivalLatitude, arrivalLongitude, choiceString);
+}
+
 
 string Menu::travelMode() {
     int choice = 1;
@@ -72,15 +98,19 @@ string Menu::travelMode() {
         case 1:
             choiceString = "shortest";
             break;
+
         case 2:
             choiceString = "lessChanges";
             break;
+
         case 3:
             choiceString = "lessStops";
             break;
+
         case 4:
             choiceString = "lessZones";
             break;
+
         default:
             choiceString = "shortest";
     }

@@ -16,9 +16,14 @@ class Menu {
     void flush();
 
     /**
-     * Travel Menu
+     * Travel Menu by Stops
      */
-    void travel();
+    void travelStops();
+
+    /**
+     * Travel Menu by Coordinates
+     */
+    void travelCoordinates();
 
     /**
      * Preferred travel mode

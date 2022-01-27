@@ -68,7 +68,7 @@ void Graph::dijkstra(int s, int finish, string type) {
                     if(type=="lessZones" && nodes[e.dest].zone!=nodes[u].zone)
                         multiplier = 100;
 
-                    int addweight = e.weight * multiplier;
+                    double addweight = e.weight * multiplier;
                     nodes[e.dest].dist = nodes[u].dist + addweight;
                     nodes[e.dest].pred = u;
                 }

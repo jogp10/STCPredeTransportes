@@ -24,7 +24,7 @@ class Graph {
     struct Node {
         list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
         double dist;
-        int pred;
+        int pred = -1;
         bool visited;
         string name;
         string code;

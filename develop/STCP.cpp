@@ -108,7 +108,6 @@ void STCP::readStops() {
                 extra.push_back(token);
                 line.erase(0, pos + delimiter.length());
             }
-            extra.push_back(line);
 
             graph.setNode(extra[0],extra[1],extra[2], stod(extra[3]), stod(extra[4]), count);
             stops.insert(make_pair(extra[0], count));

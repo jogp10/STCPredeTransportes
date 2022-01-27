@@ -20,6 +20,7 @@ class STCP {
      * @param myfile file path
      * @return number of lines
      */
+
     int numberOfLines(const string& myfile);
 
     /**

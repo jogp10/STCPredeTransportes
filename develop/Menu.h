@@ -34,7 +34,7 @@ class Menu {
 public:
     /**
      * STCP Menu
-     * @param stcp
+     * @param stcp STCP, bus service provider
      */
     Menu(STCP stcp);
 };

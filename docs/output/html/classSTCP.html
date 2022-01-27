@@ -63,6 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classSTCP-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">STCP Class Reference</div>  </div>
@@ -81,6 +83,30 @@ Collaboration diagram for STCP:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4541383180e44e0ce4b8cc0919ad5c41"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a4541383180e44e0ce4b8cc0919ad5c41">STCP</a> ()</td></tr>
 <tr class="separator:a4541383180e44e0ce4b8cc0919ad5c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7632a6bba855a8b7c255098871a537"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a1c7632a6bba855a8b7c255098871a537">convertCodeToIndex</a> (string code)</td></tr>
+<tr class="separator:a1c7632a6bba855a8b7c255098871a537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd0043d0eb9df76043460a258981a8f"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#aafd0043d0eb9df76043460a258981a8f">fromTo</a> (string a, string b, string choice)</td></tr>
+<tr class="separator:aafd0043d0eb9df76043460a258981a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a607b834f35d6fd6c2d636ca940fa5372"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a607b834f35d6fd6c2d636ca940fa5372">numberOfLines</a> (const string &amp;myfile)</td></tr>
+<tr class="separator:a607b834f35d6fd6c2d636ca940fa5372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9cf95c5f7c2cfe2dd05659e88dc4af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#acc9cf95c5f7c2cfe2dd05659e88dc4af">readStops</a> ()</td></tr>
+<tr class="separator:acc9cf95c5f7c2cfe2dd05659e88dc4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7f1d99bafb8f733744065c70571c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a5a7f1d99bafb8f733744065c70571c58">readLines</a> (string file)</td></tr>
+<tr class="separator:a5a7f1d99bafb8f733744065c70571c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc17ff61e5cdddc8d43616c065e26a1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#abc17ff61e5cdddc8d43616c065e26a1c">readEdges</a> (string code)</td></tr>
+<tr class="separator:abc17ff61e5cdddc8d43616c065e26a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a45e3c1aca7587e2a60b79b22e3c3fd07"><td class="memItemLeft" align="right" valign="top">map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a45e3c1aca7587e2a60b79b22e3c3fd07">lines</a></td></tr>
+<tr class="separator:a45e3c1aca7587e2a60b79b22e3c3fd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5f28f3bc79e00849dcf2ad963ff789"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a3c5f28f3bc79e00849dcf2ad963ff789">stops</a></td></tr>
+<tr class="separator:a3c5f28f3bc79e00849dcf2ad963ff789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f283c50789bb17deba8d7f178e1c85d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGraph.html">Graph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTCP.html#a7f283c50789bb17deba8d7f178e1c85d">graph</a> = <a class="el" href="classGraph.html">Graph</a>(0)</td></tr>
+<tr class="separator:a7f283c50789bb17deba8d7f178e1c85d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4541383180e44e0ce4b8cc0919ad5c41"></a>
@@ -96,6 +122,266 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+<p><a class="el" href="classSTCP.html">STCP</a> Constructor </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1c7632a6bba855a8b7c255098871a537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7632a6bba855a8b7c255098871a537">&#9670;&nbsp;</a></span>convertCodeToIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int STCP::convertCodeToIndex </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Convert code of stop to index in vector&lt;Node&gt; nodes that belongs to graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index </dd></dl>
+
+</div>
+</div>
+<a id="aafd0043d0eb9df76043460a258981a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd0043d0eb9df76043460a258981a8f">&#9670;&nbsp;</a></span>fromTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; int &gt; STCP::fromTo </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>choice</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>From x to y, prints out the path </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Start of path </td></tr>
+    <tr><td class="paramname">b</td><td>End of path </td></tr>
+    <tr><td class="paramname">choice</td><td>Type of trajectory to follow </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>path </dd></dl>
+
+</div>
+</div>
+<a id="a607b834f35d6fd6c2d636ca940fa5372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607b834f35d6fd6c2d636ca940fa5372">&#9670;&nbsp;</a></span>numberOfLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int STCP::numberOfLines </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>myfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Number lines in file </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myfile</td><td>file path </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of lines </dd></dl>
+
+</div>
+</div>
+<a id="abc17ff61e5cdddc8d43616c065e26a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc17ff61e5cdddc8d43616c065e26a1c">&#9670;&nbsp;</a></span>readEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STCP::readEdges </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Goes to file and connects stops and lines, by adding edges to graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Line Code </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a7f1d99bafb8f733744065c70571c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7f1d99bafb8f733744065c70571c58">&#9670;&nbsp;</a></span>readLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STCP::readLines </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Goes to file and reads code and name of lines </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myFile</td><td>file path </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc9cf95c5f7c2cfe2dd05659e88dc4af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9cf95c5f7c2cfe2dd05659e88dc4af">&#9670;&nbsp;</a></span>readStops()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STCP::readStops </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Goes to file and reads stops, adds them to graph </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7f283c50789bb17deba8d7f178e1c85d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f283c50789bb17deba8d7f178e1c85d">&#9670;&nbsp;</a></span>graph</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGraph.html">Graph</a> STCP::graph = <a class="el" href="classGraph.html">Graph</a>(0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45e3c1aca7587e2a60b79b22e3c3fd07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45e3c1aca7587e2a60b79b22e3c3fd07">&#9670;&nbsp;</a></span>lines</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, string&gt; STCP::lines</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c5f28f3bc79e00849dcf2ad963ff789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c5f28f3bc79e00849dcf2ad963ff789">&#9670;&nbsp;</a></span>stops</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, int&gt; STCP::stops</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

@@ -7,6 +7,8 @@ digraph "Graph::Edge"
   Node1 [label="{Graph::Edge\n||}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +line" ,arrowhead="odiamond"];
   Node2 [label="{string\n||}",height=0.2,width=0.4,color="grey75",tooltip=" "];
-  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +weight\n+dest" ,arrowhead="odiamond"];
-  Node3 [label="{int\n||}",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +weight" ,arrowhead="odiamond"];
+  Node3 [label="{double\n||}",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +dest" ,arrowhead="odiamond"];
+  Node4 [label="{int\n||}",height=0.2,width=0.4,color="grey75",tooltip=" "];
 }

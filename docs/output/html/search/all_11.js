@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value_52',['value',['../structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289',1,'MinHeap::Node']]],
-  ['visited_53',['visited',['../structGraph_1_1Node.html#a2360e752c746736f533bc4e673c1f80d',1,'Graph::Node']]]
+  ['unite_69',['unite',['../classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8',1,'DisjointSets']]],
+  ['upheap_70',['upHeap',['../classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992',1,'MinHeap']]]
 ];

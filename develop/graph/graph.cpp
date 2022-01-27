@@ -5,13 +5,11 @@
 Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
 
-
 // Add edge from source to destination with a certain weight
 void Graph::addEdge(int src, int dest, double weight, string line) {
     if (src<1 || src>n || dest<1 || dest>n) return;
     nodes[src].adj.push_back({dest, weight, line});
 }
-
 
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
@@ -24,7 +22,6 @@ map<int, pair<double, double>> Graph::getNodes(){
 Graph::Node Graph::getNode(int at){
     return nodes[at];
 }
-
 
 void Graph::dijkstra(int s, int finish, string type) {
     float multiplier;
@@ -86,13 +83,11 @@ void Graph::dijkstra(int s, int finish, string type) {
     }
 }
 
-
 double Graph::dijkstra_distance(int a, int b, string type) {
     dijkstra(a, b, type);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
-
 
 list<int> Graph::dijkstra_path(int a, int b, string type) {
     double i = dijkstra_distance(a, b, type);
@@ -108,7 +103,6 @@ list<int> Graph::dijkstra_path(int a, int b, string type) {
     return path;
 }
 
-
 void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
@@ -119,7 +113,6 @@ void Graph::createWalkEdges() {
         }
     }
 }
-
 
 void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
     Node n;
@@ -132,7 +125,6 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     nodes[index] = n;
     //nodes.insert(nodes.begin()+index, n);
 }
-
 
 double Graph::getDistance(double lat1, double long1, double lat2, double long2) {
     const double PI = 3.141592653589793238463;
@@ -150,7 +142,6 @@ double Graph::getDistance(double lat1, double long1, double lat2, double long2) 
     auto c = 2 * atan2(sqrt(a), sqrt(1-a));
     return earthRadiusKM * c;
 }
-
 
 void Graph::bfs(int a, int b) {
     vector<int> distances(nodes.size(), -1);
@@ -177,5 +168,3 @@ void Graph::bfs(int a, int b) {
     }
     cout << endl;
 }
-
-

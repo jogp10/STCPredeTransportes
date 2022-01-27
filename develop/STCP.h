@@ -24,18 +24,18 @@ class STCP {
     int numberOfLines(const string& myfile);
 
     /**
-     * Goes to file and gets stops
+     * Goes to file and reads stops, adds them to graph
      */
     void readStops();
 
     /**
-     * Goes to file and gets code and name of lines
+     * Goes to file and reads code and name of lines
      * @param myFile file path
      */
     void readLines(string file);
 
     /**
-     * Goes to file and connects stops and lines
+     * Goes to file and connects stops and lines, by adding edges to graph
      * @param code Line Code
      */
     void readEdges(string code);
@@ -47,12 +47,19 @@ public:
     STCP();
 
     /**
-     *
+     * Convert code of stop to index in vector<Node> nodes that belongs to graph
      * @param code
-     * @return
+     * @return index
      */
     int convertCodeToIndex(string code);
 
+    /**
+     * From x to y, prints out the path
+     * @param a Start of path
+     * @param b End of path
+     * @param choice Type of trajectory to follow
+     * @return path
+     */
     list<int> fromTo(string a, string b, string choice);
 
 };

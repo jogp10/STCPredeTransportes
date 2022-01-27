@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['stcp_86',['STCP',['../classSTCP.html#a4541383180e44e0ce4b8cc0919ad5c41',1,'STCP']]],
-  ['swap_87',['swap',['../classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291',1,'MinHeap']]]
+  ['makeset_109',['makeSet',['../classDisjointSets.html#a0b28260c39a444326dd81d442795d831',1,'DisjointSets']]],
+  ['menu_110',['Menu',['../classMenu.html#a7bcf53a88cb7a5aea07347a76919e55a',1,'Menu']]],
+  ['minheap_111',['MinHeap',['../classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31',1,'MinHeap']]]
 ];

@@ -69,63 +69,72 @@ $(function() {
 <div class="title">disjointSets.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="disjointSets_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// AED 2021/2022 - Aula Pratica 10</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Pedro Ribeiro (DCC/FCUP) [09/01/2022]</span></div>
+<a href="disjointSets_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DISJOINTSETS_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define DISJOINTSETS_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef _DISJOINTSETS_H_</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define _DISJOINTSETS_H_</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classDisjointSets.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDisjointSets.html">DisjointSets</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html">   13</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structDisjointSets_1_1Node.html">Node</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">   14</a></span>&#160;        T <a class="code" href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">parent</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">   15</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">myrank</a>; <span class="comment">// to use on union by rank</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">   18</a></span>&#160;    std::unordered_map&lt;T, Node&gt; <a class="code" href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">a</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classDisjointSets.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDisjointSets.html">DisjointSets</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html">    8</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structDisjointSets_1_1Node.html">Node</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">    9</a></span>&#160;        T <a class="code" href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">parent</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">   10</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">myrank</a>; <span class="comment">// to use on union by rank</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    };</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">   13</a></span>&#160;    std::unordered_map&lt;T, Node&gt; <a class="code" href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">a</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">makeSet</a>(<span class="keyword">const</span> T&amp; x);            <span class="comment">// Create a set with a single element x</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    T <a class="code" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">find</a>(<span class="keyword">const</span> T&amp; x);                  <span class="comment">// Find the representative of the set of element x</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">unite</a>(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y);  <span class="comment">// Merge the sets of elements x and y</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">makeSet</a>(<span class="keyword">const</span> T&amp; x);            <span class="comment">// Create a set with a single element x</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    T <a class="code" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">find</a>(<span class="keyword">const</span> T&amp; x);                  <span class="comment">// Find the representative of the set of element x</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">unite</a>(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y);  <span class="comment">// Merge the sets of elements x and y</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Create a set with a single element x</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">DisjointSets&lt;T&gt;::makeSet</a>(<span class="keyword">const</span> T&amp; x) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    a[x].parent = x;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// Find the representative of the set of element x</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">   35</a></span>&#160;T <a class="code" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">DisjointSets&lt;T&gt;::find</a>(<span class="keyword">const</span> T&amp; x) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (a[x].parent == x) <span class="keywordflow">return</span> x;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> find(a[x].parent);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// Merge the sets of elements x and y</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">DisjointSets&lt;T&gt;::unite</a>(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    T xRoot = find(x);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    T yRoot = find(y);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    a[yRoot].parent = xRoot;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Create a set with a single element x</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">DisjointSets&lt;T&gt;::makeSet</a>(<span class="keyword">const</span> T&amp; x) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    a[x].parent = x;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    a[x].myrank = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Find the representative of the set of element x</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">   31</a></span>&#160;T <a class="code" href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">DisjointSets&lt;T&gt;::find</a>(<span class="keyword">const</span> T&amp; x) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (a[x].parent != x){</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        a[x].parent = find(a[x].parent);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> a[x].parent;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Merge the sets of elements x and y</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">DisjointSets&lt;T&gt;::unite</a>(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    T xRoot = find(x);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    T yRoot = find(y);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (xRoot == yRoot) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(a[xRoot].myrank &lt; a[yRoot].myrank){</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        a[xRoot].parent = yRoot;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(a[xRoot].myrank &gt; a[yRoot].myrank){</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        a[yRoot].parent = xRoot;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        a[yRoot].parent = xRoot;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        a[xRoot].myrank +=1;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructDisjointSets_1_1Node_html_a71ae7b0a7942464a6d669887afcdd73d"><div class="ttname"><a href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">DisjointSets::Node::myrank</a></div><div class="ttdeci">int myrank</div><div class="ttdef"><b>Definition:</b> disjointSets.h:15</div></div>
-<div class="ttc" id="astructDisjointSets_1_1Node_html_a30e3a840b7a0267751bee59efd9e0246"><div class="ttname"><a href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">DisjointSets::Node::parent</a></div><div class="ttdeci">T parent</div><div class="ttdef"><b>Definition:</b> disjointSets.h:14</div></div>
-<div class="ttc" id="astructDisjointSets_1_1Node_html"><div class="ttname"><a href="structDisjointSets_1_1Node.html">DisjointSets::Node</a></div><div class="ttdef"><b>Definition:</b> disjointSets.h:13</div></div>
-<div class="ttc" id="aclassDisjointSets_html"><div class="ttname"><a href="classDisjointSets.html">DisjointSets</a></div><div class="ttdef"><b>Definition:</b> disjointSets.h:12</div></div>
-<div class="ttc" id="aclassDisjointSets_html_a02d506c368a846a4dca1f3a97bfa110b"><div class="ttname"><a href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">DisjointSets::a</a></div><div class="ttdeci">std::unordered_map&lt; T, Node &gt; a</div><div class="ttdef"><b>Definition:</b> disjointSets.h:18</div></div>
-<div class="ttc" id="aclassDisjointSets_html_a9bf1e295744ad2fa90ea8108156f53ff"><div class="ttname"><a href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">DisjointSets::find</a></div><div class="ttdeci">T find(const T &amp;x)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:35</div></div>
-<div class="ttc" id="aclassDisjointSets_html_a9fe8116806e617cf120082e7ba99f0c8"><div class="ttname"><a href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">DisjointSets::unite</a></div><div class="ttdeci">void unite(const T &amp;x, const T &amp;y)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:42</div></div>
-<div class="ttc" id="aclassDisjointSets_html_a0b28260c39a444326dd81d442795d831"><div class="ttname"><a href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">DisjointSets::makeSet</a></div><div class="ttdeci">void makeSet(const T &amp;x)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:29</div></div>
+<div class="ttc" id="astructDisjointSets_1_1Node_html_a71ae7b0a7942464a6d669887afcdd73d"><div class="ttname"><a href="structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d">DisjointSets::Node::myrank</a></div><div class="ttdeci">int myrank</div><div class="ttdef"><b>Definition:</b> disjointSets.h:10</div></div>
+<div class="ttc" id="astructDisjointSets_1_1Node_html_a30e3a840b7a0267751bee59efd9e0246"><div class="ttname"><a href="structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246">DisjointSets::Node::parent</a></div><div class="ttdeci">T parent</div><div class="ttdef"><b>Definition:</b> disjointSets.h:9</div></div>
+<div class="ttc" id="astructDisjointSets_1_1Node_html"><div class="ttname"><a href="structDisjointSets_1_1Node.html">DisjointSets::Node</a></div><div class="ttdef"><b>Definition:</b> disjointSets.h:8</div></div>
+<div class="ttc" id="aclassDisjointSets_html"><div class="ttname"><a href="classDisjointSets.html">DisjointSets</a></div><div class="ttdef"><b>Definition:</b> disjointSets.h:7</div></div>
+<div class="ttc" id="aclassDisjointSets_html_a02d506c368a846a4dca1f3a97bfa110b"><div class="ttname"><a href="classDisjointSets.html#a02d506c368a846a4dca1f3a97bfa110b">DisjointSets::a</a></div><div class="ttdeci">std::unordered_map&lt; T, Node &gt; a</div><div class="ttdef"><b>Definition:</b> disjointSets.h:13</div></div>
+<div class="ttc" id="aclassDisjointSets_html_a9bf1e295744ad2fa90ea8108156f53ff"><div class="ttname"><a href="classDisjointSets.html#a9bf1e295744ad2fa90ea8108156f53ff">DisjointSets::find</a></div><div class="ttdeci">T find(const T &amp;x)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:31</div></div>
+<div class="ttc" id="aclassDisjointSets_html_a9fe8116806e617cf120082e7ba99f0c8"><div class="ttname"><a href="classDisjointSets.html#a9fe8116806e617cf120082e7ba99f0c8">DisjointSets::unite</a></div><div class="ttdeci">void unite(const T &amp;x, const T &amp;y)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:40</div></div>
+<div class="ttc" id="aclassDisjointSets_html_a0b28260c39a444326dd81d442795d831"><div class="ttname"><a href="classDisjointSets.html#a0b28260c39a444326dd81d442795d831">DisjointSets::makeSet</a></div><div class="ttdeci">void makeSet(const T &amp;x)</div><div class="ttdef"><b>Definition:</b> disjointSets.h:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

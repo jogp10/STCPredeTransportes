@@ -88,8 +88,12 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a4b843cd94ca13b174c881954ca644b24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html#a4b843cd94ca13b174c881954ca644b24">flush</a> ()</td></tr>
 <tr class="separator:a4b843cd94ca13b174c881954ca644b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3de0ffc0ebca8cf96c53fa5c438c169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html#ac3de0ffc0ebca8cf96c53fa5c438c169">travel</a> ()</td></tr>
-<tr class="separator:ac3de0ffc0ebca8cf96c53fa5c438c169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7210118b15880a252479654ebaab4cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html#aa7210118b15880a252479654ebaab4cb">travelStops</a> ()</td></tr>
+<tr class="separator:aa7210118b15880a252479654ebaab4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ac23162afaec54bc6ff2030d1994f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html#a9ac23162afaec54bc6ff2030d1994f2b">travelCoordinates</a> ()</td></tr>
+<tr class="separator:a9ac23162afaec54bc6ff2030d1994f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d843e59d9e8bebfa63cf868d1adfb4"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html#ab9d843e59d9e8bebfa63cf868d1adfb4">travelMode</a> ()</td></tr>
+<tr class="separator:ab9d843e59d9e8bebfa63cf868d1adfb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -112,6 +116,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="classSTCP.html">STCP</a> <a class="el" href="classMenu.html">Menu</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stcp</td><td><a class="el" href="classSTCP.html">STCP</a>, bus service provider </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -138,11 +148,12 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>FLush Screen </p>
 
 </div>
 </div>
-<a id="ac3de0ffc0ebca8cf96c53fa5c438c169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3de0ffc0ebca8cf96c53fa5c438c169">&#9670;&nbsp;</a></span>travel()</h2>
+<a id="a9ac23162afaec54bc6ff2030d1994f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ac23162afaec54bc6ff2030d1994f2b">&#9670;&nbsp;</a></span>travelCoordinates()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +162,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Menu::travel </td>
+          <td class="memname">void Menu::travelCoordinates </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -163,6 +174,59 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Travel <a class="el" href="classMenu.html">Menu</a> by Coordinates </p>
+
+</div>
+</div>
+<a id="ab9d843e59d9e8bebfa63cf868d1adfb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9d843e59d9e8bebfa63cf868d1adfb4">&#9670;&nbsp;</a></span>travelMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Menu::travelMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Preferred travel mode </p><dl class="section return"><dt>Returns</dt><dd>travel mode in string format </dd></dl>
+
+</div>
+</div>
+<a id="aa7210118b15880a252479654ebaab4cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7210118b15880a252479654ebaab4cb">&#9670;&nbsp;</a></span>travelStops()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::travelStops </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Travel <a class="el" href="classMenu.html">Menu</a> by Stops </p>
 
 </div>
 </div>

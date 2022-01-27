@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['n_101',['n',['../classGraph.html#a81a76a428e630453ef019a15b9092967',1,'Graph']]],
-  ['name_102',['name',['../structGraph_1_1Node.html#a2262e7b65a2fac83b9639aecbe00626f',1,'Graph::Node']]],
-  ['nodes_103',['nodes',['../classGraph.html#a71b5e16eb9e0670fea3ecee3526abb41',1,'Graph']]]
+  ['latitude_134',['latitude',['../structGraph_1_1Node.html#a82dc09bdb6edaa3fe5a6951ace15b42b',1,'Graph::Node']]],
+  ['line_135',['line',['../structGraph_1_1Edge.html#a9d280684111151de15b4f1e032c60615',1,'Graph::Edge']]],
+  ['lines_136',['lines',['../classSTCP.html#a45e3c1aca7587e2a60b79b22e3c3fd07',1,'STCP']]],
+  ['longitude_137',['longitude',['../structGraph_1_1Node.html#a223f36e0de98976341817aedf67581ed',1,'Graph::Node']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hasdir_95',['hasDir',['../classGraph.html#a60baa846929049c84b7e50ffb5f401e8',1,'Graph']]]
+  ['dest_128',['dest',['../structGraph_1_1Edge.html#a7afb7da8c73dfaca8bb3808b185fa05b',1,'Graph::Edge']]],
+  ['dist_129',['dist',['../structGraph_1_1Node.html#a2f4d4896ace25a56c05d395e2b0db88c',1,'Graph::Node']]]
 ];

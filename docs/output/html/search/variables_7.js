@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['parent_104',['parent',['../structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246',1,'DisjointSets::Node']]],
-  ['pos_105',['pos',['../classMinHeap.html#af754d24ad86ac63ffecefa960021cc51',1,'MinHeap']]],
-  ['pred_106',['pred',['../structGraph_1_1Node.html#a09f5571b617c4763e2b74ef1a83232c8',1,'Graph::Node']]]
+  ['maxsize_138',['maxSize',['../classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884',1,'MinHeap']]],
+  ['myrank_139',['myrank',['../structDisjointSets_1_1Node.html#a71ae7b0a7942464a6d669887afcdd73d',1,'DisjointSets::Node']]]
 ];

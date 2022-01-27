@@ -20,16 +20,31 @@ struct \mbox{\hyperlink{structGraph_1_1Node}{Node}}
 \item 
 \mbox{\hyperlink{classGraph_a18b4f6dec368300991b68dd75e39a5e9}{Graph}} (int \mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}, bool dir=false)
 \item 
-void \mbox{\hyperlink{classGraph_a00ba4312d13b478a6d04793e2e6aa13b}{add\+Edge}} (int src, int dest, int weight=1)
+void \mbox{\hyperlink{classGraph_a3ffa130327d2b4d5986dba05d03d697b}{add\+Edge}} (int src, int dest, double weight=1.\+00, string line=\char`\"{}\char`\"{})
 \item 
-int \mbox{\hyperlink{classGraph_a41d0da4f9e4a809cdbbc4c49db9f074e}{dijkstra\+\_\+distance}} (int a, int b)
+void \mbox{\hyperlink{classGraph_a08617eb48f5a967ce7d2891cd6986939}{set\+Node}} (string name, string code, string zone, double latitude, double longitude, int index)
 \item 
-list$<$ int $>$ \mbox{\hyperlink{classGraph_a68dee2186fca9890aecf5ee5c22cb6ab}{dijkstra\+\_\+path}} (int a, int b)
+map$<$ int, pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classGraph_af6f4d5286333228ffa289b59fe5a5974}{get\+Nodes}} ()
+\item 
+\mbox{\hyperlink{structGraph_1_1Node}{Node}} \mbox{\hyperlink{classGraph_ab5176edff48155015ba7d83f801c704f}{get\+Node}} (int at)
+\item 
+double \mbox{\hyperlink{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}{dijkstra\+\_\+distance}} (int a, int b, string type=\char`\"{}shortest\char`\"{})
+\item 
+list$<$ int $>$ \mbox{\hyperlink{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}{dijkstra\+\_\+path}} (int a, int b, string type=\char`\"{}shortest\char`\"{})
+\item 
+void \mbox{\hyperlink{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}{create\+Walk\+Edges}} ()
+\item 
+void \mbox{\hyperlink{classGraph_a29eb85cbf9a8bfcbde71a756648032a2}{bfs}} (int a, int b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classGraph_a3062acadb1cf332da8d7df529e5651ff}{get\+Distance}} (double lat1, double long1, double lat2, double long2)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classGraph_a46d2cc0c6f599257ebcbaf234196ee88}{dijkstra}} (int s)
+void \mbox{\hyperlink{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}{dijkstra}} (int s, int finish=0, string type=\char`\"{}shortest\char`\"{})
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -47,35 +62,169 @@ vector$<$ \mbox{\hyperlink{structGraph_1_1Node}{Node}} $>$ \mbox{\hyperlink{clas
 \index{Graph@{Graph}!Graph@{Graph}}
 \index{Graph@{Graph}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
-{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{nodes,  }\item[{bool}]{dir = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{nodes,  }\item[{bool}]{dir = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em nodes} & nr nodes \\
+\hline
+{\em dir} & direction ( default\+: undirected) \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classGraph_a00ba4312d13b478a6d04793e2e6aa13b}\label{classGraph_a00ba4312d13b478a6d04793e2e6aa13b}} 
+\mbox{\Hypertarget{classGraph_a3ffa130327d2b4d5986dba05d03d697b}\label{classGraph_a3ffa130327d2b4d5986dba05d03d697b}} 
 \index{Graph@{Graph}!addEdge@{addEdge}}
 \index{addEdge@{addEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
-{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{int}]{weight = {\ttfamily 1} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{double}]{weight = {\ttfamily 1.00},  }\item[{string}]{line = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classGraph_a46d2cc0c6f599257ebcbaf234196ee88}\label{classGraph_a46d2cc0c6f599257ebcbaf234196ee88}} 
+Add edge from source to destination with a certain weight 
+\begin{DoxyParams}{Parameters}
+{\em src} & Origin Stop \\
+\hline
+{\em dest} & Destination Stop \\
+\hline
+{\em weight} & Distance between Origin and Destination \\
+\hline
+{\em line} & Line wich i can get from Origin to Destination \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_a29eb85cbf9a8bfcbde71a756648032a2}\label{classGraph_a29eb85cbf9a8bfcbde71a756648032a2}} 
+\index{Graph@{Graph}!bfs@{bfs}}
+\index{bfs@{bfs}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}}
+{\footnotesize\ttfamily void Graph\+::bfs (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+B\+FS Algortihm 
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to start algorithm \\
+\hline
+{\em b} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to end algortihm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}\label{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}} 
+\index{Graph@{Graph}!createWalkEdges@{createWalkEdges}}
+\index{createWalkEdges@{createWalkEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{createWalkEdges()}{createWalkEdges()}}
+{\footnotesize\ttfamily void Graph\+::create\+Walk\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge \mbox{\Hypertarget{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}\label{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}} 
 \index{Graph@{Graph}!dijkstra@{dijkstra}}
 \index{dijkstra@{dijkstra}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
-{\footnotesize\ttfamily void Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{int}]{finish = {\ttfamily 0},  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{classGraph_a41d0da4f9e4a809cdbbc4c49db9f074e}\label{classGraph_a41d0da4f9e4a809cdbbc4c49db9f074e}} 
+Dijkstra Algorithm 
+\begin{DoxyParams}{Parameters}
+{\em s} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to start algorithm \\
+\hline
+{\em finish} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to finish algorithm \\
+\hline
+{\em type} & Type of trajectory the algorithm is going to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}\label{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}} 
 \index{Graph@{Graph}!dijkstra\_distance@{dijkstra\_distance}}
 \index{dijkstra\_distance@{dijkstra\_distance}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra\_distance()}{dijkstra\_distance()}}
-{\footnotesize\ttfamily int Graph\+::dijkstra\+\_\+distance (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily double Graph\+::dijkstra\+\_\+distance (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classGraph_a68dee2186fca9890aecf5ee5c22cb6ab}\label{classGraph_a68dee2186fca9890aecf5ee5c22cb6ab}} 
+Get Distance between two nodes using dijkstra algorithm 
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to start algorithm \\
+\hline
+{\em b} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to end algorithm \\
+\hline
+{\em type} & Type of trajectory the algorithm is going to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance in km 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}\label{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}} 
 \index{Graph@{Graph}!dijkstra\_path@{dijkstra\_path}}
 \index{dijkstra\_path@{dijkstra\_path}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra\_path()}{dijkstra\_path()}}
-{\footnotesize\ttfamily list$<$ int $>$ Graph\+::dijkstra\+\_\+path (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily list$<$ int $>$ Graph\+::dijkstra\+\_\+path (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
 
+Dijkstra Path 
+\begin{DoxyParams}{Parameters}
+{\em a} & Departure local \\
+\hline
+{\em b} & Destination local \\
+\hline
+{\em type} & Type of trajectory the algorithm is going to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of code\textquotesingle{}s stop which belong to path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a3062acadb1cf332da8d7df529e5651ff}\label{classGraph_a3062acadb1cf332da8d7df529e5651ff}} 
+\index{Graph@{Graph}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Graph\+::get\+Distance (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{long1,  }\item[{double}]{lat2,  }\item[{double}]{long2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get Distance between two points 
+\begin{DoxyParams}{Parameters}
+{\em lat1} & Latitude of point x \\
+\hline
+{\em long1} & Longitude of point x \\
+\hline
+{\em lat2} & Latitude of point y \\
+\hline
+{\em long2} & Longitude of point y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance in km 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_ab5176edff48155015ba7d83f801c704f}\label{classGraph_ab5176edff48155015ba7d83f801c704f}} 
+\index{Graph@{Graph}!getNode@{getNode}}
+\index{getNode@{getNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGraph_1_1Node}{Graph\+::\+Node}} Graph\+::get\+Node (\begin{DoxyParamCaption}\item[{int}]{at }\end{DoxyParamCaption})}
+
+Get \mbox{\hyperlink{structGraph_1_1Node}{Node}} 
+\begin{DoxyParams}{Parameters}
+{\em at} & index of \mbox{\hyperlink{structGraph_1_1Node}{Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structGraph_1_1Node}{Node}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_af6f4d5286333228ffa289b59fe5a5974}\label{classGraph_af6f4d5286333228ffa289b59fe5a5974}} 
+\index{Graph@{Graph}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily map$<$ int, pair$<$ double, double $>$ $>$ Graph\+::get\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get Map of nodes which belong to graph \begin{DoxyReturn}{Returns}
+map where key\+: code of stop, value\+: latitude, longitude 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a08617eb48f5a967ce7d2891cd6986939}\label{classGraph_a08617eb48f5a967ce7d2891cd6986939}} 
+\index{Graph@{Graph}!setNode@{setNode}}
+\index{setNode@{setNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{setNode()}{setNode()}}
+{\footnotesize\ttfamily void Graph\+::set\+Node (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{code,  }\item[{string}]{zone,  }\item[{double}]{latitude,  }\item[{double}]{longitude,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+Set \mbox{\hyperlink{structGraph_1_1Node}{Node}}\textquotesingle{}s updated with Stop\textquotesingle{}s info 
+\begin{DoxyParams}{Parameters}
+{\em Name} & Name of Stop \\
+\hline
+{\em Code} & Code of Stop \\
+\hline
+{\em Zone} & Zone of Stop \\
+\hline
+{\em Latitude} & Latitude of Stop \\
+\hline
+{\em Longitude} & Longitude of Stop \\
+\hline
+{\em index} & Index in vector$<$\+Node$>$ of \mbox{\hyperlink{classGraph}{Graph}} \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}

@@ -41,8 +41,17 @@ void STCP::readLines(string myFile) {
             code = line.substr(0, pos);
             name = line.substr(pos+1, line.size()-pos);
 
-            lines.insert(make_pair(code, name));
-            readEdges(code);
+            //If it is nighttime we are looking at
+            if (code.find("M") != std::string::npos && this->time == "M") {
+                lines.insert(make_pair(code, name));
+                readEdges(code);
+            }
+
+            //If it is daytime we are looking at
+            else if (this->time == "") {
+                lines.insert(make_pair(code, name));
+                readEdges(code);
+            }
 
             //cout << code << " // " << name << endl;
             count++;
@@ -55,7 +64,7 @@ void STCP::readLines(string myFile) {
 
 void STCP::readEdges(string code) {
     for (int i = 0; i <= 1; i++) {
-        string myfile = "../dataset/line_" + code + "_" + to_string(i) + ".csv";
+        string myfile = "../dataset/line_" + code + this->time + "_" + to_string(i) + ".csv";
         ifstream file(myfile);
 
         if (file.is_open()) {
@@ -124,7 +133,7 @@ STCP::STCP() {
     this->graph = g;
 
     readStops();
-    readLines("../dataset/lines.csv");
+
     graph.createWalkEdges();
 
 /*
@@ -133,6 +142,12 @@ STCP::STCP() {
     cout << graph.getNodes().size() << " number of stops stored in getNodes " << endl;
     */
 }
+
+void STCP::toRead() {
+    readLines("../dataset/lines.csv");
+}
+
+void STCP::setTime(string time) { this->time = time; }
 
 int STCP::convertCodeToIndex(string a) {
     return stops.find(a)->second;

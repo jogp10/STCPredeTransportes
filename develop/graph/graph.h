@@ -24,7 +24,7 @@ class Graph {
     struct Node {
         list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
         double dist;
-        int pred;
+        int pred = 0;
         bool visited;
         string name;
         string code;
@@ -41,7 +41,7 @@ class Graph {
      * Dijkstra Algorithm
      * @param s Node to start algorithm
      */
-    void dijkstra(int s, int finish=0, string type = "shortest");
+    void dijkstra(int s, int finish=0, string type="shortest");
 
 
 public:
@@ -95,7 +95,7 @@ public:
      * @param b Local b
      * @return distance between a and b
      */
-    double dijkstra_distance(int a, int b, string type);
+    double dijkstra_distance(int a, int b, string type="shortest");
 
     /**
      * Dijkstra Path
@@ -103,7 +103,7 @@ public:
      * @param Destination Destination local
      * @return list of code's stop which belong to path
      */
-    list<int> dijkstra_path(int a, int b, string type);
+    list<int> dijkstra_path(int a, int b, string type="shortest");
 
     /**
      * Create edges to which you can walk, without need to take transport

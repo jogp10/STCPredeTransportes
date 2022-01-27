@@ -152,3 +152,9 @@ list<int> STCP::fromTo(string a, string b, string choice){
     cout << graph.getNode(*--path.end()).dist << "\n";
     return path;
 }
+
+/*list<int>*/ void STCP::fromTo(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude, string choice) {
+    list<int> path;
+
+    //return path;
+}

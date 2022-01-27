@@ -30,10 +30,6 @@ Graph::Node Graph::getNode(int at){
 
 void Graph::dijkstra(int s, int finish, string type) {
     float multiplier = 1;
-    if(type == "shortest") { multiplier = 1; }
-    else if(type == "lessChanges") {}
-    else if(type == "lessZones") { multiplier = 100; }
-    else if(type == "lessStops") {}
 
     if(nodes[s].dist==0) return;
 
@@ -63,8 +59,15 @@ void Graph::dijkstra(int s, int finish, string type) {
         for(Edge &e: nodes[u].adj){
             if(!nodes[e.dest].visited){
                 if(nodes[u].dist + e.weight < nodes[e.dest].dist) {
+                    multiplier = 1;
 
-                    nodes[e.dest].dist = nodes[u].dist + e.weight * multiplier;
+                    //Less Zones
+                    if(type=="lessZones" && nodes[e.dest].zone!=nodes[u].zone)
+                        multiplier = 100;
+
+
+                    int addweight = e.weight * multiplier;
+                    nodes[e.dest].dist = nodes[u].dist + addweight;
                     nodes[e.dest].pred = u;
                 }
             }

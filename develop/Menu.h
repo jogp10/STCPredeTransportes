@@ -10,11 +10,21 @@
 class Menu {
     STCP stcp;
 
+    /**
+     * FLush Screen
+     */
     void flush();
 
+    /**
+     * Travel Menu
+     */
     void travel();
 
 public:
+    /**
+     * STCP Menu
+     * @param stcp
+     */
     Menu(STCP stcp);
 };
 

@@ -6,20 +6,20 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <utility>
+#include <string>
 
 using namespace std;
 
 Menu::Menu(STCP stcp) {
-    this->stcp=stcp;
+    this->stcp=std::move(stcp);
 
     int choice = 0;
 
     cout << "1) Travel" << endl;
-
-
     cin >> choice;
 
-    switch(choice){
+    switch(choice) {
         case 1:
             travel();
             break;
@@ -48,6 +48,8 @@ void Menu::travel(){
 
     cout << "Choose your arrival local:" << endl;
     cin >> arrival;
+
+    stcp.fromTo(departure, arrival);
 
 
 }

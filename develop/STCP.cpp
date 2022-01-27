@@ -21,13 +21,9 @@ int STCP::numberOfLines(const string& myfile){
         }
         file.close();
     }
-    return number_of_lines-2;
+    return number_of_lines-1;
 }
 
-/**
- * Goes to file and gets code and name of lines
- * @param myFile
- */
 void STCP::readLines(string myFile) {
     int pos;
     string line, code, name;
@@ -35,6 +31,7 @@ void STCP::readLines(string myFile) {
     string delimiter = ",";
 
     if(file.is_open()){
+        int count = 1;
         getline(file, line);
 
         while(!file.eof()){
@@ -47,20 +44,78 @@ void STCP::readLines(string myFile) {
             lines.insert(make_pair(code, name));
             readEdges(code);
 
-            cout << code << " // " << name << endl;
+            //cout << code << " // " << name << endl;
+            count++;
         }
 
+        //cout << count << " number of lines read" << endl;
         file.close();
     }
 }
 
 void STCP::readEdges(string code) {
     for (int i = 0; i <= 1; i++) {
-        ifstream file("../dataset/line_" + code + "_" + to_string(i) + ".cvs");
+        string myfile = "../dataset/line_" + code + "_" + to_string(i) + ".csv";
+        ifstream file(myfile);
 
         if (file.is_open()) {
+            int count = 1;
+            string line, origin, dest;
+            double weight;
+            map<int, pair<double, double>> nodes = graph.getNodes();
 
+            getline(file, line); // trash
+            getline(file, origin); // origin node code
+
+            while(!file.eof()) {
+                getline(file, dest); // destination node code
+
+                int originIndex = convertCodeToIndex(origin);
+                int destIndex = convertCodeToIndex(dest);
+
+                weight = graph.getDistance(nodes[originIndex].first, nodes[originIndex].second,
+                                   nodes[destIndex].first, nodes[destIndex].second);
+
+                graph.addEdge(originIndex, destIndex, weight, code);
+
+                origin = dest;
+                count++;
+            }
+            //cout << count << " number of edges read in file " << myfile << endl;
         }
+    }
+}
+
+void STCP::readStops() {
+    string line;
+    string delimiter = ",";
+    size_t pos;
+    string token;
+    ifstream file("../dataset/stops.csv");
+    int count = 1;
+
+    if(file.is_open()){
+        getline(file, line);
+        while(!file.eof()){
+
+            token = "";
+            vector<string> extra;
+            getline(file, line);
+            pos = 0;
+
+            while ((pos = line.find(delimiter)) != std::string::npos) {
+                token = line.substr(0, pos);
+                extra.push_back(token);
+                line.erase(0, pos + delimiter.length());
+            }
+            extra.push_back(line);
+
+            graph.setNode(extra[0],extra[1],extra[2], stod(extra[3]), stod(extra[4]), count);
+            stops.insert(make_pair(extra[0], count));
+            count++;
+        }
+        //cout << count << "number of stops read" << endl;
+        file.close();
     }
 }
 
@@ -70,39 +125,28 @@ STCP::STCP() {
     this->graph = g;
 
     readStops();
+    readLines("../dataset/lines.csv");
+    graph.createWalkEdges();
 
-    map<string, int> stops;
+/*
+    cout << lines.size() << " number of lines stored " << endl;
+    cout << endl <<  stops.size() << " number of stops stored " << endl;
+    cout << graph.getNodes().size() << " number of stops stored in getNodes " << endl;
+    */
 }
 
-void STCP::readStops() {
-    string line;
-    string delimiter = ",";
-    size_t pos;
-    string token;
-    vector<string> extra;
-    ifstream file("../dataset/stops.csv");
-    int count = 0;
-    pair<string, int> help1;
+int STCP::convertCodeToIndex(string a){
+    return stops.find(a)->second;
+}
 
-    if(file.is_open()){
-        getline(file, line);
-        while(!file.eof()){
-            token = "";
-            extra.clear();
-            getline(file, line);
-            pos = 0;
-            while ((pos = line.find(delimiter)) != std::string::npos) {
-                token = line.substr(0, pos);
-                extra.push_back(token);
-                line.erase(0, pos + delimiter.length());
-            }
-            extra.push_back(token);
-            //graph.setNode(extra[0],extra[1],extra[2],extra[3],extra[4],count);
-            help1.first = extra[0];
-            help1.second = count;
-            stops.insert(help1);
-            count++;
-        }
-        file.close();
+list<int> STCP::fromTo(string a, string b){
+    int origin = convertCodeToIndex(a);
+    int destino = convertCodeToIndex(b);
+    list<int> path = graph.dijkstra_path(origin, destino);
+    for(int i: path){
+        cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
+        cout << endl;
     }
+    cout << graph.getNode(*--path.end()).dist << "\n";
+    return path;
 }

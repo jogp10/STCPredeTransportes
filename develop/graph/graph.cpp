@@ -2,9 +2,11 @@
 #include <climits>
 #include <cmath>
 
+
 // Constructor: nr nodes and direction (default: undirected)
 Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
+
 
 // Add edge from source to destination with a certain weight
 void Graph::addEdge(int src, int dest, double weight, string line) {
@@ -12,26 +14,35 @@ void Graph::addEdge(int src, int dest, double weight, string line) {
     nodes[src].adj.push_back({dest, weight, line});
 }
 
+
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
-    for(int i=0; i<nodes.size(); i++){
+    for(int i=1; i<=nodes.size(); i++){
         localizations.insert(make_pair(i, make_pair(nodes[i].longitude, nodes[i].latitude)));
     }
     return localizations;
 }
 
+Graph::Node Graph::getNode(int at){
+    return nodes[at];
+}
 
-// ----------------------------------------------------------
-// 1) Algoritmo de Dijkstra e caminhos mais curtos
-// ----------------------------------------------------------
-void Graph::dijkstra(int s) {
-    createWalkEdges();
+
+void Graph::dijkstra(int s, int finish, string type) {
+    float multiplier = 1;
+    if(type == "shortest") { multiplier = 1; }
+    else if(type == "lessChanges") {}
+    else if(type == "lessZones") { multiplier = 100; }
+    else if(type == "lessStops") {}
+
+    if(nodes[s].dist==0) return;
 
     for(Node &n: nodes){
         n.dist=INT16_MAX;
         n.visited=false;
     }
 
+    nodes[0].visited=true;
     nodes[s].dist=0;
     nodes[s].pred =s;
     int u = s;
@@ -47,11 +58,13 @@ void Graph::dijkstra(int s) {
         }
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
+        if(nodes[finish].visited && finish!=0) break;
 
         for(Edge &e: nodes[u].adj){
             if(!nodes[e.dest].visited){
                 if(nodes[u].dist + e.weight < nodes[e.dest].dist) {
-                    nodes[e.dest].dist = nodes[u].dist + e.weight;
+
+                    nodes[e.dest].dist = nodes[u].dist + e.weight * multiplier;
                     nodes[e.dest].pred = u;
                 }
             }
@@ -66,20 +79,16 @@ void Graph::dijkstra(int s) {
     }
 }
 
-// ..............................
-// a) Distância entre dois nós
-// TODO
-double Graph::dijkstra_distance(int a, int b) {
-    dijkstra(a);
+
+double Graph::dijkstra_distance(int a, int b, string type) {
+    dijkstra(a, b, type);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
 
-// ..............................
-// b) Caminho mais curto entre dois nós
-// TODO
-list<int> Graph::dijkstra_path(int a, int b) {
-    dijkstra_distance(a, b);
+
+list<int> Graph::dijkstra_path(int a, int b, string type) {
+    dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
 
@@ -93,11 +102,33 @@ list<int> Graph::dijkstra_path(int a, int b) {
 }
 
 
-double Graph::getDistance(const Graph::Node& n1, Graph::Node n2) {
-    const double PI = 3.141592653589793238463;
+void Graph::createWalkEdges() {
+    for(int i=0; i<nodes.size(); ++i){ // Stop x
+        for(int j=i+1; j<nodes.size(); ++j){ // Stop y
+            double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
+            if(distance12 < 0.5){
+                addEdge(i, j, distance12, "walk");
+            }
+        }
+    }
+}
 
-    auto lat1 = n1.latitude, lat2 = n2.latitude;
-    auto long1 = n1.longitude, long2 = n2.longitude;
+
+void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
+    Node n;
+    n.code = code;
+    n.name = name;
+    n.zone = zone;
+    n.latitude = latitude;
+    n.longitude = longitude;
+    n.dist = INT16_MAX;
+    nodes[index] = n;
+    //nodes.insert(nodes.begin()+index, n);
+}
+
+
+double  Graph::getDistance(double lat1, double long1, double lat2, double long2) {
+    const double PI = 3.141592653589793238463;
 
     auto earthRadiusKM = 6371;
 
@@ -111,36 +142,6 @@ double Graph::getDistance(const Graph::Node& n1, Graph::Node n2) {
              sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
     auto c = 2 * atan2(sqrt(a), sqrt(1-a));
     return earthRadiusKM * c;
-}
-
-/**
- * Create edges to wich you can walk, without need to take transport
- * This type of edge has in maximum weight 2, because the distance beetween 2 points is 1 km.
- * We duplicated the default weight to this type of edge
- */
-void Graph::createWalkEdges() {
-    for(int i=0; i<nodes.size(); ++i){ // Stop x
-        for(int j=i+1; j<nodes.size(); ++j){ // Stop y
-            double distance12 = getDistance(nodes[i], nodes[j]); // Distance between x - y
-            if(distance12 < 1){
-                bool flag = false;
-                for(Edge e: nodes[i].adj){
-                    if(e.dest==j) flag = true; // if x already has connection to y by transport
-                }
-                if(flag) continue; // continue if condition true
-
-                addEdge(i, j, distance12*2, "walk");
-            }
-        }
-    }
-}
-
-void Graph::setNode(string name, string code, string zone, double latitude, double longitude, int index) {
-    nodes[index].name = name;
-    nodes[index].code = code;
-    nodes[index].zone = zone;
-    nodes[index].latitude = latitude;
-    nodes[index].longitude = longitude;
 }
 
 

@@ -1,6 +1,4 @@
 #include "graph.h"
-#include <climits>
-#include <cmath>
 
 
 // Constructor: nr nodes and direction (default: undirected)
@@ -29,7 +27,13 @@ Graph::Node Graph::getNode(int at){
 
 
 void Graph::dijkstra(int s, int finish, string type) {
-    float multiplier = 1;
+    nodes[s].pred =s;
+
+    if(type=="lessStops") {
+        bfs(s, finish);
+        return;
+    }
+    float multiplier;
 
     if(nodes[s].dist==0) return;
 
@@ -40,7 +44,6 @@ void Graph::dijkstra(int s, int finish, string type) {
 
     nodes[0].visited=true;
     nodes[s].dist=0;
-    nodes[s].pred =s;
     int u = s;
 
     bool allVis = false;
@@ -64,7 +67,6 @@ void Graph::dijkstra(int s, int finish, string type) {
                     //Less Zones
                     if(type=="lessZones" && nodes[e.dest].zone!=nodes[u].zone)
                         multiplier = 100;
-
 
                     int addweight = e.weight * multiplier;
                     nodes[e.dest].dist = nodes[u].dist + addweight;
@@ -145,6 +147,30 @@ double  Graph::getDistance(double lat1, double long1, double lat2, double long2)
              sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
     auto c = 2 * atan2(sqrt(a), sqrt(1-a));
     return earthRadiusKM * c;
+}
+
+
+void Graph::bfs(int a, int b) {
+    vector<int> distances(nodes.size(), -1);
+    distances[a] = 0;
+    for (int v=1; v<=n; v++) nodes[v].visited = false;
+    queue<int> q; // queue of unvisited nodes
+    q.push(a);
+    nodes[a]. visited = true;
+    while (!q.empty()) { // while there are still unvisited nodes
+        int u = q.front(); q.pop();
+        cout << u << " "; // show node order
+        if(u==b) break;
+        for (auto e : nodes[u].adj) {
+            int w = e.dest;
+            if (!nodes[w].visited) {
+                q.push(w);
+                nodes[w].pred = u;
+                nodes[w].visited = true;
+                distances[w] = distances[u] + 1;
+            }
+        }
+    }
 }
 
 

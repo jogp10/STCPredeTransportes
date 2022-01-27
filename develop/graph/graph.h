@@ -6,6 +6,9 @@
 #include <list>
 #include <iostream>
 #include <map>
+#include <climits>
+#include <cmath>
+#include <queue>
 
 using namespace std;
 
@@ -108,6 +111,13 @@ public:
      * We duplicated the default weight to this type of edge
      */
     void createWalkEdges();
+
+    /**
+     *
+     * @param a
+     * @param b
+     */
+    void bfs(int a, int b);
 };
 
 #endif

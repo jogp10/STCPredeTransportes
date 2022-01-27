@@ -106,8 +106,8 @@ public:
     list<int> dijkstra_path(int a, int b, string type);
 
     /**
-     * Create edges to wich you can walk, without need to take transport
-     * This type of edge has in maximum weight 2, because the distance beetween 2 points is 1 km.
+     * Create edges to which you can walk, without need to take transport
+     * This type of edge has in maximum weight 2, because the distance between 2 points is 1 km.
      * We duplicated the default weight to this type of edge
      */
     void createWalkEdges();

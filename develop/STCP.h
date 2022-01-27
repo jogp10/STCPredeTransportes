@@ -55,8 +55,6 @@ public:
 
     list<int> fromTo(string a, string b, string choice);
 
-    /*list<int>*/ void fromTo(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude, string choice);
-
 };
 
 

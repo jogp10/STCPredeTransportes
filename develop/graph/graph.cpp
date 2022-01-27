@@ -132,7 +132,7 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
 }
 
 
-double  Graph::getDistance(double lat1, double long1, double lat2, double long2) {
+double Graph::getDistance(double lat1, double long1, double lat2, double long2) {
     const double PI = 3.141592653589793238463;
 
     auto earthRadiusKM = 6371;
@@ -160,7 +160,6 @@ void Graph::bfs(int a, int b) {
     while (!q.empty()) { // while there are still unvisited nodes
         int u = q.front(); q.pop();
         cout << u << " "; // show node order
-        if(u==b) break;
         for (auto e : nodes[u].adj) {
             int w = e.dest;
             if (!nodes[w].visited) {
@@ -170,6 +169,7 @@ void Graph::bfs(int a, int b) {
                 nodes[w].dist = distances[u] + 1;
                 distances[w] = distances[u] + 1;
             }
+            if(w==b) break;
         }
     }
     cout << endl;

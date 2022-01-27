@@ -16,22 +16,13 @@ Menu::Menu(STCP stcp) {
 
     int choice = 0;
 
-    cout << "1) Travel by stops keys" << endl;
-    cout << "2) Travel by coordinates" << endl;
-
-    cin >> choice;
+    cout << "1) Travel" << endl;
+    cout << "Choice: "; cin >> choice;
 
     switch(choice) {
         case 1:
             travelStops();
             break;
-
-        case 2:
-            travelCoordinates();
-            break;
-
-        default:
-            travelStops();
     }
 }
 
@@ -46,9 +37,7 @@ void Menu::flush() {
 }
 
 
-void Menu::travelStops(){
-    flush();
-
+void Menu::travelStops() {
     string departure = "";
     string arrival = "";
 
@@ -61,23 +50,6 @@ void Menu::travelStops(){
     string choiceString = travelMode();
 
     stcp.fromTo(departure, arrival, choiceString);
-}
-
-
-void Menu::travelCoordinates() {
-    double departureLatitude = 0;
-    double departureLongitude = 0;
-    double arrivalLatitude = 0;
-    double arrivalLongitude = 0;
-
-    cout << "Departure latitude: "; cin >> departureLatitude; cout << endl;
-    cout << "Departure longitude: "; cin >> departureLongitude; cout << endl;
-    cout << "Arrival latitude: "; cin >> arrivalLatitude; cout << endl;
-    cout << "Arrival longitude: "; cin >> arrivalLongitude; cout << endl;
-
-    string choiceString = travelMode();
-
-    stcp.fromTo(departureLatitude, departureLongitude, arrivalLatitude, arrivalLongitude, choiceString);
 }
 
 

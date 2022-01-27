@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <utility>
+#include <string>
 
 using namespace std;
 
@@ -16,11 +17,9 @@ Menu::Menu(STCP stcp) {
     int choice = 0;
 
     cout << "1) Travel" << endl;
-
-
     cin >> choice;
 
-    switch(choice){
+    switch(choice) {
         case 1:
             travel();
             break;

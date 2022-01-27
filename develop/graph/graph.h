@@ -38,7 +38,7 @@ class Graph {
      * Dijkstra Algorithm
      * @param s Node to start algorithm
      */
-    void dijkstra(int s, int finish=0);
+    void dijkstra(int s, int finish=0, string type = "shortest");
 
 
 public:

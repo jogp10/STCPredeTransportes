@@ -92,7 +92,7 @@ public:
      * @param b Local b
      * @return distance between a and b
      */
-    double dijkstra_distance(int a, int b);
+    double dijkstra_distance(int a, int b, string type);
 
     /**
      * Dijkstra Path
@@ -100,7 +100,7 @@ public:
      * @param Destination Destination local
      * @return list of code's stop which belong to path
      */
-    list<int> dijkstra_path(int a, int b);
+    list<int> dijkstra_path(int a, int b, string type);
 
     /**
      * Create edges to wich you can walk, without need to take transport

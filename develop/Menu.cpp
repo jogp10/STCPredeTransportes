@@ -50,6 +50,14 @@ void Menu::travel(){
     cout << "Choose your arrival local:" << endl;
     cin >> arrival;
 
+    string choiceString = travelMode();
+
+    stcp.fromTo(departure, arrival, choiceString);
+}
+
+string Menu::travelMode() {
+    int choice = 1;
+
     cout << "How do you want to travel?" << endl;
     cout << "1) Shortest distance" << endl;
     cout << "2) Less line changes" << endl;
@@ -58,5 +66,25 @@ void Menu::travel(){
 
     cout << "Option: "; cin >> choice;
 
-    stcp.fromTo(departure, arrival);
+    string choiceString;
+
+    switch(choice) {
+        case 1:
+            choiceString = "shortest";
+            break;
+        case 2:
+            choiceString = "lessChanges";
+            break;
+        case 3:
+            choiceString = "lessStops";
+            break;
+        case 4:
+            choiceString = "lessZones";
+            break;
+        default:
+            choiceString = "shortest";
+    }
+
+    return choiceString;
 }
+

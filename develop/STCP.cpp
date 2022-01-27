@@ -139,14 +139,17 @@ int STCP::convertCodeToIndex(string a){
     return stops.find(a)->second;
 }
 
-list<int> STCP::fromTo(string a, string b){
+list<int> STCP::fromTo(string a, string b, string choice){
     int origin = convertCodeToIndex(a);
     int destino = convertCodeToIndex(b);
-    list<int> path = graph.dijkstra_path(origin, destino);
+
+    list<int> path = graph.dijkstra_path(origin, destino, choice);
+
     for(int i: path){
         cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
         cout << endl;
     }
+
     cout << graph.getNode(*--path.end()).dist << "\n";
     return path;
 }

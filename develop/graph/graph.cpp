@@ -30,10 +30,6 @@ Graph::Node Graph::getNode(int at){
 
 void Graph::dijkstra(int s, int finish, string type) {
     float multiplier = 1;
-    if(type == "shortest") { multiplier = 1; }
-    else if(type == "lessChanges") {}
-    else if(type == "lessZones") { multiplier = 10; }
-    else if(type == "lessStops") {}
 
     if(nodes[s].dist==0) return;
 
@@ -63,7 +59,15 @@ void Graph::dijkstra(int s, int finish, string type) {
         for(Edge &e: nodes[u].adj){
             if(!nodes[e.dest].visited){
                 if(nodes[u].dist + e.weight < nodes[e.dest].dist) {
-                    nodes[e.dest].dist = nodes[u].dist + e.weight * multiplier;
+                    multiplier = 1;
+
+                    //Less Zones
+                    if(type=="lessZones" && nodes[e.dest].zone!=nodes[u].zone)
+                        multiplier = 100;
+
+
+                    int addweight = e.weight * multiplier;
+                    nodes[e.dest].dist = nodes[u].dist + addweight;
                     nodes[e.dest].pred = u;
                 }
             }
@@ -79,15 +83,15 @@ void Graph::dijkstra(int s, int finish, string type) {
 }
 
 
-double Graph::dijkstra_distance(int a, int b) {
-    dijkstra(a, b);
+double Graph::dijkstra_distance(int a, int b, string type) {
+    dijkstra(a, b, type);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
 
 
-list<int> Graph::dijkstra_path(int a, int b) {
-    dijkstra_distance(a, b);
+list<int> Graph::dijkstra_path(int a, int b, string type) {
+    dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
 

@@ -20,6 +20,12 @@ class Menu {
      */
     void travel();
 
+    /**
+     * Preferred travel mode
+     * @return travel mode in string format
+     */
+    string travelMode();
+
 public:
     /**
      * STCP Menu

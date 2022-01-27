@@ -93,7 +93,7 @@ double Graph::dijkstra_distance(int a, int b, string type) {
 
 
 list<int> Graph::dijkstra_path(int a, int b, string type) {
-    dijkstra_distance(a, b, type);
+    double i = dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
 
@@ -167,10 +167,12 @@ void Graph::bfs(int a, int b) {
                 q.push(w);
                 nodes[w].pred = u;
                 nodes[w].visited = true;
+                nodes[w].dist = distances[u] + 1;
                 distances[w] = distances[u] + 1;
             }
         }
     }
+    cout << endl;
 }
 
 

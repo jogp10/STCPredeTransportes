@@ -134,7 +134,7 @@ STCP::STCP() {
     */
 }
 
-int STCP::convertCodeToIndex(string a){
+int STCP::convertCodeToIndex(string a) {
     return stops.find(a)->second;
 }
 

@@ -69,152 +69,149 @@ $(function() {
 <div class="title">minHeap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="minHeap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// AED 2021/2022 - Aula Pratica 11</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Pedro Ribeiro (DCC/FCUP) [17/01/2022]</span></div>
+<a href="minHeap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _MINHEAP_H_</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _MINHEAP_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef _MINHEAP_H_</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define _MINHEAP_H_</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">   10</a></span>&#160;<span class="preprocessor">#define LEFT(i) (2*(i))</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">   11</a></span>&#160;<span class="preprocessor">#define RIGHT(i) (2*(i)+1)</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">   12</a></span>&#160;<span class="preprocessor">#define PARENT(i) ((i)/2)</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Binary min-heap to represent integer keys of type K with values (priorities) of type V</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classMinHeap.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMinHeap.html">MinHeap</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html">   19</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structMinHeap_1_1Node.html">Node</a> { <span class="comment">// An element of the heap: a pair (key, value)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">   20</a></span>&#160;        K <a class="code" href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">key</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">   21</a></span>&#160;        V <a class="code" href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">value</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">   24</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">size</a>;                  <span class="comment">// Number of elements in heap</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">   25</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">maxSize</a>;               <span class="comment">// Maximum number of elements in heap</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">   26</a></span>&#160;    vector&lt;Node&gt; <a class="code" href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">a</a>;            <span class="comment">// The heap array</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">   27</a></span>&#160;    unordered_map&lt;K, int&gt; <a class="code" href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">pos</a>; <span class="comment">// maps a key into its position on the array a</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">   28</a></span>&#160;    <span class="keyword">const</span> K <a class="code" href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">KEY_NOT_FOUND</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> upHeap(<span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> downHeap(<span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> swap(<span class="keywordtype">int</span> i1, <span class="keywordtype">int</span> i2);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classMinHeap.html">MinHeap</a>(<span class="keywordtype">int</span> n, <span class="keyword">const</span> K&amp; notFound); <span class="comment">// Create a min-heap for a max of n pairs (K,V) with notFound returned when empty</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> getSize();              <span class="comment">// Return number of elements in the heap</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">bool</span> hasKey(<span class="keyword">const</span> K&amp; key);  <span class="comment">// Heap has key?</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> insert(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value);      <span class="comment">// Insert (key, value) on the heap</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> decreaseKey(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value); <span class="comment">// Decrease value of key</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    K removeMin(); <span class="comment">// remove and return key with smaller value</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// ----------------------------------------------</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// Make a value go &quot;up the tree&quot; until it reaches its position</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">MinHeap&lt;K,V&gt;::upHeap</a>(<span class="keywordtype">int</span> i) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">while</span> (i&gt;1 &amp;&amp; a[i].value &lt; a[<a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i)].value) { <span class="comment">// while pos smaller than parent, keep swapping to upper position</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        swap(i, <a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        i = <a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// Make a value go &quot;down the tree&quot; until it reaches its position</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">   56</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">MinHeap&lt;K,V&gt;::downHeap</a>(<span class="keywordtype">int</span> i) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a>(i) &lt;= size) { <span class="comment">// while within heap limits</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> j = <a class="code" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a>(i);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i)&lt;=size &amp;&amp; a[<a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i)].value &lt; a[j].value) j = <a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i); <span class="comment">// choose smaller child</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (a[i].value &lt; a[j].value) <span class="keywordflow">break</span>;   <span class="comment">// node already smaller than children, stop</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        swap(i, j);                    <span class="comment">// otherwise, swap with smaller child</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        i = j;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// Swap two positions of the heap (update their positions)</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">   68</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">MinHeap&lt;K,V&gt;::swap</a>(<span class="keywordtype">int</span> i1, <span class="keywordtype">int</span> i2) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="structMinHeap_1_1Node.html">Node</a> tmp = a[i1]; a[i1] = a[i2]; a[i2] = tmp;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    pos[a[i1].key] = i1;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    pos[a[i2].key] = i2;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">// ----------------------------------------------</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">// Create a min-heap for a max of n pairs (K,V) with notFound returned when empty</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">   78</a></span>&#160;<a class="code" href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">MinHeap&lt;K,V&gt;::MinHeap</a>(<span class="keywordtype">int</span> n, <span class="keyword">const</span> K&amp; notFound) : KEY_NOT_FOUND(notFound), size(0), maxSize(n), a(n+1) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// Return number of elements in the heap</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">   83</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">MinHeap&lt;K,V&gt;::getSize</a>() {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> size;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">// Heap has key?</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">   89</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">MinHeap&lt;K, V&gt;::hasKey</a>(<span class="keyword">const</span> K&amp; key) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> pos.find(key) != pos.end();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">// Insert (key, value) on the heap</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">MinHeap&lt;K,V&gt;::insert</a>(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (size == maxSize) <span class="keywordflow">return</span>; <span class="comment">// heap is full, do nothing</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (hasKey(key)) <span class="keywordflow">return</span>;     <span class="comment">// key already exists, do nothing</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    a[++size] = {key, value};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    pos[key] = size;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    upHeap(size);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">// Decrease value of key to the indicated value</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">MinHeap&lt;K,V&gt;::decreaseKey</a>(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span> (!hasKey(key)) <span class="keywordflow">return</span>; <span class="comment">// key does not exist, do nothing</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">int</span> i = pos[key];</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (value &gt; a[i].value) <span class="keywordflow">return</span>; <span class="comment">// value would increase, do nothing</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    a[i].value = value;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    upHeap(i);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">// remove and return key with smaller value</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">  115</a></span>&#160;K <a class="code" href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">MinHeap&lt;K,V&gt;::removeMin</a>() {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (size == 0) <span class="keywordflow">return</span> KEY_NOT_FOUND;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    K min = a[1].key;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    pos.erase(min);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    a[1] = a[size--];</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    downHeap(1);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> min;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">    7</a></span>&#160;<span class="preprocessor">#define LEFT(i) (2*(i))</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">    8</a></span>&#160;<span class="preprocessor">#define RIGHT(i) (2*(i)+1)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">    9</a></span>&#160;<span class="preprocessor">#define PARENT(i) ((i)/2)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Binary min-heap to represent integer keys of type K with values (priorities) of type V</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classMinHeap.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMinHeap.html">MinHeap</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html">   16</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structMinHeap_1_1Node.html">Node</a> { <span class="comment">// An element of the heap: a pair (key, value)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">   17</a></span>&#160;        K <a class="code" href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">key</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">   18</a></span>&#160;        V <a class="code" href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">value</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    };</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">   21</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">size</a>;                  <span class="comment">// Number of elements in heap</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">   22</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">maxSize</a>;               <span class="comment">// Maximum number of elements in heap</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">   23</a></span>&#160;    vector&lt;Node&gt; <a class="code" href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">a</a>;            <span class="comment">// The heap array</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">   24</a></span>&#160;    unordered_map&lt;K, int&gt; <a class="code" href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">pos</a>; <span class="comment">// maps a key into its position on the array a</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">   25</a></span>&#160;    <span class="keyword">const</span> K <a class="code" href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">KEY_NOT_FOUND</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> upHeap(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> downHeap(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> swap(<span class="keywordtype">int</span> i1, <span class="keywordtype">int</span> i2);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classMinHeap.html">MinHeap</a>(<span class="keywordtype">int</span> n, <span class="keyword">const</span> K&amp; notFound); <span class="comment">// Create a min-heap for a max of n pairs (K,V) with notFound returned when empty</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> getSize();              <span class="comment">// Return number of elements in the heap</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">bool</span> hasKey(<span class="keyword">const</span> K&amp; key);  <span class="comment">// Heap has key?</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> insert(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value);      <span class="comment">// Insert (key, value) on the heap</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> decreaseKey(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value); <span class="comment">// Decrease value of key</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    K removeMin(); <span class="comment">// remove and return key with smaller value</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// ----------------------------------------------</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// Make a value go &quot;up the tree&quot; until it reaches its position</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">MinHeap&lt;K,V&gt;::upHeap</a>(<span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">while</span> (i&gt;1 &amp;&amp; a[i].value &lt; a[<a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i)].value) { <span class="comment">// while pos smaller than parent, keep swapping to upper position</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        swap(i, <a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        i = <a class="code" href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a>(i);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// Make a value go &quot;down the tree&quot; until it reaches its position</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">MinHeap&lt;K,V&gt;::downHeap</a>(<span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a>(i) &lt;= size) { <span class="comment">// while within heap limits</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">int</span> j = <a class="code" href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a>(i);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i)&lt;=size &amp;&amp; a[<a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i)].value &lt; a[j].value) j = <a class="code" href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a>(i); <span class="comment">// choose smaller child</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (a[i].value &lt; a[j].value) <span class="keywordflow">break</span>;   <span class="comment">// node already smaller than children, stop</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        swap(i, j);                    <span class="comment">// otherwise, swap with smaller child</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        i = j;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// Swap two positions of the heap (update their positions)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">MinHeap&lt;K,V&gt;::swap</a>(<span class="keywordtype">int</span> i1, <span class="keywordtype">int</span> i2) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="structMinHeap_1_1Node.html">Node</a> tmp = a[i1]; a[i1] = a[i2]; a[i2] = tmp;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    pos[a[i1].key] = i1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    pos[a[i2].key] = i2;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">// ----------------------------------------------</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">// Create a min-heap for a max of n pairs (K,V) with notFound returned when empty</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">   75</a></span>&#160;<a class="code" href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">MinHeap&lt;K,V&gt;::MinHeap</a>(<span class="keywordtype">int</span> n, <span class="keyword">const</span> K&amp; notFound) : KEY_NOT_FOUND(notFound), size(0), maxSize(n), a(n+1) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// Return number of elements in the heap</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">   80</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">MinHeap&lt;K,V&gt;::getSize</a>() {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> size;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// Heap has key?</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">   86</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">MinHeap&lt;K, V&gt;::hasKey</a>(<span class="keyword">const</span> K&amp; key) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> pos.find(key) != pos.end();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// Insert (key, value) on the heap</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">MinHeap&lt;K,V&gt;::insert</a>(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (size == maxSize) <span class="keywordflow">return</span>; <span class="comment">// heap is full, do nothing</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (hasKey(key)) <span class="keywordflow">return</span>;     <span class="comment">// key already exists, do nothing</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    a[++size] = {key, value};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    pos[key] = size;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    upHeap(size);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">// Decrease value of key to the indicated value</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">MinHeap&lt;K,V&gt;::decreaseKey</a>(<span class="keyword">const</span> K&amp; key, <span class="keyword">const</span> V&amp; value) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (!hasKey(key)) <span class="keywordflow">return</span>; <span class="comment">// key does not exist, do nothing</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> i = pos[key];</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (value &gt; a[i].value) <span class="keywordflow">return</span>; <span class="comment">// value would increase, do nothing</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    a[i].value = value;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    upHeap(i);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">// remove and return key with smaller value</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">  112</a></span>&#160;K <a class="code" href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">MinHeap&lt;K,V&gt;::removeMin</a>() {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (size == 0) <span class="keywordflow">return</span> KEY_NOT_FOUND;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    K min = a[1].key;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    pos.erase(min);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    a[1] = a[size--];</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    downHeap(1);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> min;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructMinHeap_1_1Node_html_a2282121136aa89c86c774e26908f2eb6"><div class="ttname"><a href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">MinHeap::Node::key</a></div><div class="ttdeci">K key</div><div class="ttdef"><b>Definition:</b> minHeap.h:20</div></div>
-<div class="ttc" id="aclassMinHeap_html_a113297ceca49dbb1999d6a2bd1a8a884"><div class="ttname"><a href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">MinHeap::maxSize</a></div><div class="ttdeci">int maxSize</div><div class="ttdef"><b>Definition:</b> minHeap.h:25</div></div>
-<div class="ttc" id="aclassMinHeap_html_a506467ea6e5c2680c47eea76092beb89"><div class="ttname"><a href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">MinHeap::a</a></div><div class="ttdeci">vector&lt; Node &gt; a</div><div class="ttdef"><b>Definition:</b> minHeap.h:26</div></div>
-<div class="ttc" id="aminHeap_8h_html_a134d4f19a207929c1e9716743771ae5a"><div class="ttname"><a href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a></div><div class="ttdeci">#define RIGHT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:11</div></div>
-<div class="ttc" id="aclassMinHeap_html_af754d24ad86ac63ffecefa960021cc51"><div class="ttname"><a href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">MinHeap::pos</a></div><div class="ttdeci">unordered_map&lt; K, int &gt; pos</div><div class="ttdef"><b>Definition:</b> minHeap.h:27</div></div>
-<div class="ttc" id="aclassMinHeap_html"><div class="ttname"><a href="classMinHeap.html">MinHeap</a></div><div class="ttdef"><b>Definition:</b> minHeap.h:18</div></div>
-<div class="ttc" id="astructMinHeap_1_1Node_html"><div class="ttname"><a href="structMinHeap_1_1Node.html">MinHeap::Node</a></div><div class="ttdef"><b>Definition:</b> minHeap.h:19</div></div>
-<div class="ttc" id="aclassMinHeap_html_a17652e042dae3954be25a1cd9e04f3b0"><div class="ttname"><a href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">MinHeap::getSize</a></div><div class="ttdeci">int getSize()</div><div class="ttdef"><b>Definition:</b> minHeap.h:83</div></div>
-<div class="ttc" id="aclassMinHeap_html_aa7def05463b20015e9956e6c5bb3f291"><div class="ttname"><a href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">MinHeap::swap</a></div><div class="ttdeci">void swap(int i1, int i2)</div><div class="ttdef"><b>Definition:</b> minHeap.h:68</div></div>
-<div class="ttc" id="aminHeap_8h_html_a25d5ae2e52c533b5f27895fcf7a4ea95"><div class="ttname"><a href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a></div><div class="ttdeci">#define LEFT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:10</div></div>
-<div class="ttc" id="aminHeap_8h_html_a91004761621b8ef1c66f3601988fde7c"><div class="ttname"><a href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a></div><div class="ttdeci">#define PARENT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:12</div></div>
-<div class="ttc" id="aclassMinHeap_html_a3c546146fe05dce2d81e3f4e93fbf014"><div class="ttname"><a href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">MinHeap::downHeap</a></div><div class="ttdeci">void downHeap(int i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:56</div></div>
-<div class="ttc" id="aclassMinHeap_html_ae5bd0efd391f31ed67634d5eeb50622e"><div class="ttname"><a href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">MinHeap::hasKey</a></div><div class="ttdeci">bool hasKey(const K &amp;key)</div><div class="ttdef"><b>Definition:</b> minHeap.h:89</div></div>
-<div class="ttc" id="astructMinHeap_1_1Node_html_ab31a78bd9a3e1e3f6c21afe70b188289"><div class="ttname"><a href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">MinHeap::Node::value</a></div><div class="ttdeci">V value</div><div class="ttdef"><b>Definition:</b> minHeap.h:21</div></div>
-<div class="ttc" id="aclassMinHeap_html_acb40738ccbaf73f7c093f8504387587b"><div class="ttname"><a href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">MinHeap::decreaseKey</a></div><div class="ttdeci">void decreaseKey(const K &amp;key, const V &amp;value)</div><div class="ttdef"><b>Definition:</b> minHeap.h:105</div></div>
-<div class="ttc" id="aclassMinHeap_html_aa557bc2acdf4c278e37811f1260fe992"><div class="ttname"><a href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">MinHeap::upHeap</a></div><div class="ttdeci">void upHeap(int i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:47</div></div>
-<div class="ttc" id="aclassMinHeap_html_a63167fa7a87828b182d552c31be43be3"><div class="ttname"><a href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">MinHeap::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> minHeap.h:24</div></div>
-<div class="ttc" id="aclassMinHeap_html_a708cab4630ba761be49aea0ae536d772"><div class="ttname"><a href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">MinHeap::insert</a></div><div class="ttdeci">void insert(const K &amp;key, const V &amp;value)</div><div class="ttdef"><b>Definition:</b> minHeap.h:95</div></div>
-<div class="ttc" id="aclassMinHeap_html_a3ab07802846cc4314d7ec383180d3b82"><div class="ttname"><a href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">MinHeap::removeMin</a></div><div class="ttdeci">K removeMin()</div><div class="ttdef"><b>Definition:</b> minHeap.h:115</div></div>
-<div class="ttc" id="aclassMinHeap_html_a8041a62441509d4fd713e3b1bfad8f31"><div class="ttname"><a href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">MinHeap::MinHeap</a></div><div class="ttdeci">MinHeap(int n, const K &amp;notFound)</div><div class="ttdef"><b>Definition:</b> minHeap.h:78</div></div>
-<div class="ttc" id="aclassMinHeap_html_a9807875fda68c608ad977021c767afe9"><div class="ttname"><a href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">MinHeap::KEY_NOT_FOUND</a></div><div class="ttdeci">const K KEY_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> minHeap.h:28</div></div>
+<div class="ttc" id="astructMinHeap_1_1Node_html_a2282121136aa89c86c774e26908f2eb6"><div class="ttname"><a href="structMinHeap_1_1Node.html#a2282121136aa89c86c774e26908f2eb6">MinHeap::Node::key</a></div><div class="ttdeci">K key</div><div class="ttdef"><b>Definition:</b> minHeap.h:17</div></div>
+<div class="ttc" id="aclassMinHeap_html_a113297ceca49dbb1999d6a2bd1a8a884"><div class="ttname"><a href="classMinHeap.html#a113297ceca49dbb1999d6a2bd1a8a884">MinHeap::maxSize</a></div><div class="ttdeci">int maxSize</div><div class="ttdef"><b>Definition:</b> minHeap.h:22</div></div>
+<div class="ttc" id="aclassMinHeap_html_a506467ea6e5c2680c47eea76092beb89"><div class="ttname"><a href="classMinHeap.html#a506467ea6e5c2680c47eea76092beb89">MinHeap::a</a></div><div class="ttdeci">vector&lt; Node &gt; a</div><div class="ttdef"><b>Definition:</b> minHeap.h:23</div></div>
+<div class="ttc" id="aminHeap_8h_html_a134d4f19a207929c1e9716743771ae5a"><div class="ttname"><a href="minHeap_8h.html#a134d4f19a207929c1e9716743771ae5a">RIGHT</a></div><div class="ttdeci">#define RIGHT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:8</div></div>
+<div class="ttc" id="aclassMinHeap_html_af754d24ad86ac63ffecefa960021cc51"><div class="ttname"><a href="classMinHeap.html#af754d24ad86ac63ffecefa960021cc51">MinHeap::pos</a></div><div class="ttdeci">unordered_map&lt; K, int &gt; pos</div><div class="ttdef"><b>Definition:</b> minHeap.h:24</div></div>
+<div class="ttc" id="aclassMinHeap_html"><div class="ttname"><a href="classMinHeap.html">MinHeap</a></div><div class="ttdef"><b>Definition:</b> minHeap.h:15</div></div>
+<div class="ttc" id="astructMinHeap_1_1Node_html"><div class="ttname"><a href="structMinHeap_1_1Node.html">MinHeap::Node</a></div><div class="ttdef"><b>Definition:</b> minHeap.h:16</div></div>
+<div class="ttc" id="aclassMinHeap_html_a17652e042dae3954be25a1cd9e04f3b0"><div class="ttname"><a href="classMinHeap.html#a17652e042dae3954be25a1cd9e04f3b0">MinHeap::getSize</a></div><div class="ttdeci">int getSize()</div><div class="ttdef"><b>Definition:</b> minHeap.h:80</div></div>
+<div class="ttc" id="aclassMinHeap_html_aa7def05463b20015e9956e6c5bb3f291"><div class="ttname"><a href="classMinHeap.html#aa7def05463b20015e9956e6c5bb3f291">MinHeap::swap</a></div><div class="ttdeci">void swap(int i1, int i2)</div><div class="ttdef"><b>Definition:</b> minHeap.h:65</div></div>
+<div class="ttc" id="aminHeap_8h_html_a25d5ae2e52c533b5f27895fcf7a4ea95"><div class="ttname"><a href="minHeap_8h.html#a25d5ae2e52c533b5f27895fcf7a4ea95">LEFT</a></div><div class="ttdeci">#define LEFT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:7</div></div>
+<div class="ttc" id="aminHeap_8h_html_a91004761621b8ef1c66f3601988fde7c"><div class="ttname"><a href="minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c">PARENT</a></div><div class="ttdeci">#define PARENT(i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:9</div></div>
+<div class="ttc" id="aclassMinHeap_html_a3c546146fe05dce2d81e3f4e93fbf014"><div class="ttname"><a href="classMinHeap.html#a3c546146fe05dce2d81e3f4e93fbf014">MinHeap::downHeap</a></div><div class="ttdeci">void downHeap(int i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:53</div></div>
+<div class="ttc" id="aclassMinHeap_html_ae5bd0efd391f31ed67634d5eeb50622e"><div class="ttname"><a href="classMinHeap.html#ae5bd0efd391f31ed67634d5eeb50622e">MinHeap::hasKey</a></div><div class="ttdeci">bool hasKey(const K &amp;key)</div><div class="ttdef"><b>Definition:</b> minHeap.h:86</div></div>
+<div class="ttc" id="astructMinHeap_1_1Node_html_ab31a78bd9a3e1e3f6c21afe70b188289"><div class="ttname"><a href="structMinHeap_1_1Node.html#ab31a78bd9a3e1e3f6c21afe70b188289">MinHeap::Node::value</a></div><div class="ttdeci">V value</div><div class="ttdef"><b>Definition:</b> minHeap.h:18</div></div>
+<div class="ttc" id="aclassMinHeap_html_acb40738ccbaf73f7c093f8504387587b"><div class="ttname"><a href="classMinHeap.html#acb40738ccbaf73f7c093f8504387587b">MinHeap::decreaseKey</a></div><div class="ttdeci">void decreaseKey(const K &amp;key, const V &amp;value)</div><div class="ttdef"><b>Definition:</b> minHeap.h:102</div></div>
+<div class="ttc" id="aclassMinHeap_html_aa557bc2acdf4c278e37811f1260fe992"><div class="ttname"><a href="classMinHeap.html#aa557bc2acdf4c278e37811f1260fe992">MinHeap::upHeap</a></div><div class="ttdeci">void upHeap(int i)</div><div class="ttdef"><b>Definition:</b> minHeap.h:44</div></div>
+<div class="ttc" id="aclassMinHeap_html_a63167fa7a87828b182d552c31be43be3"><div class="ttname"><a href="classMinHeap.html#a63167fa7a87828b182d552c31be43be3">MinHeap::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> minHeap.h:21</div></div>
+<div class="ttc" id="aclassMinHeap_html_a708cab4630ba761be49aea0ae536d772"><div class="ttname"><a href="classMinHeap.html#a708cab4630ba761be49aea0ae536d772">MinHeap::insert</a></div><div class="ttdeci">void insert(const K &amp;key, const V &amp;value)</div><div class="ttdef"><b>Definition:</b> minHeap.h:92</div></div>
+<div class="ttc" id="aclassMinHeap_html_a3ab07802846cc4314d7ec383180d3b82"><div class="ttname"><a href="classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82">MinHeap::removeMin</a></div><div class="ttdeci">K removeMin()</div><div class="ttdef"><b>Definition:</b> minHeap.h:112</div></div>
+<div class="ttc" id="aclassMinHeap_html_a8041a62441509d4fd713e3b1bfad8f31"><div class="ttname"><a href="classMinHeap.html#a8041a62441509d4fd713e3b1bfad8f31">MinHeap::MinHeap</a></div><div class="ttdeci">MinHeap(int n, const K &amp;notFound)</div><div class="ttdef"><b>Definition:</b> minHeap.h:75</div></div>
+<div class="ttc" id="aclassMinHeap_html_a9807875fda68c608ad977021c767afe9"><div class="ttname"><a href="classMinHeap.html#a9807875fda68c608ad977021c767afe9">MinHeap::KEY_NOT_FOUND</a></div><div class="ttdeci">const K KEY_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> minHeap.h:25</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

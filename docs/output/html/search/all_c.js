@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['parent_39',['parent',['../structDisjointSets_1_1Node.html#a30e3a840b7a0267751bee59efd9e0246',1,'DisjointSets::Node::parent()'],['../minHeap_8h.html#a91004761621b8ef1c66f3601988fde7c',1,'PARENT():&#160;minHeap.h']]],
-  ['pos_40',['pos',['../classMinHeap.html#af754d24ad86ac63ffecefa960021cc51',1,'MinHeap']]],
-  ['pred_41',['pred',['../structGraph_1_1Node.html#a09f5571b617c4763e2b74ef1a83232c8',1,'Graph::Node']]]
+  ['n_46',['n',['../classGraph.html#a81a76a428e630453ef019a15b9092967',1,'Graph']]],
+  ['name_47',['name',['../structGraph_1_1Node.html#a2262e7b65a2fac83b9639aecbe00626f',1,'Graph::Node']]],
+  ['node_48',['Node',['../structGraph_1_1Node.html',1,'Graph::Node'],['../structDisjointSets_1_1Node.html',1,'DisjointSets&lt; T &gt;::Node'],['../structMinHeap_1_1Node.html',1,'MinHeap&lt; K, V &gt;::Node']]],
+  ['nodes_49',['nodes',['../classGraph.html#a71b5e16eb9e0670fea3ecee3526abb41',1,'Graph']]],
+  ['numberoflines_50',['numberOfLines',['../classSTCP.html#a607b834f35d6fd6c2d636ca940fa5372',1,'STCP']]]
 ];

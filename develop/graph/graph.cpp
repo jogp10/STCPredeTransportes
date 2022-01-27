@@ -5,13 +5,11 @@
 Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
 
-
 // Add edge from source to destination with a certain weight
 void Graph::addEdge(int src, int dest, double weight, string line) {
     if (src<1 || src>n || dest<1 || dest>n) return;
     nodes[src].adj.push_back({dest, weight, line});
 }
-
 
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
@@ -25,19 +23,18 @@ Graph::Node Graph::getNode(int at){
     return nodes[at];
 }
 
-
 void Graph::dijkstra(int s, int finish, string type) {
-    float multiplier;
+    MinHeap<int, int> q(nodes.size(), -1);
 
-    if(nodes[s].dist==0) return;
-
-    for(Node &n: nodes){
-        n.dist=INT16_MAX;
-        n.visited=false;
+    for(int v=1; v<nodes.size(); ++v){
+        nodes[v].dist=INT16_MAX;
+        q.insert(v, INT16_MAX);
+        nodes[v].visited=false;
     }
 
     nodes[0].visited=true;
     nodes[s].dist=0;
+    q.decreaseKey(s, 0);
     nodes[s].pred =s;
 
     if(type=="lessStops") {
@@ -47,52 +44,34 @@ void Graph::dijkstra(int s, int finish, string type) {
 
     int u = s;
 
-    bool allVis = false;
-    while(!allVis){
-        double min_dist = INT16_MAX;
-        for(int i=0; i<nodes.size(); ++i){
-            if(nodes[i].dist<=min_dist && !nodes[i].visited){
-                u=i;
-                min_dist = nodes[i].dist;
-            }
-        }
+    while(q.getSize()>0){
+        u = q.removeMin();
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
         if(nodes[finish].visited && finish!=0) break;
 
-        for(Edge &e: nodes[u].adj){
-            if(!nodes[e.dest].visited){
-                if(nodes[u].dist + e.weight < nodes[e.dest].dist) {
-                    multiplier = 1;
+        for(Edge& e: nodes[u].adj){
+            if(!nodes[e.dest].visited && nodes[u].dist + e.weight < nodes[e.dest].dist){
 
-                    //Less Zones
-                    double addweight = e.weight;
-                    if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones"){
-                            addweight += 1000;
-                    }
-                    nodes[e.dest].dist = nodes[u].dist + addweight;
-                    nodes[e.dest].pred = u;
+                //Less Zones
+                double addweight = e.weight;
+                if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones"){
+                        addweight += 10000;
                 }
-            }
-        }
-
-        allVis = true;
-        for(Node n: nodes){
-            if(!n.visited){
-                allVis = false;
+                nodes[e.dest].dist = nodes[u].dist + addweight;
+                q.decreaseKey(e.dest, nodes[e.dest].dist);
+                nodes[e.dest].pred = u;
             }
         }
     }
 }
-
 
 double Graph::dijkstra_distance(int a, int b, string type) {
     dijkstra(a, b, type);
     if(nodes[b].dist==INT16_MAX) return -1;
     return nodes[b].dist;
 }
-
 
 list<int> Graph::dijkstra_path(int a, int b, string type) {
     double i = dijkstra_distance(a, b, type);
@@ -108,18 +87,17 @@ list<int> Graph::dijkstra_path(int a, int b, string type) {
     return path;
 }
 
-
 void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
             if(distance12 < 0.5){
                 addEdge(i, j, distance12, "walk");
+                addEdge(j, i, distance12, "walk");
             }
         }
     }
 }
-
 
 void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
     Node n;
@@ -132,7 +110,6 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     nodes[index] = n;
     //nodes.insert(nodes.begin()+index, n);
 }
-
 
 double Graph::getDistance(double lat1, double long1, double lat2, double long2) {
     const double PI = 3.141592653589793238463;
@@ -150,7 +127,6 @@ double Graph::getDistance(double lat1, double long1, double lat2, double long2) 
     auto c = 2 * atan2(sqrt(a), sqrt(1-a));
     return earthRadiusKM * c;
 }
-
 
 void Graph::bfs(int a, int b) {
     vector<int> distances(nodes.size(), -1);
@@ -177,5 +153,3 @@ void Graph::bfs(int a, int b) {
     }
     cout << endl;
 }
-
-

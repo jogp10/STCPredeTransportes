@@ -159,14 +159,20 @@ list<int> STCP::fromTo(string a, string b, string choice){
 
     list<int> path = graph.dijkstra_path(origin, destino, choice);
     int tmp = *path.begin();
+    int zone = 0;
     for(int i: path){
-        if(graph.getNode(tmp).zone!=graph.getNode(i).zone) cout << endl << "zone change" << endl; // for testing
-        cout << graph.getNode(i).name << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
+        if(graph.getNode(tmp).zone!=graph.getNode(i).zone) {
+            cout << endl << "zone change" << endl << endl; // for testing
+            zone++;
+        }
+        cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
+        cout << graph.getNode(i).dist; // for testing
         cout << endl;
         tmp = i; // for testing
     }
-
-    cout << graph.getNode(*--path.end()).dist << "\n";
+    double totalDist = graph.getNode(*--path.end()).dist;
+    if(choice == "lessZones") totalDist -= zone*10000;
+    cout << totalDist<< "\n";
     cout << path.size() << endl;
     return path;
 }

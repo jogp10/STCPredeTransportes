@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removemin_85',['removeMin',['../classMinHeap.html#a3ab07802846cc4314d7ec383180d3b82',1,'MinHeap']]]
+  ['insert_108',['insert',['../classMinHeap.html#a708cab4630ba761be49aea0ae536d772',1,'MinHeap']]]
 ];

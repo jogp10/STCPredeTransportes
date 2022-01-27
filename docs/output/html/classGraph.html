@@ -64,6 +64,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGraph-members.html">List of all members</a>  </div>
@@ -91,17 +92,32 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a18b4f6dec368300991b68dd75e39a5e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a18b4f6dec368300991b68dd75e39a5e9">Graph</a> (int <a class="el" href="classGraph.html#a71b5e16eb9e0670fea3ecee3526abb41">nodes</a>, bool dir=false)</td></tr>
 <tr class="separator:a18b4f6dec368300991b68dd75e39a5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00ba4312d13b478a6d04793e2e6aa13b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a00ba4312d13b478a6d04793e2e6aa13b">addEdge</a> (int src, int dest, int weight=1)</td></tr>
-<tr class="separator:a00ba4312d13b478a6d04793e2e6aa13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d0da4f9e4a809cdbbc4c49db9f074e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a41d0da4f9e4a809cdbbc4c49db9f074e">dijkstra_distance</a> (int a, int b)</td></tr>
-<tr class="separator:a41d0da4f9e4a809cdbbc4c49db9f074e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68dee2186fca9890aecf5ee5c22cb6ab"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a68dee2186fca9890aecf5ee5c22cb6ab">dijkstra_path</a> (int a, int b)</td></tr>
-<tr class="separator:a68dee2186fca9890aecf5ee5c22cb6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffa130327d2b4d5986dba05d03d697b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a3ffa130327d2b4d5986dba05d03d697b">addEdge</a> (int src, int dest, double weight=1.00, string line=&quot;&quot;)</td></tr>
+<tr class="separator:a3ffa130327d2b4d5986dba05d03d697b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08617eb48f5a967ce7d2891cd6986939"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a08617eb48f5a967ce7d2891cd6986939">setNode</a> (string name, string code, string zone, double latitude, double longitude, int index)</td></tr>
+<tr class="separator:a08617eb48f5a967ce7d2891cd6986939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f4d5286333228ffa289b59fe5a5974"><td class="memItemLeft" align="right" valign="top">map&lt; int, pair&lt; double, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#af6f4d5286333228ffa289b59fe5a5974">getNodes</a> ()</td></tr>
+<tr class="separator:af6f4d5286333228ffa289b59fe5a5974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5176edff48155015ba7d83f801c704f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGraph_1_1Node.html">Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab5176edff48155015ba7d83f801c704f">getNode</a> (int at)</td></tr>
+<tr class="separator:ab5176edff48155015ba7d83f801c704f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab69f7e44ef045194ed67790ae2a3cf6f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab69f7e44ef045194ed67790ae2a3cf6f">dijkstra_distance</a> (int a, int b, string type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:ab69f7e44ef045194ed67790ae2a3cf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a753fc430ef0e82f4f7fe7a0ce2d78ef6"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a753fc430ef0e82f4f7fe7a0ce2d78ef6">dijkstra_path</a> (int a, int b, string type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:a753fc430ef0e82f4f7fe7a0ce2d78ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c4787202ac643cfd245bd48e2a9f8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a08c4787202ac643cfd245bd48e2a9f8b">createWalkEdges</a> ()</td></tr>
+<tr class="separator:a08c4787202ac643cfd245bd48e2a9f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a29eb85cbf9a8bfcbde71a756648032a2">bfs</a> (int a, int b)</td></tr>
+<tr class="separator:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3062acadb1cf332da8d7df529e5651ff"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a3062acadb1cf332da8d7df529e5651ff">getDistance</a> (double lat1, double long1, double lat2, double long2)</td></tr>
+<tr class="separator:a3062acadb1cf332da8d7df529e5651ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a46d2cc0c6f599257ebcbaf234196ee88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a46d2cc0c6f599257ebcbaf234196ee88">dijkstra</a> (int s)</td></tr>
-<tr class="separator:a46d2cc0c6f599257ebcbaf234196ee88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e06334ff2c4d18dd6289fa0638a4cd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a7e06334ff2c4d18dd6289fa0638a4cd7">dijkstra</a> (int s, int finish=0, string type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:a7e06334ff2c4d18dd6289fa0638a4cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -118,6 +134,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Graph::Graph </td>
@@ -137,13 +156,25 @@ Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Constructor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodes</td><td>nr nodes </td></tr>
+    <tr><td class="paramname">dir</td><td>direction ( default: undirected) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a00ba4312d13b478a6d04793e2e6aa13b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00ba4312d13b478a6d04793e2e6aa13b">&#9670;&nbsp;</a></span>addEdge()</h2>
+<a id="a3ffa130327d2b4d5986dba05d03d697b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ffa130327d2b4d5986dba05d03d697b">&#9670;&nbsp;</a></span>addEdge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,8 +194,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>weight</em> = <code>1</code>&#160;</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>weight</em> = <code>1.00</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>line</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -173,43 +210,26 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Add edge from source to destination with a certain weight </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Origin Stop </td></tr>
+    <tr><td class="paramname">dest</td><td>Destination Stop </td></tr>
+    <tr><td class="paramname">weight</td><td>Distance between Origin and Destination </td></tr>
+    <tr><td class="paramname">line</td><td>Line wich i can get from Origin to Destination </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a46d2cc0c6f599257ebcbaf234196ee88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46d2cc0c6f599257ebcbaf234196ee88">&#9670;&nbsp;</a></span>dijkstra()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Graph::dijkstra </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a41d0da4f9e4a809cdbbc4c49db9f074e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d0da4f9e4a809cdbbc4c49db9f074e">&#9670;&nbsp;</a></span>dijkstra_distance()</h2>
+<a id="a29eb85cbf9a8bfcbde71a756648032a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29eb85cbf9a8bfcbde71a756648032a2">&#9670;&nbsp;</a></span>bfs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Graph::dijkstra_distance </td>
+          <td class="memname">void Graph::bfs </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -227,11 +247,129 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>BFS Algortihm </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to start algorithm </td></tr>
+    <tr><td class="paramname">b</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to end algortihm </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a68dee2186fca9890aecf5ee5c22cb6ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68dee2186fca9890aecf5ee5c22cb6ab">&#9670;&nbsp;</a></span>dijkstra_path()</h2>
+<a id="a08c4787202ac643cfd245bd48e2a9f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c4787202ac643cfd245bd48e2a9f8b">&#9670;&nbsp;</a></span>createWalkEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::createWalkEdges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge </p>
+
+</div>
+</div>
+<a id="a7e06334ff2c4d18dd6289fa0638a4cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e06334ff2c4d18dd6289fa0638a4cd7">&#9670;&nbsp;</a></span>dijkstra()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::dijkstra </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>finish</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Dijkstra Algorithm </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to start algorithm </td></tr>
+    <tr><td class="paramname">finish</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to finish algorithm </td></tr>
+    <tr><td class="paramname">type</td><td>Type of trajectory the algorithm is going to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab69f7e44ef045194ed67790ae2a3cf6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab69f7e44ef045194ed67790ae2a3cf6f">&#9670;&nbsp;</a></span>dijkstra_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Graph::dijkstra_distance </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get Distance between two nodes using dijkstra algorithm </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to start algorithm </td></tr>
+    <tr><td class="paramname">b</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to end algorithm </td></tr>
+    <tr><td class="paramname">type</td><td>Type of trajectory the algorithm is going to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>distance in km </dd></dl>
+
+</div>
+</div>
+<a id="a753fc430ef0e82f4f7fe7a0ce2d78ef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a753fc430ef0e82f4f7fe7a0ce2d78ef6">&#9670;&nbsp;</a></span>dijkstra_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +384,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -255,6 +399,179 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Dijkstra Path </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Departure local </td></tr>
+    <tr><td class="paramname">b</td><td>Destination local </td></tr>
+    <tr><td class="paramname">type</td><td>Type of trajectory the algorithm is going to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list of code's stop which belong to path </dd></dl>
+
+</div>
+</div>
+<a id="a3062acadb1cf332da8d7df529e5651ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3062acadb1cf332da8d7df529e5651ff">&#9670;&nbsp;</a></span>getDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Graph::getDistance </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lat1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>long1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lat2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>long2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get Distance between two points </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat1</td><td>Latitude of point x </td></tr>
+    <tr><td class="paramname">long1</td><td>Longitude of point x </td></tr>
+    <tr><td class="paramname">lat2</td><td>Latitude of point y </td></tr>
+    <tr><td class="paramname">long2</td><td>Longitude of point y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>distance in km </dd></dl>
+
+</div>
+</div>
+<a id="ab5176edff48155015ba7d83f801c704f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5176edff48155015ba7d83f801c704f">&#9670;&nbsp;</a></span>getNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structGraph_1_1Node.html">Graph::Node</a> Graph::getNode </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>at</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get <a class="el" href="structGraph_1_1Node.html">Node</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">at</td><td>index of <a class="el" href="structGraph_1_1Node.html">Node</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structGraph_1_1Node.html">Node</a> </dd></dl>
+
+</div>
+</div>
+<a id="af6f4d5286333228ffa289b59fe5a5974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f4d5286333228ffa289b59fe5a5974">&#9670;&nbsp;</a></span>getNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; int, pair&lt; double, double &gt; &gt; Graph::getNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get Map of nodes which belong to graph </p><dl class="section return"><dt>Returns</dt><dd>map where key: code of stop, value: latitude, longitude </dd></dl>
+
+</div>
+</div>
+<a id="a08617eb48f5a967ce7d2891cd6986939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08617eb48f5a967ce7d2891cd6986939">&#9670;&nbsp;</a></span>setNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::setNode </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>zone</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>latitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>longitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set <a class="el" href="structGraph_1_1Node.html">Node</a>'s updated with Stop's info </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Name</td><td>Name of Stop </td></tr>
+    <tr><td class="paramname">Code</td><td>Code of Stop </td></tr>
+    <tr><td class="paramname">Zone</td><td>Zone of Stop </td></tr>
+    <tr><td class="paramname">Latitude</td><td>Latitude of Stop </td></tr>
+    <tr><td class="paramname">Longitude</td><td>Longitude of Stop </td></tr>
+    <tr><td class="paramname">index</td><td>Index in vector&lt;Node&gt; of <a class="el" href="classGraph.html">Graph</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

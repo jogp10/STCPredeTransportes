@@ -40,6 +40,8 @@ class Graph {
     /**
      * Dijkstra Algorithm
      * @param s Node to start algorithm
+     * @param finish Node to finish algorithm
+     * @param type Type of trajectory the algorithm is going to use
      */
     void dijkstra(int s, int finish=0, string type="shortest");
 
@@ -77,30 +79,38 @@ public:
      * @return map where key: code of stop, value: latitude, longitude
      */
     map<int, pair<double, double>> getNodes();
+
+    /**
+     * Get Node
+     * @param at index of Node
+     * @return Node
+     */
     Node getNode(int at);
 
     /**
      * Get Distance between two points
-     * @param lat1
-     * @param long1
-     * @param lat2
-     * @param long2
-     * @return
+     * @param lat1 Latitude of point x
+     * @param long1 Longitude of point x
+     * @param lat2 Latitude of point y
+     * @param long2 Longitude of point y
+     * @return distance in km
      */
     double static getDistance(double lat1, double long1, double lat2, double long2);
 
     /**
-     * Get Minimum path using Dijkstra
-     * @param a Local a
-     * @param b Local b
-     * @return distance between a and b
+     * Get Distance between two nodes using dijkstra algorithm
+     * @param a Node to start algorithm
+     * @param b Node to end algorithm
+     * @param type Type of trajectory the algorithm is going to use
+     * @return  distance in km
      */
     double dijkstra_distance(int a, int b, string type="shortest");
 
     /**
      * Dijkstra Path
-     * @param Departure Departure local
-     * @param Destination Destination local
+     * @param a Departure local
+     * @param b Destination local
+     * @param type Type of trajectory the algorithm is going to use
      * @return list of code's stop which belong to path
      */
     list<int> dijkstra_path(int a, int b, string type="shortest");
@@ -113,11 +123,11 @@ public:
     void createWalkEdges();
 
     /**
-     *
-     * @param a
-     * @param b
+     * BFS Algortihm
+     * @param a Node to start algorithm
+     * @param b Node to end algortihm
      */
-    void bfs(int a, int b);
+     void bfs(int a, int b);
 };
 
 #endif

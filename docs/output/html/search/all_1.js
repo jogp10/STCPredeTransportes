@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clear_3',['CLEAR',['../Menu_8cpp.html#a611cc9b5f655508482f3d7a9751c182a',1,'Menu.cpp']]]
+  ['bfs_3',['bfs',['../classGraph.html#a29eb85cbf9a8bfcbde71a756648032a2',1,'Graph']]]
 ];

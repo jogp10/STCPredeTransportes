@@ -27,12 +27,6 @@ Graph::Node Graph::getNode(int at){
 
 
 void Graph::dijkstra(int s, int finish, string type) {
-    nodes[s].pred =s;
-
-    if(type=="lessStops") {
-        bfs(s, finish);
-        return;
-    }
     float multiplier;
 
     if(nodes[s].dist==0) return;
@@ -44,6 +38,13 @@ void Graph::dijkstra(int s, int finish, string type) {
 
     nodes[0].visited=true;
     nodes[s].dist=0;
+    nodes[s].pred =s;
+
+    if(type=="lessStops") {
+        bfs(s, finish);
+        return;
+    }
+
     int u = s;
 
     bool allVis = false;
@@ -55,6 +56,7 @@ void Graph::dijkstra(int s, int finish, string type) {
                 min_dist = nodes[i].dist;
             }
         }
+
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
         if(nodes[finish].visited && finish!=0) break;
@@ -65,10 +67,10 @@ void Graph::dijkstra(int s, int finish, string type) {
                     multiplier = 1;
 
                     //Less Zones
-                    if(type=="lessZones" && nodes[e.dest].zone!=nodes[u].zone)
-                        multiplier = 100;
-
-                    double addweight = e.weight * multiplier;
+                    double addweight = e.weight;
+                    if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones"){
+                            addweight += 1000;
+                    }
                     nodes[e.dest].dist = nodes[u].dist + addweight;
                     nodes[e.dest].pred = u;
                 }
@@ -166,7 +168,8 @@ void Graph::bfs(int a, int b) {
                 q.push(w);
                 nodes[w].pred = u;
                 nodes[w].visited = true;
-                nodes[w].dist = distances[u] + 1;
+                nodes[w].dist = nodes[u].dist + e.weight;
+                //nodes[w].dist = distances[u] + 1;
                 distances[w] = distances[u] + 1;
             }
             if(w==b) break;

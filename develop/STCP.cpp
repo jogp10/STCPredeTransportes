@@ -143,13 +143,16 @@ list<int> STCP::fromTo(string a, string b, string choice){
     int destino = convertCodeToIndex(b);
 
     list<int> path = graph.dijkstra_path(origin, destino, choice);
-
+    int tmp = *path.begin();
     for(int i: path){
-        cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
+        if(graph.getNode(tmp).zone!=graph.getNode(i).zone) cout << endl << "zone change" << endl; // for testing
+        cout << graph.getNode(i).name << "\t" << graph.getNode(i).zone << "\t" << graph.getNode(i).dist;
         cout << endl;
+        tmp = i; // for testing
     }
 
     cout << graph.getNode(*--path.end()).dist << "\n";
+    cout << path.size() << endl;
     return path;
 }
 

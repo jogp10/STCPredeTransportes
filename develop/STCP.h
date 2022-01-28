@@ -13,14 +13,13 @@ class STCP {
     map<string, string> lines; // key: codigo da linha, value: nome da linha
     map<string, int> stops; //key: codigo da paragem, value: index no vetor de nodes do grafo
     Graph graph = Graph(0);
-
+    string time = "";
 
     /**
      * Number lines in file
      * @param myfile file path
      * @return number of lines
      */
-
     int numberOfLines(const string& myfile);
 
     /**
@@ -47,6 +46,18 @@ public:
     STCP();
 
     /**
+     * Function to load lines after being chosen day or night
+     */
+    void toRead();
+
+    /**
+     * Set time
+     * @param time
+     */
+    void setTime(string time);
+
+    /**
+     *
      * Convert code of stop to index in vector<Node> nodes that belongs to graph
      * @param code
      * @return index

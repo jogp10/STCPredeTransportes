@@ -16,12 +16,16 @@ Menu::Menu(STCP stcp) {
 
     int choice = 0;
 
-    cout << "1) Travel" << endl;
+    cout << "1) Travel at day" << endl;
+    cout << "2) Travel at night" << endl;
     cout << "Choice: "; cin >> choice;
 
     switch(choice) {
         case 1:
-            travelStops();
+            travelDay();
+            break;
+        case 2:
+            travelNight();
             break;
     }
 }
@@ -37,7 +41,19 @@ void Menu::flush() {
 }
 
 
-void Menu::travelStops() {
+void Menu::travelDay() {
+    stcp.setTime("");
+    procedure();
+}
+
+void Menu::travelNight() {
+    stcp.setTime("M");
+    procedure();
+}
+
+void Menu::procedure() {
+    stcp.toRead();
+
     string departure = "";
     string arrival = "";
 
@@ -51,7 +67,6 @@ void Menu::travelStops() {
 
     stcp.fromTo(departure, arrival, choiceString);
 }
-
 
 string Menu::travelMode() {
     int choice = 1;

@@ -16,14 +16,16 @@ class Menu {
     void flush();
 
     /**
-     * Travel Menu by Stops
+     * Travel Menu during daytime
      */
-    void travelStops();
+    void travelDay();
 
     /**
-     * Travel Menu by Coordinates
+     * Travel Menu at nighttime
      */
-    void travelCoordinates();
+    void travelNight();
+
+    void procedure();
 
     /**
      * Preferred travel mode

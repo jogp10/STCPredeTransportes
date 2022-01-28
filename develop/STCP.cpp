@@ -48,7 +48,7 @@ void STCP::readLines(string myFile) {
             }
 
             //If it is daytime we are looking at
-            else if (this->time == "") {
+            else if (this->time == "" && code.find("M") == std::string::npos) {
                 lines.insert(make_pair(code, name));
                 readEdges(code);
             }
@@ -64,7 +64,7 @@ void STCP::readLines(string myFile) {
 
 void STCP::readEdges(string code) {
     for (int i = 0; i <= 1; i++) {
-        string myfile = "../dataset/line_" + code + this->time + "_" + to_string(i) + ".csv";
+        string myfile = "../dataset/line_" + code + "_" + to_string(i) + ".csv";
         ifstream file(myfile);
 
         if (file.is_open()) {

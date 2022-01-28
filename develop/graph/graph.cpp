@@ -23,8 +23,8 @@ Graph::Node Graph::getNode(int at){
     return nodes[at];
 }
 
-void Graph::dijkstra(int s, int finish, string type) {
-    MinHeap<int, int> q(nodes.size()-1, -1);
+void Graph::dijkstra(int s, int finish, string type, bool walk) {
+    MinHeap<int, double> q(nodes.size()-1, -1);
 
     for(int v=1; v<nodes.size(); ++v){
         nodes[v].dist=INT16_MAX;
@@ -36,15 +36,17 @@ void Graph::dijkstra(int s, int finish, string type) {
     nodes[s].dist=0;
     q.decreaseKey(s, 0);
     nodes[s].pred =s;
+    nodes[s].pred =0;
 
     if(type=="lessStops") {
         bfs(s, finish);
         return;
     }
 
-
     int u = 0;
+    double weight;
     while(q.getSize()>0) {
+        weight = q.getValue();
         u = q.removeMin();
 
         nodes[u].visited=true;
@@ -52,6 +54,7 @@ void Graph::dijkstra(int s, int finish, string type) {
         if(nodes[finish].visited && finish!=0) break;
 
         for(Edge& e: nodes[u].adj){
+            if(!walk) continue;
 
             double addweight = e.weight;
 
@@ -74,17 +77,22 @@ void Graph::dijkstra(int s, int finish, string type) {
                     nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line);
                 }
 
-                nodes[e.dest].dist = nodes[u].dist + addweight;
-                q.decreaseKey(e.dest, nodes[e.dest].dist);
+                nodes[e.dest].dist = nodes[u].dist + e.weight;
+                q.decreaseKey(e.dest, weight + addweight);
                 nodes[e.dest].pred = u;
             }
         }
     }
+    cout << (int) weight/999 << endl;
 }
 
 double Graph::dijkstra_distance(int a, int b, string type) {
     dijkstra(a, b, type);
-    if(nodes[b].dist==INT16_MAX) return -1;
+    if(nodes[b].dist==INT16_MAX) {
+        dijkstra(a, b, type, true);
+        if(nodes[b].dist== INT16_MAX)
+            return -1;
+    }
     return nodes[b].dist;
 }
 
@@ -106,7 +114,7 @@ void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
-            if(distance12 < 0.2){
+            if(distance12 < 0.1){
                 addEdge(i, j, distance12, "walk");
                 addEdge(j, i, distance12, "walk");
             }

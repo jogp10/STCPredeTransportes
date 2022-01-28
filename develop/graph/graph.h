@@ -45,7 +45,7 @@ class Graph {
      * @param type Type of trajectory the algorithm is going to use
      * BIG O = n^3
      */
-    void dijkstra(int s, int finish=0, string type="shortest");
+    void dijkstra(int s, int finish=0, string type="shortest", bool walk=false);
 
 
 public:

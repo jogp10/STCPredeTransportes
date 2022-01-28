@@ -174,7 +174,7 @@ list<int> STCP::fromTo(string a, string b, string choice){
         tmp = i; // for testing
     }
     double totalDist = graph.getNode(*--path.end()).dist;
-    if(choice == "lessZones") totalDist -= zone*999;
+    //if(choice == "lessZones") totalDist -= zone*999;
     cout << totalDist<< "\n";
     cout << path.size() << endl;
     return path;

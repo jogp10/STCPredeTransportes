@@ -89,7 +89,7 @@ void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
-            if(distance12 < 0.5){
+            if(distance12 < 0.2){
                 addEdge(i, j, distance12, "walk");
                 addEdge(j, i, distance12, "walk");
             }

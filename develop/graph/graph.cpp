@@ -129,12 +129,11 @@ double Graph::getDistance(double lat1, double long1, double lat2, double long2) 
 }
 
 void Graph::bfs(int a, int b) {
-    vector<int> distances(nodes.size(), -1);
-    distances[a] = 0;
     for (int v=1; v<=n; v++) nodes[v].visited = false;
     queue<int> q; // queue of unvisited nodes
     q.push(a);
-    nodes[a]. visited = true;
+    nodes[a].dist=0;
+    nodes[a].visited=true;
     while (!q.empty()) { // while there are still unvisited nodes
         int u = q.front(); q.pop();
         cout << u << " "; // show node order
@@ -145,8 +144,7 @@ void Graph::bfs(int a, int b) {
                 nodes[w].pred = u;
                 nodes[w].visited = true;
                 nodes[w].dist = nodes[u].dist + e.weight;
-                //nodes[w].dist = distances[u] + 1;
-                distances[w] = distances[u] + 1;
+                //nodes[w].dist = nodes[u].dist + 1;
             }
             if(w==b) break;
         }

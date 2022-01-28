@@ -45,19 +45,7 @@ void Graph::dijkstra(int s, int finish, string type) {
 
     int u = 0;
     while(q.getSize()>0) {
-        int tmp = u;
         u = q.removeMin();
-
-        // Fewer Lines
-        nodes[u].predLines = {};
-        if (type == "lessChanges" && tmp<nodes.size()) {
-            //cout << u << " ";
-            for (const auto& e: nodes[tmp].adj) {
-                if (e.dest == u) nodes[u].predLines.insert(nodes[u].predLines.end(), e.line);
-                //cout << e.line << " ";
-            }
-        }
-        //cout << endl;
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
@@ -68,18 +56,24 @@ void Graph::dijkstra(int s, int finish, string type) {
             double addweight = e.weight;
 
             // Less Zones
-            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") addweight += 10000;
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") addweight += 999;
 
-            // Fewer Lines
             if(type=="lessChanges"){
                 bool flag = false;
-                for(string line: nodes[u].predLines){
-                    if(line==e.line) flag = true;
+                // Posible ways from where I came to u
+                for(auto l: nodes[u].predLines){
+                    if(e.line==l) flag = true;
                 }
-                if(!flag) addweight += 25;
+                if(!flag && u!=s) addweight += 999;
             }
 
             if(!nodes[e.dest].visited && nodes[u].dist + addweight < nodes[e.dest].dist){
+
+                // Less lines
+                if(e.line!="walk"){
+                    nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line);
+                }
+
                 nodes[e.dest].dist = nodes[u].dist + addweight;
                 q.decreaseKey(e.dest, nodes[e.dest].dist);
                 nodes[e.dest].pred = u;
@@ -129,7 +123,6 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     n.longitude = longitude;
     n.dist = INT16_MAX;
     nodes[index] = n;
-    //nodes.insert(nodes.begin()+index, n);
 }
 
 double Graph::getDistance(double lat1, double long1, double lat2, double long2) {

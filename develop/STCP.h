@@ -8,6 +8,8 @@
 
 #include "graph/graph.h"
 #include <map>
+#include <iomanip>
+#include <iostream>
 
 class STCP {
     map<string, string> lines; // key: codigo da linha, value: nome da linha

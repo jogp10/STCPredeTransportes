@@ -165,9 +165,8 @@ list<int> STCP::fromTo(string a, string b, string choice){
             cout << endl << "zone change" << endl << endl; // for testing
             zone++;
         }
-        cout << a << "\t" <<graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
-        cout << b << "\t" << graph.getNode(i).dist; // for testing
-        cout << endl;
+        cout << setw(25) << std::left <<  graph.getNode(i).name << setw(15) <<  graph.getNode(i).code << setw(15) <<  graph.getNode(i).zone;
+        cout << setw(15) <<  graph.getNode(i).dist; // for testing
         for(auto i: graph.getNode(i).predLines){
             cout << i << " ";
         }
@@ -175,7 +174,7 @@ list<int> STCP::fromTo(string a, string b, string choice){
         tmp = i; // for testing
     }
     double totalDist = graph.getNode(*--path.end()).dist;
-    if(choice == "lessZones") totalDist -= zone*10000;
+    if(choice == "lessZones") totalDist -= zone*999;
     cout << totalDist<< "\n";
     cout << path.size() << endl;
     return path;

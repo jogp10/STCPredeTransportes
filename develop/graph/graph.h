@@ -42,7 +42,7 @@ class Graph {
      * @param s Node to start algorithm
      * @param finish Node to finish algorithm
      * @param type Type of trajectory the algorithm is going to use
-     * BIG O = n^2
+     * BIG O = n^3
      */
     void dijkstra(int s, int finish=0, string type="shortest");
 
@@ -105,7 +105,7 @@ public:
      * @param b Node to end algorithm
      * @param type Type of trajectory the algorithm is going to use
      * @return  distance in km
-     * BIG O = n^2
+     * BIG O = n^3
      */
     double dijkstra_distance(int a, int b, string type="shortest");
 
@@ -115,7 +115,7 @@ public:
      * @param b Destination local
      * @param type Type of trajectory the algorithm is going to use
      * @return list of code's stop which belong to path
-     * BIG O = n^2
+     * BIG O = n^3
      */
     list<int> dijkstra_path(int a, int b, string type="shortest");
 

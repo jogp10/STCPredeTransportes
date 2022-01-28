@@ -42,10 +42,8 @@ void Graph::dijkstra(int s, int finish, string type) {
         return;
     }
 
-    int u = s;
-
     while(q.getSize()>0){
-        u = q.removeMin();
+        int u = q.removeMin();
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
@@ -74,7 +72,7 @@ double Graph::dijkstra_distance(int a, int b, string type) {
 }
 
 list<int> Graph::dijkstra_path(int a, int b, string type) {
-    double i = dijkstra_distance(a, b, type);
+    dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
 

@@ -13,7 +13,7 @@ TEST(airline_1, a_setAirplanes){
      * LRD2
      */
 
-    /** Other tests i used were
+    /** Other tests I used were
      * From
      * COD4
      * To

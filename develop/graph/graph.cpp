@@ -42,10 +42,8 @@ void Graph::dijkstra(int s, int finish, string type) {
         return;
     }
 
-    int u = s;
-
     while(q.getSize()>0){
-        u = q.removeMin();
+        int u = q.removeMin();
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
@@ -74,7 +72,7 @@ double Graph::dijkstra_distance(int a, int b, string type) {
 }
 
 list<int> Graph::dijkstra_path(int a, int b, string type) {
-    double i = dijkstra_distance(a, b, type);
+    dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
 
@@ -91,7 +89,7 @@ void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
-            if(distance12 < 0.5){
+            if(distance12 < 0.2){
                 addEdge(i, j, distance12, "walk");
                 addEdge(j, i, distance12, "walk");
             }
@@ -129,12 +127,11 @@ double Graph::getDistance(double lat1, double long1, double lat2, double long2) 
 }
 
 void Graph::bfs(int a, int b) {
-    vector<int> distances(nodes.size(), -1);
-    distances[a] = 0;
     for (int v=1; v<=n; v++) nodes[v].visited = false;
     queue<int> q; // queue of unvisited nodes
     q.push(a);
-    nodes[a]. visited = true;
+    nodes[a].dist=0;
+    nodes[a].visited=true;
     while (!q.empty()) { // while there are still unvisited nodes
         int u = q.front(); q.pop();
         cout << u << " "; // show node order
@@ -145,8 +142,7 @@ void Graph::bfs(int a, int b) {
                 nodes[w].pred = u;
                 nodes[w].visited = true;
                 nodes[w].dist = nodes[u].dist + e.weight;
-                //nodes[w].dist = distances[u] + 1;
-                distances[w] = distances[u] + 1;
+                //nodes[w].dist = nodes[u].dist + 1;
             }
             if(w==b) break;
         }

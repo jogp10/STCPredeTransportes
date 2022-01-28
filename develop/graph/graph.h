@@ -42,6 +42,7 @@ class Graph {
      * @param s Node to start algorithm
      * @param finish Node to finish algorithm
      * @param type Type of trajectory the algorithm is going to use
+     * BIG O = n^3
      */
     void dijkstra(int s, int finish=0, string type="shortest");
 
@@ -94,6 +95,7 @@ public:
      * @param lat2 Latitude of point y
      * @param long2 Longitude of point y
      * @return distance in km
+     * BIG O = 1
      */
     double static getDistance(double lat1, double long1, double lat2, double long2);
 
@@ -103,6 +105,7 @@ public:
      * @param b Node to end algorithm
      * @param type Type of trajectory the algorithm is going to use
      * @return  distance in km
+     * BIG O = n^3
      */
     double dijkstra_distance(int a, int b, string type="shortest");
 
@@ -112,6 +115,7 @@ public:
      * @param b Destination local
      * @param type Type of trajectory the algorithm is going to use
      * @return list of code's stop which belong to path
+     * BIG O = n^3
      */
     list<int> dijkstra_path(int a, int b, string type="shortest");
 
@@ -119,6 +123,7 @@ public:
      * Create edges to which you can walk, without need to take transport
      * This type of edge has in maximum weight 2, because the distance between 2 points is 1 km.
      * We duplicated the default weight to this type of edge
+     * BIG O = n^2
      */
     void createWalkEdges();
 
@@ -126,6 +131,7 @@ public:
      * BFS Algortihm
      * @param a Node to start algorithm
      * @param b Node to end algortihm
+     * BIG O = n^2
      */
      void bfs(int a, int b);
 };

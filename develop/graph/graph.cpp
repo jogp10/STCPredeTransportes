@@ -46,18 +46,18 @@ void Graph::dijkstra(int s, int finish, string type) {
     int u = 0;
     while(q.getSize()>0) {
         int tmp = u;
-        int u = q.removeMin();
+        u = q.removeMin();
 
         // Fewer Lines
-        vector<string> lastLines;
+        nodes[u].predLines = {};
         if (type == "lessChanges" && tmp<nodes.size()) {
-            cout << u << " ";
-            for (auto e: nodes[tmp].adj) {
-                if (e.dest == u) lastLines.insert(lastLines.end(), e.line);
-                cout << e.line << " ";
+            //cout << u << " ";
+            for (const auto& e: nodes[tmp].adj) {
+                if (e.dest == u) nodes[u].predLines.insert(nodes[u].predLines.end(), e.line);
+                //cout << e.line << " ";
             }
         }
-        cout << endl;
+        //cout << endl;
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
@@ -73,7 +73,7 @@ void Graph::dijkstra(int s, int finish, string type) {
             // Fewer Lines
             if(type=="lessChanges"){
                 bool flag = false;
-                for(string line: lastLines){
+                for(string line: nodes[u].predLines){
                     if(line==e.line) flag = true;
                 }
                 if(!flag) addweight += 25;

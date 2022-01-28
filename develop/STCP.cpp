@@ -165,8 +165,12 @@ list<int> STCP::fromTo(string a, string b, string choice){
             cout << endl << "zone change" << endl << endl; // for testing
             zone++;
         }
-        cout << a << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
-        cout << b << graph.getNode(i).dist; // for testing
+        cout << a << "\t" <<graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
+        cout << b << "\t" << graph.getNode(i).dist; // for testing
+        cout << endl;
+        for(auto i: graph.getNode(i).predLines){
+            cout << i << " ";
+        }
         cout << endl;
         tmp = i; // for testing
     }

@@ -24,7 +24,7 @@ Graph::Node Graph::getNode(int at){
 }
 
 void Graph::dijkstra(int s, int finish, string type) {
-    MinHeap<int, int> q(nodes.size(), -1);
+    MinHeap<int, int> q(nodes.size()-1, -1);
 
     for(int v=1; v<nodes.size(); ++v){
         nodes[v].dist=INT16_MAX;
@@ -42,21 +42,44 @@ void Graph::dijkstra(int s, int finish, string type) {
         return;
     }
 
-    while(q.getSize()>0){
+
+    int u = 0;
+    while(q.getSize()>0) {
+        int tmp = u;
         int u = q.removeMin();
+
+        // Fewer Lines
+        vector<string> lastLines;
+        if (type == "lessChanges" && tmp<nodes.size()) {
+            cout << u << " ";
+            for (auto e: nodes[tmp].adj) {
+                if (e.dest == u) lastLines.insert(lastLines.end(), e.line);
+                cout << e.line << " ";
+            }
+        }
+        cout << endl;
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT16_MAX) break;
         if(nodes[finish].visited && finish!=0) break;
 
         for(Edge& e: nodes[u].adj){
-            if(!nodes[e.dest].visited && nodes[u].dist + e.weight < nodes[e.dest].dist){
 
-                //Less Zones
-                double addweight = e.weight;
-                if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones"){
-                        addweight += 10000;
+            double addweight = e.weight;
+
+            // Less Zones
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") addweight += 10000;
+
+            // Fewer Lines
+            if(type=="lessChanges"){
+                bool flag = false;
+                for(string line: lastLines){
+                    if(line==e.line) flag = true;
                 }
+                if(!flag) addweight += 25;
+            }
+
+            if(!nodes[e.dest].visited && nodes[u].dist + addweight < nodes[e.dest].dist){
                 nodes[e.dest].dist = nodes[u].dist + addweight;
                 q.decreaseKey(e.dest, nodes[e.dest].dist);
                 nodes[e.dest].pred = u;

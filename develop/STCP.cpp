@@ -150,8 +150,8 @@ list<int> STCP::fromTo(string a, string b, string choice){
             cout << endl << "zone change" << endl << endl; // for testing
             zone++;
         }
-        cout << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
-        cout << graph.getNode(i).dist; // for testing
+        cout << a << graph.getNode(i).name << "\t" << graph.getNode(i).code << "\t" << graph.getNode(i).zone << "\t" ;
+        cout << b << graph.getNode(i).dist; // for testing
         cout << endl;
         tmp = i; // for testing
     }

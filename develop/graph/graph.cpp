@@ -23,77 +23,72 @@ Graph::Node Graph::getNode(int at){
     return nodes[at];
 }
 
-void Graph::dijkstra(int s, int finish, string type, bool walk) {
+void Graph::dijkstra(int s, int finish, string type) {
+    if(type=="lessStops") {
+        bfs(s, finish);
+        return;
+    }
+
     MinHeap<int, double> q(nodes.size()-1, -1);
 
     for(int v=1; v<nodes.size(); ++v){
-        nodes[v].dist=INT16_MAX;
-        q.insert(v, INT16_MAX);
+        nodes[v].dist=INT_MAX;
+        q.insert(v, INT_MAX);
         nodes[v].visited=false;
     }
 
     nodes[0].visited=true;
     nodes[s].dist=0;
     q.decreaseKey(s, 0);
-    nodes[s].pred =s;
-    nodes[s].pred =0;
+    nodes[s].pred = s;
 
-    if(type=="lessStops") {
-        bfs(s, finish);
-        return;
-    }
-
-    int u = 0;
     double weight;
     while(q.getSize()>0) {
         weight = q.getValue();
-        u = q.removeMin();
+        int u = q.removeMin();
 
         nodes[u].visited=true;
-        if(nodes[u].dist==INT16_MAX) break;
-        if(nodes[finish].visited && finish!=0) break;
+        if(nodes[u].dist==INT_MAX) break;
+        if(u==finish) break;
+
 
         for(Edge& e: nodes[u].adj){
-            if(!walk) continue;
-
             int multiplier = 1;
+            if(e.line=="walk" && type!="shortest") multiplier += 2; // walk takes more time
 
-            if(e.line=="walk") multiplier += 4;
 
             // Less Zones
-            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier += 99;
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier = 99; // zone change
 
-            if(type=="lessChanges"){
-                bool flag = false;
-                // Posible ways from where I came to u
-                for(auto l: nodes[u].predLines){
-                    if(l=="walk") continue;
-                    if(e.line==l) flag = true;
-                }
-                if(!flag && u!=s) multiplier += 14;
-                if(e.line=="walk") multiplier += 4;
+
+            bool flag = false;
+            // Posible ways from where I came to u
+            for(auto l: nodes[u].predLines){
+                if(e.line==l) flag = true; // can continue in the same line
             }
 
+            if(type=="lessChanges"){
+                if(!flag && u!=s) multiplier = 9999; // if changed line
+            }
+
+
+            if(e.line!="walk")
+                nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line); // precedent lines
+
             if(!nodes[e.dest].visited && weight + e.weight * multiplier < q.getValue(e.dest)){
-
-
-                nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line);
-
-                nodes[e.dest].dist = nodes[u].dist + e.weight;
-                q.decreaseKey(e.dest, weight + e.weight * multiplier);
-                nodes[e.dest].pred = u;
+                nodes[e.dest].dist = nodes[u].dist + e.weight; // update dist (real km dist)
+                q.decreaseKey(e.dest, weight + e.weight * multiplier); // update dist (weighted dist)
+                nodes[e.dest].pred = u; // precedent stop
             }
         }
     }
+    cout << weight << endl;
 }
 
 double Graph::dijkstra_distance(int a, int b, string type) {
     dijkstra(a, b, type);
-    if(nodes[b].dist==INT16_MAX) {
-        dijkstra(a, b, type, true);
-        if(nodes[b].dist== INT16_MAX)
-            return -1;
-    }
+    if(nodes[b].dist== INT_MAX)
+        return -1;
     return nodes[b].dist;
 }
 
@@ -104,7 +99,7 @@ list<int> Graph::dijkstra_path(int a, int b, string type) {
 
     while(a!=u){
         path.insert(path.begin(), u);
-        if(u==nodes[u].pred || !(nodes[u].pred>0 && nodes[u].pred<=nodes.size())) return {};
+        if(u==nodes[u].pred || !(nodes[u].pred>0 && nodes[u].pred<=nodes.size())) break;
         u=nodes[u].pred;
     }
     path.insert(path.begin(), a);
@@ -116,6 +111,14 @@ void Graph::createWalkEdges() {
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
             if(distance12 < 0.2){
+                bool flag = false;
+                for(auto e: nodes[i].adj) {
+                    if(e.dest==j) {
+                        flag = true;
+                    }
+                }
+                if(flag) continue;
+
                 addEdge(i, j, distance12, "walk");
                 addEdge(j, i, distance12, "walk");
             }
@@ -130,7 +133,7 @@ void Graph::setNode(string code, string name, string zone, double latitude, doub
     n.zone = zone;
     n.latitude = latitude;
     n.longitude = longitude;
-    n.dist = INT16_MAX;
+    n.dist = INT_MAX;
     nodes[index] = n;
 }
 
@@ -154,14 +157,18 @@ double Graph::getDistance(double lat1, double long1, double lat2, double long2) 
 void Graph::bfs(int a, int b) {
     for (int v=1; v<=n; v++) nodes[v].visited = false;
     queue<int> q; // queue of unvisited nodes
+
     q.push(a);
     nodes[a].dist=0;
     nodes[a].visited=true;
+
     while (!q.empty()) { // while there are still unvisited nodes
+
         int u = q.front(); q.pop();
-        cout << u << " "; // show node order
+
         for (auto e : nodes[u].adj) {
             int w = e.dest;
+
             if (!nodes[w].visited) {
                 q.push(w);
                 nodes[w].pred = u;
@@ -169,8 +176,9 @@ void Graph::bfs(int a, int b) {
                 nodes[w].dist = nodes[u].dist + e.weight;
                 //nodes[w].dist = nodes[u].dist + 1;
             }
+
             if(w==b) break;
         }
     }
-    cout << endl;
+
 }

@@ -133,9 +133,6 @@ STCP::STCP() {
     this->graph = g;
 
     readStops();
-
-    graph.createWalkEdges();
-
 /*
     cout << lines.size() << " number of lines stored " << endl;
     cout << endl <<  stops.size() << " number of stops stored " << endl;
@@ -145,6 +142,7 @@ STCP::STCP() {
 
 void STCP::toRead() {
     readLines("../dataset/lines.csv");
+    graph.createWalkEdges();
 }
 
 void STCP::setTime(string time) { this->time = time; }
@@ -172,7 +170,7 @@ list<int> STCP::fromTo(string a, string b, string choice){
         cout << setw(30) << graph.getNode(i).name << setw(10) <<  graph.getNode(i).code << setw(10) <<  graph.getNode(i).zone;
         cout << setw(15) <<  graph.getNode(i).dist; // for testing
         for(auto i: graph.getNode(i).predLines){
-            cout << setw(4) << i;
+            cout << setw(5) << i;
         }
         cout << endl;
         tmp = i;

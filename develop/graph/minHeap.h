@@ -96,10 +96,9 @@ V MinHeap<K, V>::getValue() {
 
 template <class K, class V>
 V MinHeap<K, V>::getValue(int k) {
-    if(hasKey(k)){
-       return pos.find(k)->second;
-    }
-    return -1;
+    if(!hasKey(k)) return -1;
+
+    return a[pos.find(k)->second].value;
 }
 
 // Insert (key, value) on the heap

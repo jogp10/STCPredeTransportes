@@ -43,9 +43,11 @@ class Graph {
      * @param s Node to start algorithm
      * @param finish Node to finish algorithm
      * @param type Type of trajectory the algorithm is going to use
-     * BIG O = n^3
+     * BIG O
+     * - less stops = n + e
+     * - shortest = less lines = less zones = n + e * n
      */
-    void dijkstra(int s, int finish=0, string type="shortest", bool walk=false);
+    void dijkstra(int s, int finish=0, string type="shortest");
 
 
 public:

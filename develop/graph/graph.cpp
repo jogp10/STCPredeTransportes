@@ -56,34 +56,35 @@ void Graph::dijkstra(int s, int finish, string type, bool walk) {
         for(Edge& e: nodes[u].adj){
             if(!walk) continue;
 
-            double addweight = e.weight;
+            int multiplier = 1;
+
+            if(e.line=="walk") multiplier += 4;
 
             // Less Zones
-            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") addweight += 999;
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier += 99;
 
             if(type=="lessChanges"){
                 bool flag = false;
                 // Posible ways from where I came to u
                 for(auto l: nodes[u].predLines){
+                    if(l=="walk") continue;
                     if(e.line==l) flag = true;
                 }
-                if(!flag && u!=s) addweight += 999;
+                if(!flag && u!=s) multiplier += 14;
+                if(e.line=="walk") multiplier += 4;
             }
 
-            if(!nodes[e.dest].visited && nodes[u].dist + addweight < nodes[e.dest].dist){
+            if(!nodes[e.dest].visited && weight + e.weight * multiplier < q.getValue(e.dest)){
 
-                // Less lines
-                if(e.line!="walk"){
-                    nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line);
-                }
+
+                nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line);
 
                 nodes[e.dest].dist = nodes[u].dist + e.weight;
-                q.decreaseKey(e.dest, weight + addweight);
+                q.decreaseKey(e.dest, weight + e.weight * multiplier);
                 nodes[e.dest].pred = u;
             }
         }
     }
-    cout << (int) weight/999 << endl;
 }
 
 double Graph::dijkstra_distance(int a, int b, string type) {
@@ -114,7 +115,7 @@ void Graph::createWalkEdges() {
     for(int i=0; i<nodes.size(); ++i){ // Stop x
         for(int j=i+1; j<nodes.size(); ++j){ // Stop y
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
-            if(distance12 < 0.1){
+            if(distance12 < 0.2){
                 addEdge(i, j, distance12, "walk");
                 addEdge(j, i, distance12, "walk");
             }

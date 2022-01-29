@@ -159,24 +159,27 @@ list<int> STCP::fromTo(string a, string b, string choice){
 
     list<int> path = graph.dijkstra_path(origin, destino, choice);
     int tmp = *path.begin();
-    int zone = 0;
+
+    cout << std::left;
+    cout << setw(29) << "Name" <<  "|" << setw(9) << "Code" << "|" << setw(9) << "Zone" << "|" << setw(14) << "Travel Dist" << "|" << endl;
+
     for(int i: path){
         if(graph.getNode(tmp).zone!=graph.getNode(i).zone) {
-            cout << endl << "zone change" << endl << endl; // for testing
-            zone++;
+            if(choice=="lessZones")
+                cout << endl << "zone change" << endl;
+            cout << endl;
         }
-        cout << setw(25) << std::left <<  graph.getNode(i).name << setw(15) <<  graph.getNode(i).code << setw(15) <<  graph.getNode(i).zone;
+        cout << setw(30) << graph.getNode(i).name << setw(10) <<  graph.getNode(i).code << setw(10) <<  graph.getNode(i).zone;
         cout << setw(15) <<  graph.getNode(i).dist; // for testing
         for(auto i: graph.getNode(i).predLines){
-            cout << i << " ";
+            cout << setw(4) << i;
         }
         cout << endl;
-        tmp = i; // for testing
+        tmp = i;
     }
     double totalDist = graph.getNode(*--path.end()).dist;
-    //if(choice == "lessZones") totalDist -= zone*999;
-    cout << totalDist<< "\n";
-    cout << path.size() << endl;
+    cout << totalDist << "\n";
+    cout << path.size()-1 << endl;
     return path;
 }
 

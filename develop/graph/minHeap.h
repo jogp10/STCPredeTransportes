@@ -33,6 +33,7 @@ public:
     int getSize();              // Return number of elements in the heap
     bool hasKey(const K& key);  // Heap has key?
     V getValue();  // Get Value
+    V getValue(int at);
     void insert(const K& key, const V& value);      // Insert (key, value) on the heap
     void decreaseKey(const K& key, const V& value); // Decrease value of key
     K removeMin(); // remove and return key with smaller value
@@ -88,10 +89,17 @@ bool MinHeap<K, V>::hasKey(const K& key) {
     return pos.find(key) != pos.end();
 }
 
-// Heap has key?
 template <class K, class V>
 V MinHeap<K, V>::getValue() {
     return a[1].value;
+}
+
+template <class K, class V>
+V MinHeap<K, V>::getValue(int k) {
+    if(hasKey(k)){
+       return pos.find(k)->second;
+    }
+    return -1;
 }
 
 // Insert (key, value) on the heap

@@ -188,10 +188,9 @@ string STCP::auxDeparture(const double depLat, const double depLon) {
     cin >> walking;
 
     cout << "Stops near you: " << endl;
-    for(auto n: graph.getNodes()) {
-        if(n.first == 0) { continue; }
-
-        distance = graph.getDistance(depLat, depLon, graph.getNode(n.first).latitude, graph.getNode(n.first).longitude);
+    auto m = graph.getNodes();
+    for(auto n: m) {
+        distance = Graph::getDistance(depLat, depLon, n.second.first, n.second.second);
 
         if(distance <= walking) {
             cout << graph.getNode(n.first).code << " (code) || " <<  graph.getNode(n.first).name << " (name);" << endl;

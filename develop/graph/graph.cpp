@@ -13,8 +13,8 @@ void Graph::addEdge(int src, int dest, double weight, string line) {
 
 map<int, pair<double, double>> Graph::getNodes(){
     map<int, pair<double, double>> localizations;
-    for(int i=1; i<=nodes.size(); i++){
-        localizations.insert(make_pair(i, make_pair(nodes[i].longitude, nodes[i].latitude)));
+    for(int i=1; i<nodes.size(); ++i){
+        localizations.insert(make_pair(i, make_pair(nodes[i].latitude, nodes[i].longitude)));
     }
     return localizations;
 }

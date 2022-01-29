@@ -27,6 +27,10 @@ class Menu {
 
     void procedure();
 
+    void procedureStops();
+
+    void procedureCoordinates();
+
     /**
      * Preferred travel mode
      * @return travel mode in string format

@@ -179,3 +179,51 @@ list<int> STCP::fromTo(string a, string b, string choice){
     cout << path.size() << endl;
     return path;
 }
+
+string STCP::auxDeparture(const double depLat, const double depLon) {
+    double walking, distance;
+    string code;
+
+    cout << "How far can the departure stop be from you?" << endl;
+    cin >> walking;
+
+    cout << "Stops near you: " << endl;
+    for(auto n: graph.getNodes()) {
+        if(n.first == 0) { continue; }
+
+        distance = graph.getDistance(depLat, depLon, graph.getNode(n.first).latitude, graph.getNode(n.first).longitude);
+
+        if(distance <= walking) {
+            cout << graph.getNode(n.first).code << " (code) || " <<  graph.getNode(n.first).name << " (name);" << endl;
+        }
+    }
+
+    cout << "What stop code?" << endl;
+    cout << "Option: "; cin >> code;
+
+    return code;
+}
+
+string STCP::auxArrival(const double arrLat, const double arrLon) {
+    double walking, distance;
+    string code;
+
+    cout << "How far can the arrival stop be from your arrival stop?" << endl;
+    cin >> walking;
+
+    cout << "Stops near arrival spot: " << endl;
+    for(auto n: graph.getNodes()) {
+        if(n.first == 0) { continue; }
+
+        distance = graph.getDistance(arrLat, arrLon, graph.getNode(n.first).latitude, graph.getNode(n.first).longitude);
+
+        if(distance <= walking) {
+            cout << graph.getNode(n.first).code << " (code) || " <<  graph.getNode(n.first).name << " (name);" << endl;
+        }
+    }
+
+    cout << "What stop code?" << endl;
+    cout << "Option: "; cin >> code;
+
+    return code;
+}

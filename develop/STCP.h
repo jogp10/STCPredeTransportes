@@ -75,6 +75,9 @@ public:
      */
     list<int> fromTo(string a, string b, string choice);
 
+    string auxDeparture(double depLat, double depLon);
+
+    string auxArrival(const double arrLat, const double arrLon);
 };
 
 

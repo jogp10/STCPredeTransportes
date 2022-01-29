@@ -52,20 +52,60 @@ void Menu::travelNight() {
 }
 
 void Menu::procedure() {
+    int choice;
+
     stcp.toRead();
 
+    cout << "1) Provide Stops" << endl;
+    cout << "2) Provide Coordinates" << endl;
+    cout << "Option: "; cin >> choice;
+
+    switch(choice) {
+        case 1:
+            procedureStops();
+            break;
+        case 2:
+            procedureCoordinates();
+            break;
+    }
+}
+
+void Menu::procedureStops() {
     string departure = "";
     string arrival = "";
 
-    cout << "Choose your departure local:" << endl;
+    cout << "Choose your departure stop:" << endl;
     cin >> departure;
 
-    cout << "Choose your arrival local:" << endl;
+    cout << "Choose your arrival stop:" << endl;
     cin >> arrival;
 
     string choiceString = travelMode();
 
     stcp.fromTo(departure, arrival, choiceString);
+}
+
+void Menu::procedureCoordinates() {
+    double depLat = 0, depLon = 0;
+    double arrLat = 0, arrLon = 0;
+
+
+    cout << "Choose your departure latitude: " << endl;
+    cin >> depLat;
+    cout << "Choose your departure longitude: " << endl;
+    cin >> depLon;
+
+    cout << "Choose your arrival latitude: " << endl;
+    cin >> arrLat;
+    cout << "Choose your arrival longitude: " << endl;
+    cin >> arrLon;
+
+    string start = stcp.auxDeparture(depLat, depLon);
+    string end = stcp.auxArrival(arrLat, arrLon);
+
+    string choiceString = travelMode();
+
+    stcp.fromTo(start, end, choiceString);
 }
 
 string Menu::travelMode() {

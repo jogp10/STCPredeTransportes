@@ -47,7 +47,7 @@ class Graph {
      * - less stops = n + e
      * - shortest = less lines = less zones = n + e * n
      */
-    void dijkstra(int s, int finish=0, string type="shortest");
+    void dijkstra(int s, int finish=0, const string& type="shortest");
 
 
 public:
@@ -110,7 +110,7 @@ public:
      * @return  distance in km
      * BIG O = n^3
      */
-    double dijkstra_distance(int a, int b, string type="shortest");
+    double dijkstra_distance(int a, int b, const string& type="shortest");
 
     /**
      * Dijkstra Path
@@ -120,7 +120,7 @@ public:
      * @return list of code's stop which belong to path
      * BIG O = n^3
      */
-    list<int> dijkstra_path(int a, int b, string type="shortest");
+    list<int> dijkstra_path(int a, int b, const string& type="shortest");
 
     /**
      * Create edges to which you can walk, without need to take transport

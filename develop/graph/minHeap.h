@@ -33,7 +33,7 @@ public:
     int getSize();              // Return number of elements in the heap
     bool hasKey(const K& key);  // Heap has key?
     V getValue();  // Get Value
-    V getValue(int at);
+    V getValue(int k);
     void insert(const K& key, const V& value);      // Insert (key, value) on the heap
     void decreaseKey(const K& key, const V& value); // Decrease value of key
     K removeMin(); // remove and return key with smaller value

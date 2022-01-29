@@ -23,13 +23,13 @@ Graph::Node Graph::getNode(int at){
     return nodes[at];
 }
 
-void Graph::dijkstra(int s, int finish, string type) {
+void Graph::dijkstra(int s, int finish, const string& type) {
     if(type=="lessStops") {
         bfs(s, finish);
         return;
     }
 
-    MinHeap<int, double> q(nodes.size()-1, -1);
+    MinHeap<int, double> q(n, -1);
 
     for(int v=1; v<nodes.size(); ++v){
         nodes[v].dist=INT_MAX;
@@ -63,7 +63,7 @@ void Graph::dijkstra(int s, int finish, string type) {
 
             bool flag = false;
             // Posible ways from where I came to u
-            for(auto l: nodes[u].predLines){
+            for(const auto& l: nodes[u].predLines){
                 if(e.line==l) flag = true; // can continue in the same line
             }
 
@@ -85,14 +85,14 @@ void Graph::dijkstra(int s, int finish, string type) {
     cout << weight << endl;
 }
 
-double Graph::dijkstra_distance(int a, int b, string type) {
+double Graph::dijkstra_distance(int a, int b, const string& type) {
     dijkstra(a, b, type);
     if(nodes[b].dist== INT_MAX)
         return -1;
     return nodes[b].dist;
 }
 
-list<int> Graph::dijkstra_path(int a, int b, string type) {
+list<int> Graph::dijkstra_path(int a, int b, const string& type) {
     dijkstra_distance(a, b, type);
     list<int> path;
     int u=b;
@@ -112,7 +112,7 @@ void Graph::createWalkEdges() {
             double distance12 = getDistance(nodes[i].latitude, nodes[i].longitude, nodes[j].latitude, nodes[j].longitude); // Distance between x - y
             if(distance12 < 0.2){
                 bool flag = false;
-                for(auto e: nodes[i].adj) {
+                for(const auto& e: nodes[i].adj) {
                     if(e.dest==j) {
                         flag = true;
                     }
@@ -127,14 +127,14 @@ void Graph::createWalkEdges() {
 }
 
 void Graph::setNode(string code, string name, string zone, double latitude, double longitude, int index) {
-    Node n;
-    n.code = code;
-    n.name = name;
-    n.zone = zone;
-    n.latitude = latitude;
-    n.longitude = longitude;
-    n.dist = INT_MAX;
-    nodes[index] = n;
+    Node u;
+    u.code = code;
+    u.name = name;
+    u.zone = zone;
+    u.latitude = latitude;
+    u.longitude = longitude;
+    u.dist = INT_MAX;
+    nodes[index] = u;
 }
 
 double Graph::getDistance(double lat1, double long1, double lat2, double long2) {
@@ -166,7 +166,7 @@ void Graph::bfs(int a, int b) {
 
         int u = q.front(); q.pop();
 
-        for (auto e : nodes[u].adj) {
+        for (const auto& e : nodes[u].adj) {
             int w = e.dest;
 
             if (!nodes[w].visited) {

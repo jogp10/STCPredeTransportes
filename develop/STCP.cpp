@@ -24,7 +24,7 @@ int STCP::numberOfLines(const string& myfile){
     return number_of_lines-1;
 }
 
-void STCP::readLines(string myFile) {
+void STCP::readLines(const string& myFile) {
     int pos;
     string line, code, name;
     ifstream file(myFile);
@@ -42,13 +42,13 @@ void STCP::readLines(string myFile) {
             name = line.substr(pos+1, line.size()-pos);
 
             //If it is nighttime we are looking at
-            if (code.find("M") != std::string::npos && this->time == "M") {
+            if (code.find('M') != std::string::npos && this->time == "M") {
                 lines.insert(make_pair(code, name));
                 readEdges(code);
             }
 
             //If it is daytime we are looking at
-            else if (this->time == "" && code.find("M") == std::string::npos) {
+            else if (this->time.empty() && code.find('M') == std::string::npos) {
                 lines.insert(make_pair(code, name));
                 readEdges(code);
             }
@@ -62,7 +62,7 @@ void STCP::readLines(string myFile) {
     }
 }
 
-void STCP::readEdges(string code) {
+void STCP::readEdges(const string& code) {
     for (int i = 0; i <= 1; i++) {
         string myfile = "../dataset/line_" + code + "_" + to_string(i) + ".csv";
         ifstream file(myfile);
@@ -74,7 +74,7 @@ void STCP::readEdges(string code) {
             map<int, pair<double, double>> nodes = graph.getNodes();
 
             getline(file, line); // trash
-            getline(file, origin); // origin node code
+            getline(file, origin); // departure node code
 
             while(!file.eof()) {
                 getline(file, dest); // destination node code
@@ -82,7 +82,7 @@ void STCP::readEdges(string code) {
                 int originIndex = convertCodeToIndex(origin);
                 int destIndex = convertCodeToIndex(dest);
 
-                weight = graph.getDistance(nodes[originIndex].first, nodes[originIndex].second,
+                weight = Graph::getDistance(nodes[originIndex].first, nodes[originIndex].second,
                                    nodes[destIndex].first, nodes[destIndex].second);
 
                 graph.addEdge(originIndex, destIndex, weight, code);
@@ -107,10 +107,8 @@ void STCP::readStops() {
         getline(file, line);
         while(!file.eof()){
 
-            token = "";
             vector<string> extra;
             getline(file, line);
-            pos = 0;
 
             while ((pos = line.find(delimiter)) != std::string::npos) {
                 token = line.substr(0, pos);
@@ -147,11 +145,11 @@ void STCP::toRead() {
 
 void STCP::setTime(string time) { this->time = time; }
 
-int STCP::convertCodeToIndex(string a) {
+int STCP::convertCodeToIndex(const string& a) {
     return stops.find(a)->second;
 }
 
-list<int> STCP::fromTo(string a, string b, string choice){
+list<int> STCP::fromTo(const string& a, const string& b, const string& choice){
     int origin = convertCodeToIndex(a);
     int destino = convertCodeToIndex(b);
 
@@ -169,8 +167,8 @@ list<int> STCP::fromTo(string a, string b, string choice){
         }
         cout << setw(30) << graph.getNode(i).name << setw(10) <<  graph.getNode(i).code << setw(10) <<  graph.getNode(i).zone;
         cout << setw(15) <<  graph.getNode(i).dist; // for testing
-        for(auto i: graph.getNode(i).predLines){
-            cout << setw(5) << i;
+        for(const auto& j: graph.getNode(i).predLines){
+            cout << setw(5) << j;
         }
         cout << endl;
         tmp = i;
@@ -215,7 +213,7 @@ string STCP::auxArrival(const double arrLat, const double arrLon) {
     for(auto n: graph.getNodes()) {
         if(n.first == 0) { continue; }
 
-        distance = graph.getDistance(arrLat, arrLon, graph.getNode(n.first).latitude, graph.getNode(n.first).longitude);
+        distance = Graph::getDistance(arrLat, arrLon, graph.getNode(n.first).latitude, graph.getNode(n.first).longitude);
 
         if(distance <= walking) {
             cout << graph.getNode(n.first).code << " (code) || " <<  graph.getNode(n.first).name << " (name);" << endl;

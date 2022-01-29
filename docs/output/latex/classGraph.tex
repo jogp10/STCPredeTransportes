@@ -28,9 +28,9 @@ map$<$ int, pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classGraph_af6f4d528
 \item 
 \mbox{\hyperlink{structGraph_1_1Node}{Node}} \mbox{\hyperlink{classGraph_ab5176edff48155015ba7d83f801c704f}{get\+Node}} (int at)
 \item 
-double \mbox{\hyperlink{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}{dijkstra\+\_\+distance}} (int a, int b, string type=\char`\"{}shortest\char`\"{})
+double \mbox{\hyperlink{classGraph_a297cba9f1958fee469d9a51c1f3da112}{dijkstra\+\_\+distance}} (int a, int b, const string \&type=\char`\"{}shortest\char`\"{})
 \item 
-list$<$ int $>$ \mbox{\hyperlink{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}{dijkstra\+\_\+path}} (int a, int b, string type=\char`\"{}shortest\char`\"{})
+list$<$ int $>$ \mbox{\hyperlink{classGraph_a6a9b1b6d82892227fecf43976ea85527}{dijkstra\+\_\+path}} (int a, int b, const string \&type=\char`\"{}shortest\char`\"{})
 \item 
 void \mbox{\hyperlink{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}{create\+Walk\+Edges}} ()
 \item 
@@ -44,7 +44,7 @@ static double \mbox{\hyperlink{classGraph_a3062acadb1cf332da8d7df529e5651ff}{get
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}{dijkstra}} (int s, int finish=0, string type=\char`\"{}shortest\char`\"{})
+void \mbox{\hyperlink{classGraph_a81c0eb8aab66a062969ea0ddf824fdc8}{dijkstra}} (int s, int finish=0, const string \&type=\char`\"{}shortest\char`\"{})
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -101,7 +101,7 @@ B\+FS Algortihm
 \begin{DoxyParams}{Parameters}
 {\em a} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to start algorithm \\
 \hline
-{\em b} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to end algortihm \\
+{\em b} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to end algortihm B\+IG O = n$^\wedge$2 \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}\label{classGraph_a08c4787202ac643cfd245bd48e2a9f8b}} 
@@ -110,11 +110,11 @@ B\+FS Algortihm
 \doxysubsubsection{\texorpdfstring{createWalkEdges()}{createWalkEdges()}}
 {\footnotesize\ttfamily void Graph\+::create\+Walk\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge \mbox{\Hypertarget{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}\label{classGraph_a7e06334ff2c4d18dd6289fa0638a4cd7}} 
+Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge B\+IG O = n$^\wedge$2 \mbox{\Hypertarget{classGraph_a81c0eb8aab66a062969ea0ddf824fdc8}\label{classGraph_a81c0eb8aab66a062969ea0ddf824fdc8}} 
 \index{Graph@{Graph}!dijkstra@{dijkstra}}
 \index{dijkstra@{dijkstra}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
-{\footnotesize\ttfamily void Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{int}]{finish = {\ttfamily 0},  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{int}]{finish = {\ttfamily 0},  }\item[{const string \&}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Dijkstra Algorithm 
 \begin{DoxyParams}{Parameters}
@@ -122,14 +122,18 @@ Dijkstra Algorithm
 \hline
 {\em finish} & \mbox{\hyperlink{structGraph_1_1Node}{Node}} to finish algorithm \\
 \hline
-{\em type} & Type of trajectory the algorithm is going to use \\
+{\em type} & Type of trajectory the algorithm is going to use B\+IG O
+\begin{DoxyItemize}
+\item less stops = n + e
+\item shortest = less lines = less zones = n + e $\ast$ n 
+\end{DoxyItemize}\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}\label{classGraph_ab69f7e44ef045194ed67790ae2a3cf6f}} 
+\mbox{\Hypertarget{classGraph_a297cba9f1958fee469d9a51c1f3da112}\label{classGraph_a297cba9f1958fee469d9a51c1f3da112}} 
 \index{Graph@{Graph}!dijkstra\_distance@{dijkstra\_distance}}
 \index{dijkstra\_distance@{dijkstra\_distance}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra\_distance()}{dijkstra\_distance()}}
-{\footnotesize\ttfamily double Graph\+::dijkstra\+\_\+distance (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily double Graph\+::dijkstra\+\_\+distance (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{const string \&}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
 
 Get Distance between two nodes using dijkstra algorithm 
 \begin{DoxyParams}{Parameters}
@@ -141,13 +145,13 @@ Get Distance between two nodes using dijkstra algorithm
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-distance in km 
+distance in km B\+IG O = n$^\wedge$3 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}\label{classGraph_a753fc430ef0e82f4f7fe7a0ce2d78ef6}} 
+\mbox{\Hypertarget{classGraph_a6a9b1b6d82892227fecf43976ea85527}\label{classGraph_a6a9b1b6d82892227fecf43976ea85527}} 
 \index{Graph@{Graph}!dijkstra\_path@{dijkstra\_path}}
 \index{dijkstra\_path@{dijkstra\_path}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dijkstra\_path()}{dijkstra\_path()}}
-{\footnotesize\ttfamily list$<$ int $>$ Graph\+::dijkstra\+\_\+path (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{string}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily list$<$ int $>$ Graph\+::dijkstra\+\_\+path (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{const string \&}]{type = {\ttfamily \char`\"{}shortest\char`\"{}} }\end{DoxyParamCaption})}
 
 Dijkstra Path 
 \begin{DoxyParams}{Parameters}
@@ -159,7 +163,7 @@ Dijkstra Path
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-list of code\textquotesingle{}s stop which belong to path 
+list of code\textquotesingle{}s stop which belong to path B\+IG O = n$^\wedge$3 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_a3062acadb1cf332da8d7df529e5651ff}\label{classGraph_a3062acadb1cf332da8d7df529e5651ff}} 
 \index{Graph@{Graph}!getDistance@{getDistance}}
@@ -179,7 +183,7 @@ Get Distance between two points
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-distance in km 
+distance in km B\+IG O = 1 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_ab5176edff48155015ba7d83f801c704f}\label{classGraph_ab5176edff48155015ba7d83f801c704f}} 
 \index{Graph@{Graph}!getNode@{getNode}}

@@ -13,20 +13,31 @@ Collaboration diagram for S\+T\+CP\+:
 \item 
 \mbox{\hyperlink{classSTCP_a4541383180e44e0ce4b8cc0919ad5c41}{S\+T\+CP}} ()
 \item 
-int \mbox{\hyperlink{classSTCP_a1c7632a6bba855a8b7c255098871a537}{convert\+Code\+To\+Index}} (string code)
+void \mbox{\hyperlink{classSTCP_af87a36cc535e17504fd584316209fe30}{to\+Read}} ()
 \item 
-list$<$ int $>$ \mbox{\hyperlink{classSTCP_aafd0043d0eb9df76043460a258981a8f}{from\+To}} (string a, string b, string choice)
+void \mbox{\hyperlink{classSTCP_ace896178ef6eb164c8fb17e22ce061fe}{set\+Time}} (string \mbox{\hyperlink{classSTCP_a7b0ae3a8588a5256d20d2c96d5935b24}{time}})
+\item 
+int \mbox{\hyperlink{classSTCP_aff9c7aa79f4f3ed537503b91075a07d3}{convert\+Code\+To\+Index}} (const string \&code)
+\item 
+list$<$ int $>$ \mbox{\hyperlink{classSTCP_a94e7a5e48da4989993c3a6a1c97910c1}{from\+To}} (const string \&a, const string \&b, const string \&choice)
+\item 
+string \mbox{\hyperlink{classSTCP_a8b737c0cc757cfeb1aea65d2ffb2a26a}{aux\+Departure}} (double dep\+Lat, double dep\+Lon)
+\item 
+string \mbox{\hyperlink{classSTCP_a1f663d0b7a38dd34c3c1954e86ab435b}{aux\+Arrival}} (double arr\+Lat, double arr\+Lon)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{classSTCP_a607b834f35d6fd6c2d636ca940fa5372}{number\+Of\+Lines}} (const string \&myfile)
-\item 
 void \mbox{\hyperlink{classSTCP_acc9cf95c5f7c2cfe2dd05659e88dc4af}{read\+Stops}} ()
 \item 
-void \mbox{\hyperlink{classSTCP_a5a7f1d99bafb8f733744065c70571c58}{read\+Lines}} (string file)
+void \mbox{\hyperlink{classSTCP_a8b0326560a17e6f43bb80aefc4c73db9}{read\+Lines}} (const string \&file)
 \item 
-void \mbox{\hyperlink{classSTCP_abc17ff61e5cdddc8d43616c065e26a1c}{read\+Edges}} (string code)
+void \mbox{\hyperlink{classSTCP_a83ee4e2ce4e1454fad20135b9775df7d}{read\+Edges}} (const string \&code)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classSTCP_a607b834f35d6fd6c2d636ca940fa5372}{number\+Of\+Lines}} (const string \&myfile)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -36,6 +47,8 @@ map$<$ string, string $>$ \mbox{\hyperlink{classSTCP_a45e3c1aca7587e2a60b79b22e3
 map$<$ string, int $>$ \mbox{\hyperlink{classSTCP_a3c5f28f3bc79e00849dcf2ad963ff789}{stops}}
 \item 
 \mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classSTCP_a7f283c50789bb17deba8d7f178e1c85d}{graph}} = \mbox{\hyperlink{classGraph}{Graph}}(0)
+\item 
+string \mbox{\hyperlink{classSTCP_a7b0ae3a8588a5256d20d2c96d5935b24}{time}}
 \end{DoxyCompactItemize}
 
 
@@ -49,11 +62,23 @@ map$<$ string, int $>$ \mbox{\hyperlink{classSTCP_a3c5f28f3bc79e00849dcf2ad963ff
 \mbox{\hyperlink{classSTCP}{S\+T\+CP}} Constructor 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classSTCP_a1c7632a6bba855a8b7c255098871a537}\label{classSTCP_a1c7632a6bba855a8b7c255098871a537}} 
+\mbox{\Hypertarget{classSTCP_a1f663d0b7a38dd34c3c1954e86ab435b}\label{classSTCP_a1f663d0b7a38dd34c3c1954e86ab435b}} 
+\index{STCP@{STCP}!auxArrival@{auxArrival}}
+\index{auxArrival@{auxArrival}!STCP@{STCP}}
+\doxysubsubsection{\texorpdfstring{auxArrival()}{auxArrival()}}
+{\footnotesize\ttfamily string S\+T\+C\+P\+::aux\+Arrival (\begin{DoxyParamCaption}\item[{double}]{arr\+Lat,  }\item[{double}]{arr\+Lon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSTCP_a8b737c0cc757cfeb1aea65d2ffb2a26a}\label{classSTCP_a8b737c0cc757cfeb1aea65d2ffb2a26a}} 
+\index{STCP@{STCP}!auxDeparture@{auxDeparture}}
+\index{auxDeparture@{auxDeparture}!STCP@{STCP}}
+\doxysubsubsection{\texorpdfstring{auxDeparture()}{auxDeparture()}}
+{\footnotesize\ttfamily string S\+T\+C\+P\+::aux\+Departure (\begin{DoxyParamCaption}\item[{double}]{dep\+Lat,  }\item[{double}]{dep\+Lon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSTCP_aff9c7aa79f4f3ed537503b91075a07d3}\label{classSTCP_aff9c7aa79f4f3ed537503b91075a07d3}} 
 \index{STCP@{STCP}!convertCodeToIndex@{convertCodeToIndex}}
 \index{convertCodeToIndex@{convertCodeToIndex}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{convertCodeToIndex()}{convertCodeToIndex()}}
-{\footnotesize\ttfamily int S\+T\+C\+P\+::convert\+Code\+To\+Index (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int S\+T\+C\+P\+::convert\+Code\+To\+Index (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
 
 Convert code of stop to index in vector$<$\+Node$>$ nodes that belongs to graph 
 \begin{DoxyParams}{Parameters}
@@ -63,11 +88,11 @@ Convert code of stop to index in vector$<$\+Node$>$ nodes that belongs to graph
 \begin{DoxyReturn}{Returns}
 index 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classSTCP_aafd0043d0eb9df76043460a258981a8f}\label{classSTCP_aafd0043d0eb9df76043460a258981a8f}} 
+\mbox{\Hypertarget{classSTCP_a94e7a5e48da4989993c3a6a1c97910c1}\label{classSTCP_a94e7a5e48da4989993c3a6a1c97910c1}} 
 \index{STCP@{STCP}!fromTo@{fromTo}}
 \index{fromTo@{fromTo}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{fromTo()}{fromTo()}}
-{\footnotesize\ttfamily list$<$ int $>$ S\+T\+C\+P\+::from\+To (\begin{DoxyParamCaption}\item[{string}]{a,  }\item[{string}]{b,  }\item[{string}]{choice }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily list$<$ int $>$ S\+T\+C\+P\+::from\+To (\begin{DoxyParamCaption}\item[{const string \&}]{a,  }\item[{const string \&}]{b,  }\item[{const string \&}]{choice }\end{DoxyParamCaption})}
 
 From x to y, prints out the path 
 \begin{DoxyParams}{Parameters}
@@ -85,7 +110,7 @@ path
 \index{STCP@{STCP}!numberOfLines@{numberOfLines}}
 \index{numberOfLines@{numberOfLines}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{numberOfLines()}{numberOfLines()}}
-{\footnotesize\ttfamily int S\+T\+C\+P\+::number\+Of\+Lines (\begin{DoxyParamCaption}\item[{const string \&}]{myfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily int S\+T\+C\+P\+::number\+Of\+Lines (\begin{DoxyParamCaption}\item[{const string \&}]{myfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 Number lines in file 
 \begin{DoxyParams}{Parameters}
@@ -95,22 +120,22 @@ Number lines in file
 \begin{DoxyReturn}{Returns}
 number of lines 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classSTCP_abc17ff61e5cdddc8d43616c065e26a1c}\label{classSTCP_abc17ff61e5cdddc8d43616c065e26a1c}} 
+\mbox{\Hypertarget{classSTCP_a83ee4e2ce4e1454fad20135b9775df7d}\label{classSTCP_a83ee4e2ce4e1454fad20135b9775df7d}} 
 \index{STCP@{STCP}!readEdges@{readEdges}}
 \index{readEdges@{readEdges}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{readEdges()}{readEdges()}}
-{\footnotesize\ttfamily void S\+T\+C\+P\+::read\+Edges (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void S\+T\+C\+P\+::read\+Edges (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Goes to file and connects stops and lines, by adding edges to graph 
 \begin{DoxyParams}{Parameters}
 {\em code} & Line Code \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classSTCP_a5a7f1d99bafb8f733744065c70571c58}\label{classSTCP_a5a7f1d99bafb8f733744065c70571c58}} 
+\mbox{\Hypertarget{classSTCP_a8b0326560a17e6f43bb80aefc4c73db9}\label{classSTCP_a8b0326560a17e6f43bb80aefc4c73db9}} 
 \index{STCP@{STCP}!readLines@{readLines}}
 \index{readLines@{readLines}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{readLines()}{readLines()}}
-{\footnotesize\ttfamily void S\+T\+C\+P\+::read\+Lines (\begin{DoxyParamCaption}\item[{string}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void S\+T\+C\+P\+::read\+Lines (\begin{DoxyParamCaption}\item[{const string \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Goes to file and reads code and name of lines 
 \begin{DoxyParams}{Parameters}
@@ -123,7 +148,24 @@ Goes to file and reads code and name of lines
 \doxysubsubsection{\texorpdfstring{readStops()}{readStops()}}
 {\footnotesize\ttfamily void S\+T\+C\+P\+::read\+Stops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Goes to file and reads stops, adds them to graph 
+Goes to file and reads stops, adds them to graph \mbox{\Hypertarget{classSTCP_ace896178ef6eb164c8fb17e22ce061fe}\label{classSTCP_ace896178ef6eb164c8fb17e22ce061fe}} 
+\index{STCP@{STCP}!setTime@{setTime}}
+\index{setTime@{setTime}!STCP@{STCP}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily void S\+T\+C\+P\+::set\+Time (\begin{DoxyParamCaption}\item[{string}]{time }\end{DoxyParamCaption})}
+
+Set time 
+\begin{DoxyParams}{Parameters}
+{\em time} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSTCP_af87a36cc535e17504fd584316209fe30}\label{classSTCP_af87a36cc535e17504fd584316209fe30}} 
+\index{STCP@{STCP}!toRead@{toRead}}
+\index{toRead@{toRead}!STCP@{STCP}}
+\doxysubsubsection{\texorpdfstring{toRead()}{toRead()}}
+{\footnotesize\ttfamily void S\+T\+C\+P\+::to\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to load lines after being chosen day or night 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classSTCP_a7f283c50789bb17deba8d7f178e1c85d}\label{classSTCP_a7f283c50789bb17deba8d7f178e1c85d}} 
@@ -143,6 +185,12 @@ Goes to file and reads stops, adds them to graph
 \index{stops@{stops}!STCP@{STCP}}
 \doxysubsubsection{\texorpdfstring{stops}{stops}}
 {\footnotesize\ttfamily map$<$string, int$>$ S\+T\+C\+P\+::stops\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSTCP_a7b0ae3a8588a5256d20d2c96d5935b24}\label{classSTCP_a7b0ae3a8588a5256d20d2c96d5935b24}} 
+\index{STCP@{STCP}!time@{time}}
+\index{time@{time}!STCP@{STCP}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily string S\+T\+C\+P\+::time\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

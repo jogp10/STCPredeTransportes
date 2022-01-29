@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zone_152',['zone',['../structGraph_1_1Node.html#ad859b7875e1006dfeab7edc094b582b9',1,'Graph::Node']]]
+  ['weight_171',['weight',['../structGraph_1_1Edge.html#a9acc7410b39c9cb4101b55166c45bac6',1,'Graph::Edge']]]
 ];

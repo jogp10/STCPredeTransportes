@@ -100,10 +100,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af6f4d5286333228ffa289b59fe5a5974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5176edff48155015ba7d83f801c704f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGraph_1_1Node.html">Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab5176edff48155015ba7d83f801c704f">getNode</a> (int at)</td></tr>
 <tr class="separator:ab5176edff48155015ba7d83f801c704f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab69f7e44ef045194ed67790ae2a3cf6f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ab69f7e44ef045194ed67790ae2a3cf6f">dijkstra_distance</a> (int a, int b, string type=&quot;shortest&quot;)</td></tr>
-<tr class="separator:ab69f7e44ef045194ed67790ae2a3cf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a753fc430ef0e82f4f7fe7a0ce2d78ef6"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a753fc430ef0e82f4f7fe7a0ce2d78ef6">dijkstra_path</a> (int a, int b, string type=&quot;shortest&quot;)</td></tr>
-<tr class="separator:a753fc430ef0e82f4f7fe7a0ce2d78ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297cba9f1958fee469d9a51c1f3da112"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a297cba9f1958fee469d9a51c1f3da112">dijkstra_distance</a> (int a, int b, const string &amp;type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:a297cba9f1958fee469d9a51c1f3da112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9b1b6d82892227fecf43976ea85527"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a6a9b1b6d82892227fecf43976ea85527">dijkstra_path</a> (int a, int b, const string &amp;type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:a6a9b1b6d82892227fecf43976ea85527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08c4787202ac643cfd245bd48e2a9f8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a08c4787202ac643cfd245bd48e2a9f8b">createWalkEdges</a> ()</td></tr>
 <tr class="separator:a08c4787202ac643cfd245bd48e2a9f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a29eb85cbf9a8bfcbde71a756648032a2">bfs</a> (int a, int b)</td></tr>
@@ -116,8 +116,8 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a7e06334ff2c4d18dd6289fa0638a4cd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a7e06334ff2c4d18dd6289fa0638a4cd7">dijkstra</a> (int s, int finish=0, string type=&quot;shortest&quot;)</td></tr>
-<tr class="separator:a7e06334ff2c4d18dd6289fa0638a4cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c0eb8aab66a062969ea0ddf824fdc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a81c0eb8aab66a062969ea0ddf824fdc8">dijkstra</a> (int s, int finish=0, const string &amp;type=&quot;shortest&quot;)</td></tr>
+<tr class="separator:a81c0eb8aab66a062969ea0ddf824fdc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -250,7 +250,7 @@ Private Attributes</h2></td></tr>
 <p>BFS Algortihm </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to start algorithm </td></tr>
-    <tr><td class="paramname">b</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to end algortihm </td></tr>
+    <tr><td class="paramname">b</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to end algortihm BIG O = n^2 </td></tr>
   </table>
   </dd>
 </dl>
@@ -271,12 +271,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge </p>
+<p>Create edges to which you can walk, without need to take transport This type of edge has in maximum weight 2, because the distance between 2 points is 1 km. We duplicated the default weight to this type of edge BIG O = n^2 </p>
 
 </div>
 </div>
-<a id="a7e06334ff2c4d18dd6289fa0638a4cd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e06334ff2c4d18dd6289fa0638a4cd7">&#9670;&nbsp;</a></span>dijkstra()</h2>
+<a id="a81c0eb8aab66a062969ea0ddf824fdc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c0eb8aab66a062969ea0ddf824fdc8">&#9670;&nbsp;</a></span>dijkstra()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +299,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
         </tr>
         <tr>
@@ -318,15 +318,19 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">s</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to start algorithm </td></tr>
     <tr><td class="paramname">finish</td><td><a class="el" href="structGraph_1_1Node.html">Node</a> to finish algorithm </td></tr>
-    <tr><td class="paramname">type</td><td>Type of trajectory the algorithm is going to use </td></tr>
+    <tr><td class="paramname">type</td><td>Type of trajectory the algorithm is going to use BIG O<ul>
+<li>less stops = n + e</li>
+<li>shortest = less lines = less zones = n + e * n </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ab69f7e44ef045194ed67790ae2a3cf6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab69f7e44ef045194ed67790ae2a3cf6f">&#9670;&nbsp;</a></span>dijkstra_distance()</h2>
+<a id="a297cba9f1958fee469d9a51c1f3da112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a297cba9f1958fee469d9a51c1f3da112">&#9670;&nbsp;</a></span>dijkstra_distance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,7 +350,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
         </tr>
         <tr>
@@ -364,12 +368,12 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>distance in km </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>distance in km BIG O = n^3 </dd></dl>
 
 </div>
 </div>
-<a id="a753fc430ef0e82f4f7fe7a0ce2d78ef6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a753fc430ef0e82f4f7fe7a0ce2d78ef6">&#9670;&nbsp;</a></span>dijkstra_path()</h2>
+<a id="a6a9b1b6d82892227fecf43976ea85527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a9b1b6d82892227fecf43976ea85527">&#9670;&nbsp;</a></span>dijkstra_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +393,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>type</em> = <code>&quot;shortest&quot;</code>&#160;</td>
         </tr>
         <tr>
@@ -407,7 +411,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>list of code's stop which belong to path </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>list of code's stop which belong to path BIG O = n^3 </dd></dl>
 
 </div>
 </div>
@@ -465,7 +469,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>distance in km </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>distance in km BIG O = 1 </dd></dl>
 
 </div>
 </div>

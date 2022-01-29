@@ -18,9 +18,15 @@ Collaboration diagram for Menu\+:
 \item 
 void \mbox{\hyperlink{classMenu_a4b843cd94ca13b174c881954ca644b24}{flush}} ()
 \item 
-void \mbox{\hyperlink{classMenu_aa7210118b15880a252479654ebaab4cb}{travel\+Stops}} ()
+void \mbox{\hyperlink{classMenu_a4a14f9c348259b6eb66c64da03e7509a}{travel\+Day}} ()
 \item 
-void \mbox{\hyperlink{classMenu_a9ac23162afaec54bc6ff2030d1994f2b}{travel\+Coordinates}} ()
+void \mbox{\hyperlink{classMenu_a929212f9cac1ba2edd2d29e845cacaaa}{travel\+Night}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a531f25dd267958d2c3c8db0c12271fab}{procedure}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a8ebce8932c1c8943047f8ec14b6aff36}{procedure\+Stops}} ()
+\item 
+void \mbox{\hyperlink{classMenu_afa9dde4dd8e98782c03b96ac16d94343}{procedure\+Coordinates}} ()
 \item 
 string \mbox{\hyperlink{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}{travel\+Mode}} ()
 \end{DoxyCompactItemize}
@@ -52,13 +58,31 @@ string \mbox{\hyperlink{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}{travel\+Mod
 \doxysubsubsection{\texorpdfstring{flush()}{flush()}}
 {\footnotesize\ttfamily void Menu\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-F\+Lush Screen \mbox{\Hypertarget{classMenu_a9ac23162afaec54bc6ff2030d1994f2b}\label{classMenu_a9ac23162afaec54bc6ff2030d1994f2b}} 
-\index{Menu@{Menu}!travelCoordinates@{travelCoordinates}}
-\index{travelCoordinates@{travelCoordinates}!Menu@{Menu}}
-\doxysubsubsection{\texorpdfstring{travelCoordinates()}{travelCoordinates()}}
-{\footnotesize\ttfamily void Menu\+::travel\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+F\+Lush Screen \mbox{\Hypertarget{classMenu_a531f25dd267958d2c3c8db0c12271fab}\label{classMenu_a531f25dd267958d2c3c8db0c12271fab}} 
+\index{Menu@{Menu}!procedure@{procedure}}
+\index{procedure@{procedure}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{procedure()}{procedure()}}
+{\footnotesize\ttfamily void Menu\+::procedure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Travel \mbox{\hyperlink{classMenu}{Menu}} by Coordinates \mbox{\Hypertarget{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}\label{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}} 
+\mbox{\Hypertarget{classMenu_afa9dde4dd8e98782c03b96ac16d94343}\label{classMenu_afa9dde4dd8e98782c03b96ac16d94343}} 
+\index{Menu@{Menu}!procedureCoordinates@{procedureCoordinates}}
+\index{procedureCoordinates@{procedureCoordinates}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{procedureCoordinates()}{procedureCoordinates()}}
+{\footnotesize\ttfamily void Menu\+::procedure\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classMenu_a8ebce8932c1c8943047f8ec14b6aff36}\label{classMenu_a8ebce8932c1c8943047f8ec14b6aff36}} 
+\index{Menu@{Menu}!procedureStops@{procedureStops}}
+\index{procedureStops@{procedureStops}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{procedureStops()}{procedureStops()}}
+{\footnotesize\ttfamily void Menu\+::procedure\+Stops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classMenu_a4a14f9c348259b6eb66c64da03e7509a}\label{classMenu_a4a14f9c348259b6eb66c64da03e7509a}} 
+\index{Menu@{Menu}!travelDay@{travelDay}}
+\index{travelDay@{travelDay}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{travelDay()}{travelDay()}}
+{\footnotesize\ttfamily void Menu\+::travel\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Travel \mbox{\hyperlink{classMenu}{Menu}} during daytime \mbox{\Hypertarget{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}\label{classMenu_ab9d843e59d9e8bebfa63cf868d1adfb4}} 
 \index{Menu@{Menu}!travelMode@{travelMode}}
 \index{travelMode@{travelMode}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{travelMode()}{travelMode()}}
@@ -67,13 +91,13 @@ Travel \mbox{\hyperlink{classMenu}{Menu}} by Coordinates \mbox{\Hypertarget{clas
 Preferred travel mode \begin{DoxyReturn}{Returns}
 travel mode in string format 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classMenu_aa7210118b15880a252479654ebaab4cb}\label{classMenu_aa7210118b15880a252479654ebaab4cb}} 
-\index{Menu@{Menu}!travelStops@{travelStops}}
-\index{travelStops@{travelStops}!Menu@{Menu}}
-\doxysubsubsection{\texorpdfstring{travelStops()}{travelStops()}}
-{\footnotesize\ttfamily void Menu\+::travel\+Stops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classMenu_a929212f9cac1ba2edd2d29e845cacaaa}\label{classMenu_a929212f9cac1ba2edd2d29e845cacaaa}} 
+\index{Menu@{Menu}!travelNight@{travelNight}}
+\index{travelNight@{travelNight}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{travelNight()}{travelNight()}}
+{\footnotesize\ttfamily void Menu\+::travel\+Night (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Travel \mbox{\hyperlink{classMenu}{Menu}} by Stops 
+Travel \mbox{\hyperlink{classMenu}{Menu}} at nighttime 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classMenu_ab08f2f821279f8474f52bdf82c8a1372}\label{classMenu_ab08f2f821279f8474f52bdf82c8a1372}} 

@@ -36,12 +36,3 @@ if(DOXYGEN_FOUND)
 else(DOXYGEN_FOUND)
     message("Doxygen needs to be installed to generate the documentation.")
 endif(DOXYGEN_FOUND)
-
-
-# Google Tests
-
-add_subdirectory(lib/googletest-master)
-include_directories(lib/googletest-master/googletest/include)
-include_directories(lib/googletest-master/googlemock/include)
-
-target_link_libraries(STCPredeTransportes gtest gtest_main)

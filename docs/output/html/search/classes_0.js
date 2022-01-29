@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['disjointsets_75',['DisjointSets',['../classDisjointSets.html',1,'']]]
+  ['disjointsets_85',['DisjointSets',['../classDisjointSets.html',1,'']]]
 ];

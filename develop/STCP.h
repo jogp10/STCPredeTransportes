@@ -15,14 +15,14 @@ class STCP {
     map<string, string> lines; // key: codigo da linha, value: nome da linha
     map<string, int> stops; //key: codigo da paragem, value: index no vetor de nodes do grafo
     Graph graph = Graph(0);
-    string time = "";
+    string time;
 
     /**
      * Number lines in file
      * @param myfile file path
      * @return number of lines
      */
-    int numberOfLines(const string& myfile);
+    static int numberOfLines(const string& myfile);
 
     /**
      * Goes to file and reads stops, adds them to graph
@@ -33,13 +33,13 @@ class STCP {
      * Goes to file and reads code and name of lines
      * @param myFile file path
      */
-    void readLines(string file);
+    void readLines(const string& file);
 
     /**
      * Goes to file and connects stops and lines, by adding edges to graph
      * @param code Line Code
      */
-    void readEdges(string code);
+    void readEdges(const string& code);
 
 public:
     /**
@@ -64,7 +64,7 @@ public:
      * @param code
      * @return index
      */
-    int convertCodeToIndex(string code);
+    int convertCodeToIndex(const string& code);
 
     /**
      * From x to y, prints out the path
@@ -73,11 +73,11 @@ public:
      * @param choice Type of trajectory to follow
      * @return path
      */
-    list<int> fromTo(string a, string b, string choice);
+    list<int> fromTo(const string& a, const string& b, const string& choice);
 
     string auxDeparture(double depLat, double depLon);
 
-    string auxArrival(const double arrLat, const double arrLon);
+    string auxArrival(double arrLat, double arrLon);
 };
 
 

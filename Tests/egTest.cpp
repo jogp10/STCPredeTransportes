@@ -18,5 +18,10 @@ TEST(airline_1, a_setAirplanes){
      * COD4
      * To
      * CMO
+     *
+     * From
+     * BS8
+     * To
+     * PRR3
      */
 }

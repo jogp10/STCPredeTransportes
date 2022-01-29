@@ -5,7 +5,6 @@
 #include "Menu.h"
 
 #include <iostream>
-#include <cstdlib>
 #include <utility>
 #include <string>
 
@@ -27,19 +26,10 @@ Menu::Menu(STCP stcp) {
         case 2:
             travelNight();
             break;
+        default:
+            return;
     }
 }
-
-
-void Menu::flush() {
-#ifdef _WIN32
-#define CLEAR "cls"
-#else //In any other OS
-#define CLEAR "clear"
-#endif
-    system(CLEAR);
-}
-
 
 void Menu::travelDay() {
     stcp.setTime("");
@@ -67,12 +57,14 @@ void Menu::procedure() {
         case 2:
             procedureCoordinates();
             break;
+        default:
+            return;
     }
 }
 
 void Menu::procedureStops() {
-    string departure = "";
-    string arrival = "";
+    string departure;
+    string arrival;
 
     cout << "Choose your departure stop:" << endl;
     cin >> departure;

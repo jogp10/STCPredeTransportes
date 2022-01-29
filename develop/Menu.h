@@ -35,7 +35,7 @@ class Menu {
      * Preferred travel mode
      * @return travel mode in string format
      */
-    string travelMode();
+    static string travelMode();
 
 public:
     /**

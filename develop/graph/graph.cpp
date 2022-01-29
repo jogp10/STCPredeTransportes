@@ -49,7 +49,6 @@ void Graph::dijkstra(int s, int finish, const string& type) {
 
         nodes[u].visited=true;
         if(nodes[u].dist==INT_MAX) break;
-        if(u==finish) break;
 
 
         for(Edge& e: nodes[u].adj){
@@ -81,8 +80,8 @@ void Graph::dijkstra(int s, int finish, const string& type) {
                 nodes[e.dest].pred = u; // precedent stop
             }
         }
+        if(u==finish) break;
     }
-    cout << weight << endl;
 }
 
 double Graph::dijkstra_distance(int a, int b, const string& type) {

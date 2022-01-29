@@ -174,8 +174,8 @@ list<int> STCP::fromTo(const string& a, const string& b, const string& choice){
         tmp = i;
     }
     double totalDist = graph.getNode(*--path.end()).dist;
-    cout << totalDist << "\n";
-    cout << path.size()-1 << endl;
+    cout << totalDist  << " Km travelled" << "\n";
+    cout << path.size()-1 << " Stops" << endl;
     return path;
 }
 

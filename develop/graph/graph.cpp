@@ -67,7 +67,10 @@ void Graph::dijkstra(int s, int finish, const string& type) {
             bool flag = false;
             // Posible ways from where I came to u
             for(const auto& l: nodes[u].predLines){
-                if(e.line==l) flag = true; // can continue in the same line
+                if(e.line==l) {
+                    if(e.line=="walk") multiplier = 9999;
+                    flag = true; // can continue in the same line
+                }
             }
 
             // if changed line
@@ -79,8 +82,7 @@ void Graph::dijkstra(int s, int finish, const string& type) {
 
             if(!nodes[e.dest].visited && weight + e.weight * multiplier <= q.getValue(e.dest)){
                 if(weight + e.weight * multiplier < q.getValue(e.dest)) nodes[e.dest].predLines = {};
-                if(e.line!="walk")
-                    nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line); // precedent lines
+                nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line); // precedent lines
 
                 nodes[e.dest].dist = nodes[u].dist + e.weight; // update dist (real km dist)
                 q.decreaseKey(e.dest, weight + e.weight * multiplier); // update dist (weighted dist)
@@ -179,6 +181,7 @@ void Graph::bfs(int a, int b) {
             if (!nodes[w].visited) {
                 q.push(w);
                 nodes[w].pred = u;
+                nodes[w].predLines.insert(nodes[w].predLines.begin(), e.line);
                 nodes[w].visited = true;
                 nodes[w].dist = nodes[u].dist + e.weight;
                 //nodes[w].dist = nodes[u].dist + 1;

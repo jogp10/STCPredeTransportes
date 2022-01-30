@@ -41,6 +41,10 @@ void Graph::dijkstra(int s, int finish, const string& type) {
     nodes[s].dist=0;
     q.decreaseKey(s, 0);
     nodes[s].pred = s;
+    nodes[s].predLines = {};
+    for(auto e: nodes[s].adj){
+        nodes[s].predLines.insert(nodes[s].predLines.begin(), e.line);
+    }
 
     double weight;
     while(q.getSize()>0) {
@@ -57,7 +61,7 @@ void Graph::dijkstra(int s, int finish, const string& type) {
 
 
             // Less Zones
-            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier = 99; // zone change
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier += 50; // zone change
 
 
             bool flag = false;
@@ -66,15 +70,18 @@ void Graph::dijkstra(int s, int finish, const string& type) {
                 if(e.line==l) flag = true; // can continue in the same line
             }
 
-            if(type=="lessChanges"){
-                if(!flag && u!=s) multiplier = 9999; // if changed line
+            // if changed line
+            if(!flag && u!=s){
+                multiplier += 15;
+                if(type=="lessChanges") multiplier += 100;
             }
 
 
-            if(e.line!="walk")
-                nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line); // precedent lines
+            if(!nodes[e.dest].visited && weight + e.weight * multiplier <= q.getValue(e.dest)){
+                if(weight + e.weight * multiplier < q.getValue(e.dest)) nodes[e.dest].predLines = {};
+                if(e.line!="walk")
+                    nodes[e.dest].predLines.insert(nodes[e.dest].predLines.begin(), e.line); // precedent lines
 
-            if(!nodes[e.dest].visited && weight + e.weight * multiplier < q.getValue(e.dest)){
                 nodes[e.dest].dist = nodes[u].dist + e.weight; // update dist (real km dist)
                 q.decreaseKey(e.dest, weight + e.weight * multiplier); // update dist (weighted dist)
                 nodes[e.dest].pred = u; // precedent stop
@@ -82,6 +89,7 @@ void Graph::dijkstra(int s, int finish, const string& type) {
         }
         if(u==finish) break;
     }
+    nodes[s].predLines={};
 }
 
 double Graph::dijkstra_distance(int a, int b, const string& type) {

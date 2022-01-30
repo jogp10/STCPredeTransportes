@@ -52,12 +52,8 @@ void STCP::readLines(const string& myFile) {
                 lines.insert(make_pair(code, name));
                 readEdges(code);
             }
-
-            //cout << code << " // " << name << endl;
             count++;
         }
-
-        //cout << count << " number of lines read" << endl;
         file.close();
     }
 }

@@ -11,11 +11,6 @@ class Menu {
     STCP stcp;
 
     /**
-     * FLush Screen
-     */
-    void flush();
-
-    /**
      * Travel Menu during daytime
      */
     void travelDay();

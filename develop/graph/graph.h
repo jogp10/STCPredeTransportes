@@ -26,7 +26,6 @@ class Graph {
         double dist;
         int pred = 0;
         vector<string> predLines = {};
-        string predLine;
         bool visited;
         string name;
         string code;

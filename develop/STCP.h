@@ -76,13 +76,19 @@ public:
     list<int> fromTo(const string& a, const string& b, const string& choice);
 
     /**
-     *
+     * Get best and closest stop from coordinate at departure
      * @param depLat
      * @param depLon
-     * @return code
+     * @return code stop
      */
     string auxDeparture(double depLat, double depLon);
 
+    /**
+     * Get best and closest stop from coordinate at arrival
+     * @param arrLat
+     * @param arrLon
+     * @return code stop
+     */
     string auxArrival(double arrLat, double arrLon);
 };
 

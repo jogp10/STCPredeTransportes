@@ -20,10 +20,19 @@ class Menu {
      */
     void travelNight();
 
+    /**
+     * Menu to choose between asking for stops or coordinates
+     */
     void procedure();
 
+    /**
+     * Menu of Stops
+     */
     void procedureStops();
 
+    /**
+     * Menu of Coordinates
+     */
     void procedureCoordinates();
 
     /**

@@ -45,7 +45,7 @@ class Graph {
      * @param type Type of trajectory the algorithm is going to use
      * BIG O
      * - less stops = n + e
-     * - shortest = less lines = less zones = n + e * n
+     * - shortest = less lines = less zones = e^2 log v
      */
     void dijkstra(int s, int finish=0, const string& type="shortest");
 

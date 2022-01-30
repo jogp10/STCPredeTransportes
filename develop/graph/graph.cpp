@@ -61,7 +61,7 @@ void Graph::dijkstra(int s, int finish, const string& type) {
 
 
             // Less Zones
-            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier += 50; // zone change
+            if(nodes[e.dest].zone!=nodes[u].zone && type=="lessZones") multiplier = 1000; // zone change
 
 
             bool flag = false;

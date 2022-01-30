@@ -75,6 +75,12 @@ public:
      */
     list<int> fromTo(const string& a, const string& b, const string& choice);
 
+    /**
+     *
+     * @param depLat
+     * @param depLon
+     * @return code
+     */
     string auxDeparture(double depLat, double depLon);
 
     string auxArrival(double arrLat, double arrLon);
